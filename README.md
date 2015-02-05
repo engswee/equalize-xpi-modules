@@ -13,6 +13,8 @@ http://scn.sap.com/docs/DOC-59281 - ExcelTransformBean Part 2: Convert simple XM
 
 (2) DynamicAttributeChangeBean.java
 
+http://scn.sap.com/docs/DOC-61728 - DynamicAttributeChangeBean - The no-mapping solution to change Dynamic Configuration ... dynamically!
+
 
 Sub packages
 ----------------------------------------------------
