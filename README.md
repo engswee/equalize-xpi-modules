@@ -21,3 +21,7 @@ Sub packages
 (1) com.equalize.xpi.af.modules.excel - sub package for classes related to ExcelTransformBean
 
 (2) com.equalize.xpi.af.modules.util - common helper classes for adapter module
+
+(3) com.equalize.xpi.af.modules.testing - sub package for classes related to standalone module testing in NWDS based on following SCN article
+
+http://scn.sap.com/community/pi-and-soa-middleware/blog/2014/09/30/standalone-testing-of-adapter-module-in-nwds
