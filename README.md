@@ -15,6 +15,10 @@ http://scn.sap.com/docs/DOC-59281 - ExcelTransformBean Part 2: Convert simple XM
 
 http://scn.sap.com/docs/DOC-61728 - DynamicAttributeChangeBean - The no-mapping solution to change Dynamic Configuration ... dynamically!
 
+(3) DeepFCCBean.java
+
+http://scn.sap.com/docs/DOC-62488 - DeepFCCBean - The better FCC at meeting your deep (structure) needs! (Part 1 - Deep XML to Flat File)
+
 
 Sub packages
 ----------------------------------------------------
@@ -25,3 +29,5 @@ Sub packages
 (3) com.equalize.xpi.af.modules.testing - sub package for classes related to standalone module testing in NWDS based on following SCN article
 
 http://scn.sap.com/community/pi-and-soa-middleware/blog/2014/09/30/standalone-testing-of-adapter-module-in-nwds
+
+(4) com.equalize.xpi.af.modules.deepfcc - sub package for classes related to DeepFCCBean
