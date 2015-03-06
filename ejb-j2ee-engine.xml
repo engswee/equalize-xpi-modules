@@ -9,5 +9,9 @@
 			<ejb-name>DynamicAttributeChangeBean</ejb-name>
 			<jndi-name>Custom_AF_Modules/DynamicAttributeChangeBean</jndi-name>
 		</enterprise-bean>
+		<enterprise-bean>
+			<ejb-name>DeepFCCBean</ejb-name>
+			<jndi-name>Custom_AF_Modules/DeepFCCBean</jndi-name>
+		</enterprise-bean>		
 	</enterprise-beans>
 </ejb-j2ee-engine>
