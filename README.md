@@ -31,3 +31,8 @@ Sub packages
 http://scn.sap.com/community/pi-and-soa-middleware/blog/2014/09/30/standalone-testing-of-adapter-module-in-nwds
 
 (4) com.equalize.xpi.af.modules.deepfcc - sub package for classes related to DeepFCCBean
+
+Dependencies
+----------------------------------------------------
+(1) com.equalize.xpi.util.converter - Library for format conversion from following repository
+https://github.com/engswee/com.equalize.xpi.util
