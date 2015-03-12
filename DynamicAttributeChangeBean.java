@@ -18,16 +18,11 @@ public class DynamicAttributeChangeBean extends AbstractModule {
 		// Module parameters
 		String mode = this.param.getMandatoryParameter("mode");
 		this.param.checkParamValidValues("mode", "add,change,delete,regex,none");
-		String namespace = this.param.getParameter("namespace", "http://sap.com/xi/XI/System/File");
-		String attribute = this.param.getParameter("attribute", "FileName");		
-		String outNamespace = this.param.getParameter("outNamespace");
-		if (outNamespace == null) {
-			outNamespace = namespace;
-		}
-		String outAttribute = this.param.getParameter("outAttribute");
-		if (outAttribute == null) {
-			outAttribute = attribute;
-		}			
+		String namespace = this.param.getParameter("namespace", "http://sap.com/xi/XI/System/File", true);
+		String attribute = this.param.getParameter("attribute", "FileName", true);		
+		String outNamespace = this.param.getParameter("outNamespace", namespace, false);
+		String outAttribute = this.param.getParameter("outAttribute", attribute, false);
+	
 		// Get attribute value from Dynamic Configuration
 		String inAttrVal = this.dyncfg.get(namespace, attribute);
 		if (inAttrVal == null) {
@@ -89,7 +84,7 @@ public class DynamicAttributeChangeBean extends AbstractModule {
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Adding timestamp");
 			// Get extension (after the last period .)
 			String extension = outAttrVal.substring(outAttrVal.lastIndexOf("."));				
-			String timestampFormat = this.param.getParameter("timestampFormat","yyyyMMdd-HHmmss-SSS");
+			String timestampFormat = this.param.getParameter("timestampFormat","yyyyMMdd-HHmmss-SSS", true);
 			try {					
 				Date date = new Date();
 				DateFormat dateFormat = new SimpleDateFormat(timestampFormat);//"ABC");
