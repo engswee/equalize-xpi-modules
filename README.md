@@ -19,6 +19,7 @@ http://scn.sap.com/docs/DOC-61728 - DynamicAttributeChangeBean - The no-mapping 
 
 http://scn.sap.com/docs/DOC-62488 - DeepFCCBean - The better FCC at meeting your deep (structure) needs! (Part 1 - Deep XML to Flat File)
 
+http://scn.sap.com/docs/DOC-62559 - DeepFCCBean - The better FCC at meeting your deep (structure) needs! (Part 2 - Flat File to Deep XML)
 
 Sub packages
 ----------------------------------------------------
