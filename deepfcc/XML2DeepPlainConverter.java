@@ -19,7 +19,7 @@ import com.sap.aii.af.lib.mp.module.ModuleException;
 import com.sap.engine.interfaces.messaging.api.Message;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
 
-public class DeepXML2PlainConverter extends AbstractModuleConverter {
+public class XML2DeepPlainConverter extends AbstractModuleConverter {
 	private ConversionDOMInput domIn;
 	private ConversionPlainOutput plainOut;
 	private XMLElementContainer rootXML;
@@ -27,20 +27,20 @@ public class DeepXML2PlainConverter extends AbstractModuleConverter {
 	private String recordsetStructure;
 	private final HashMap<String, RecordTypeParameters> recordTypes;
 
-	public DeepXML2PlainConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
+	public XML2DeepPlainConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
 		super(msg, param, audit, dyncfg);
 		this.recordTypes = new HashMap<String, RecordTypeParameters>();
 	}
 
 	@Override
 	public void retrieveModuleParameters() throws ModuleException {
-		this.encoding = this.param.getParameter("encoding", "UTF-8");
+		this.encoding = this.param.getParameter("encoding", "UTF-8", true);
 		this.recordsetStructure = this.param.getMandatoryParameter("recordsetStructure");
 
 		String[] recordsetList = this.recordsetStructure.split(",");
 		for(String recordTypeName: recordsetList) {	
 			if(!this.recordTypes.containsKey(recordTypeName)) {
-				this.recordTypes.put(recordTypeName, new RecordTypeParameters(recordTypeName, this.encoding, this.param));
+				this.recordTypes.put(recordTypeName, new RecordTypeParameters(recordTypeName, recordsetList, this.encoding, this.param, "xml2plain"));
 			}
 		}
 	}
