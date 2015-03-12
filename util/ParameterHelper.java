@@ -22,11 +22,13 @@ public class ParameterHelper {
 		return paramValue;
 	}
 
-	public String getParameter(String paramName, String defaultValue) {
+	public String getParameter(String paramName, String defaultValue, boolean outputLog) {
 		String paramValue = this.mc.getContextData(paramName);
-		if (paramValue == null && !defaultValue.isEmpty()) {
+		if (paramValue == null && defaultValue != null) {
 			paramValue = defaultValue;
-			this.audit.addLog(AuditLogStatus.SUCCESS, "Defaulting '" + paramName + "' = " + paramValue);				
+			if(outputLog) {
+				this.audit.addLog(AuditLogStatus.SUCCESS, "Parameter '" + paramName + "' is not set. Using default value = '" + paramValue + "'");
+			}
 		}	
 		return paramValue;
 	}
@@ -40,21 +42,13 @@ public class ParameterHelper {
 	}
 
 	public String getParameter(String paramName) {
-		return getParameter(paramName, "");
+		return getParameter(paramName, null, false);
 	}
 
-	public int getIntParameter(String paramName, int defaultValue) throws ModuleException {
-		String input;
-		if(defaultValue != 0) {
-			input = getParameter(paramName, Integer.toString(defaultValue));
-		} else {
-			input = getParameter(paramName);
-		}
-		if (input == null) {
-			return 0;
-		}
+	public int getIntParameter(String paramName, int defaultValue, boolean outputLog) throws ModuleException {
+		String paramValue = getParameter(paramName, Integer.toString(defaultValue), outputLog);
 		try {
-			int result = Integer.parseInt(input);
+			int result = Integer.parseInt(paramValue);
 			if (result < 0) {
 				throw new ModuleException("Negative integers not allowed for "+ paramName);
 			}
@@ -65,47 +59,46 @@ public class ParameterHelper {
 	}
 
 	public int getIntParameter(String paramName) throws ModuleException {
-		return getIntParameter(paramName, 0);
+		return getIntParameter(paramName, 0, false);
 	}
 
 	public int getIntMandatoryParameter(String paramName) throws ModuleException {
 		getMandatoryParameter(paramName);
 		return getIntParameter(paramName);
 	}
-	
-	public boolean getBoolParameter(String paramName, String defaultValue) throws ModuleException {
-		String input = getParameter(paramName, defaultValue);
-		if(input == null) {
-			return false;
-		}
-		if(input.equalsIgnoreCase("Y")) {
+
+	public boolean getBoolParameter(String paramName, String defaultValue, boolean outputLog) throws ModuleException {
+		String paramValue = getParameter(paramName, defaultValue, outputLog);
+		if(paramValue.equalsIgnoreCase("Y")) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	public boolean getBoolParameter(String paramName) throws ModuleException {
-		return getBoolParameter(paramName, "");
+		return getBoolParameter(paramName, "N", false);
 	}
 
 	public boolean getBoolMandatoryParameter(String paramName) throws ModuleException {
 		getMandatoryParameter(paramName);
 		return getBoolParameter(paramName);
 	}
-	
+
 	public void checkParamValidValues(String paramName, String validValues) throws ModuleException {
 		String paramValue = this.mc.getContextData(paramName);
-		String[] valid = validValues.split(",");
-		boolean found = false;
-		for (int i = 0 ; i < valid.length ; i++) {
-			if (valid[i].trim().equalsIgnoreCase(paramValue)) {
-				found = true;
-				break;
+		if(paramValue != null) {
+			String[] valid = validValues.split(",");
+			boolean found = false;
+			for (int i = 0 ; i < valid.length ; i++) {
+				if (valid[i].trim().equalsIgnoreCase(paramValue)) {
+					found = true;
+					break;
+				}
 			}
-		}
-		if (!found) {
-			throw new ModuleException("Value '" + paramValue + "' not valid for parameter " + paramName);
+			if (!found) {
+				throw new ModuleException("Value '" + paramValue + "' not valid for parameter " + paramName);
+			}
 		}
 	}
 }
