@@ -19,13 +19,13 @@ public class DeepFCCConverterSimpleFactory {
 	public AbstractModuleConverter newConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) throws ModuleException {
 		AbstractModuleConverter converter = null;
 		String conversionType = param.getMandatoryParameter("conversionType");
-		param.checkParamValidValues("conversionType", "DeepXML2Plain,Plain2DeepXML");
+		param.checkParamValidValues("conversionType", "XML2DeepPlain,DeepPlain2XML");
 
-		if(conversionType.equalsIgnoreCase("DeepXML2Plain")) {
-			converter = new DeepXML2PlainConverter(msg, param, audit, dyncfg);
-		} /*else if(conversionType.equalsIgnoreCase("Plain2DeepXML")) {
-			converter = new Plain2DeepXMLConverter(msg, param, audit, dyncfg);
-		}*/
+		if(conversionType.equalsIgnoreCase("XML2DeepPlain")) {
+			converter = new XML2DeepPlainConverter(msg, param, audit, dyncfg);
+		} else if(conversionType.equalsIgnoreCase("DeepPlain2XML")) {
+			converter = new DeepPlain2XMLConverter(msg, param, audit, dyncfg);
+		}
 
 		return converter;
 	}
