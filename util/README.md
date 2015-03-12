@@ -1,5 +1,13 @@
+AbstractModule.java - Abstract class for adapter module
+
+AbstractModuleConverter.java - Abstract class for adapter module converters
+
 AuditLogHelper.java - Helper class for accessing audit log
 
 DynamicConfigurationHelper.java - Helper class for accessing Dynamic Configuration
 
+MessageLoggerHelper.java - Helper class for logging message
+
 ParameterHelper.java - Helper class for accessing module parameters
+
+RecordTypeParameters.java - Helper class for storing FCC parameters for a particular record type
