@@ -53,7 +53,7 @@ public abstract class AbstractModule implements Module {
 
 	private void logMessageVersion(String messageLogIndicator) {
 		if(this.messageLog != null && this.messageLog.equalsIgnoreCase(messageLogIndicator)) {
-			String logLocation = this.param.getParameter("logLocation", messageLogIndicator);
+			String logLocation = this.param.getParameter("logLocation", messageLogIndicator, true);
 			MessageLoggerHelper log = new MessageLoggerHelper(this.audit, logLocation);
 			log.logMessage(this.msg);
 		}
