@@ -29,7 +29,7 @@ Sub packages
 
 (3) com.equalize.xpi.af.modules.testing - sub package for classes related to standalone module testing in NWDS based on following SCN article
 
-http://scn.sap.com/community/pi-and-soa-middleware/blog/2014/09/30/standalone-testing-of-adapter-module-in-nwds
+http://scn.sap.com/community/pi-and-soa-middleware/blog/2014/10/01/standalone-testing-of-adapter-module-in-nwds
 
 (4) com.equalize.xpi.af.modules.deepfcc - sub package for classes related to DeepFCCBean
 
