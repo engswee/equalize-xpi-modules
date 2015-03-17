@@ -22,7 +22,7 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 	private ConversionDOMOutput domOut;
 	private String documentName;
 	private String documentNamespace;
-	private boolean indentXML;
+	private int indentFactor;
 	private String recordsetStructure;
 	private final HashMap<String, RecordTypeParameters> recordTypes;
 	private String encoding;
@@ -41,7 +41,7 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 		this.encoding = this.param.getParameter("encoding", "UTF-8", true);
 		this.documentName = this.param.getMandatoryParameter("documentName");
 		this.documentNamespace = this.param.getMandatoryParameter("documentNamespace");
-		this.indentXML = this.param.getBoolParameter("indentXML");
+		this.indentFactor = this.param.getIntParameter("indentFactor");
 		this.recordsetStructure = this.param.getMandatoryParameter("recordsetStructure");
 		this.debug = this.param.getBoolParameter("debug");
 		this.rowOffset = this.param.getIntParameter("rowOffset");
@@ -81,8 +81,8 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Constructing output XML");	
 
 			// Generate OutputStream from DOM
-			if(this.indentXML) {
-				this.domOut.setIndentOutput();
+			if(this.indentFactor > 0) {
+				this.domOut.setIndentFactor(this.indentFactor);
 				this.audit.addLog(AuditLogStatus.SUCCESS, "Output XML will be indented");
 			}
 			ByteArrayOutputStream baos = this.domOut.generateDOMOutput(this.nestedContents);
