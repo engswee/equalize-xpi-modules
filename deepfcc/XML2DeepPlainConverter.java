@@ -63,7 +63,7 @@ public class XML2DeepPlainConverter extends AbstractModuleConverter {
 		try {		
 			// Create output converter and generate output flat content
 			this.plainOut = new ConversionPlainOutput();
-			this.audit.addLog(AuditLogStatus.SUCCESS, "Constructing plain output");
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Constructing output plain text");
 
 			String output = constructTextfromXML(this.rootXML, true);
 			ByteArrayOutputStream baos = Converter.toBAOS(output, this.encoding);
@@ -85,9 +85,9 @@ public class XML2DeepPlainConverter extends AbstractModuleConverter {
 		}
 		// Then recursively process child elements that are segments
 		for (Field childField : element.getChildFields()) {
-			Object obj = childField.fieldContent;			
-			if(obj instanceof XMLElementContainer) {
-				sb.append(constructTextfromXML((XMLElementContainer) obj, false));
+			Object fieldContent = childField.fieldContent;			
+			if(fieldContent instanceof XMLElementContainer) {
+				sb.append(constructTextfromXML((XMLElementContainer) fieldContent, false));
 			}
 		}
 		return sb.toString();
@@ -118,8 +118,8 @@ public class XML2DeepPlainConverter extends AbstractModuleConverter {
 		int leafFieldCount = 0;
 		// Count the number of child leaf nodes
 		for (Field childField : childFields) {
-			Object obj = childField.fieldContent;			
-			if (obj instanceof String) {
+			Object fieldContent = childField.fieldContent;			
+			if (fieldContent instanceof String) {
 				leafFieldCount++;
 			}			
 		}
