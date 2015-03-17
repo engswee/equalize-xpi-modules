@@ -21,6 +21,10 @@ http://scn.sap.com/docs/DOC-62488 - DeepFCCBean - The better FCC at meeting your
 
 http://scn.sap.com/docs/DOC-62559 - DeepFCCBean - The better FCC at meeting your deep (structure) needs! (Part 2 - Flat File to Deep XML)
 
+(4) JSONTransformBean.java
+
+http://scn.sap.com/docs/DOC-62782 - JSONTransformBean Part 1: Converting JSON content to XML
+
 Sub packages
 ----------------------------------------------------
 (1) com.equalize.xpi.af.modules.excel - sub package for classes related to ExcelTransformBean
@@ -32,6 +36,8 @@ Sub packages
 http://scn.sap.com/community/pi-and-soa-middleware/blog/2014/10/01/standalone-testing-of-adapter-module-in-nwds
 
 (4) com.equalize.xpi.af.modules.deepfcc - sub package for classes related to DeepFCCBean
+
+(5) com.equalize.xpi.af.modules.json - sub package for classes related to JSONTransformBean
 
 Dependencies
 ----------------------------------------------------
