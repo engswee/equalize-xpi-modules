@@ -25,6 +25,8 @@ http://scn.sap.com/docs/DOC-62559 - DeepFCCBean - The better FCC at meeting your
 
 http://scn.sap.com/docs/DOC-62782 - JSONTransformBean Part 1: Converting JSON content to XML
 
+http://scn.sap.com/docs/DOC-62744 - JSONTransformBean Part 2: Converting XML to JSON content
+
 Sub packages
 ----------------------------------------------------
 (1) com.equalize.xpi.af.modules.excel - sub package for classes related to ExcelTransformBean
