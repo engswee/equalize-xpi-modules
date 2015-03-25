@@ -1,22 +1,28 @@
 package com.equalize.xpi.af.modules.excel;
 
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import com.sap.aii.af.lib.mp.module.ModuleContext;
-import com.sap.engine.interfaces.messaging.api.MessageKey;
-import com.sap.engine.interfaces.messaging.api.auditlog.AuditAccess;
+
+import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
+import com.equalize.xpi.af.modules.util.AuditLogHelper;
+import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
+import com.equalize.xpi.af.modules.util.ParameterHelper;
+import com.sap.aii.af.lib.mp.module.ModuleException;
+import com.sap.engine.interfaces.messaging.api.Message;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
 
-public class XML2ExcelTransformer extends ExcelTransformer {
+public class XML2ExcelTransformer extends AbstractModuleConverter {
 
 	// Module parameters
 	private String sheetName;
@@ -28,48 +34,49 @@ public class XML2ExcelTransformer extends ExcelTransformer {
 	private boolean addHeaderFromXML;
 	private String[] columnNames;
 
-	public XML2ExcelTransformer(ModuleContext mc, MessageKey key, AuditAccess audit) {
-		super(mc, key, audit);
+	public XML2ExcelTransformer(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
+		super(msg, param, audit, dyncfg);
 	}
 
 	@Override
-	public void retrieveModuleParameters() throws Exception {
+	public void retrieveModuleParameters() throws ModuleException {
 		// Output format
-		this.excelFormat = getParaWithDefault("excelFormat", "xlsx");
-		if(!this.excelFormat.equalsIgnoreCase("xls") && !this.excelFormat.equalsIgnoreCase("xlsx")) {
-			throw new Exception("Value " + this.excelFormat + " not valid for parameter excelFormat");
-		}
+		this.excelFormat = this.param.getParameter("excelFormat", "xlsx", true);
+		this.param.checkParamValidValues("excelFormat", "xlsx,xls");
+
 		// Sheet name
-		this.sheetName = getParaWithDefault("sheetName", "Sheet1");
+		this.sheetName = this.param.getParameter("sheetName", "Sheet1", true);
 		// Header line
-		this.addHeaderLine = getParaWithDefault("addHeaderLine", "none");
+		this.addHeaderLine = this.param.getParameter("addHeaderLine", "none", false);
+		this.param.checkParamValidValues("addHeaderLine", "none,fromXML,fromConfiguration");
 		if(this.addHeaderLine.equalsIgnoreCase("none")) {
 			this.addHeaderFromXML = false;
 		} else if(this.addHeaderLine.equalsIgnoreCase("fromXML")) {
 			this.addHeaderFromXML = true;			
 		} else if(this.addHeaderLine.equalsIgnoreCase("fromConfiguration")) {
 			this.addHeaderFromXML = false;
-			this.fieldNames = this.moduleParam.getContextData("fieldNames");
-			if(this.fieldNames == null || this.fieldNames.replaceAll("\\s+", "").equals("")) {
-				throw new Exception("Parameter fieldNames is required when addHeaderLine = fromConfiguration");
+			this.fieldNames = this.param.getParameter("fieldNames");
+			if(this.fieldNames == null || this.fieldNames.replaceAll("\\s+", "").isEmpty()) {
+				throw new ModuleException("Parameter 'fieldNames' required when 'addHeaderLine' = fromConfiguration");
 			} else {
 				this.columnNames = this.fieldNames.split(",");
 			}
-		} else {
-			throw new Exception("Value " + this.addHeaderLine + " not valid for parameter addHeaderLine");
 		}
 	}
 
 	@Override
-	public void parseInput(InputStream inStream) throws Exception {
-		// Parse input XML with SAX custom handler
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		SAXParser parser = factory.newSAXParser();
-		this.contents = new ArrayList<ArrayList<String>>();
-		SAXSimpleParser handler = new SAXSimpleParser(this.contents, this.addHeaderFromXML);
-		addLog(AuditLogStatus.SUCCESS, "Parsing XML contents");
-		parser.parse(inStream, handler);		
-
+	public void parseInput() throws ModuleException {
+		try {
+			// Parse input XML with SAX custom handler
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			SAXParser parser = factory.newSAXParser();
+			this.contents = new ArrayList<ArrayList<String>>();
+			SAXSimpleParser handler = new SAXSimpleParser(this.contents, this.addHeaderFromXML);
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Parsing input XML");
+			parser.parse(this.payload.getInputStream(), handler);		
+		} catch (Exception e) {
+			throw new ModuleException(e.getMessage(), e);
+		}
 		// Add header line from configuration
 		if(this.addHeaderLine.equalsIgnoreCase("fromConfiguration")) {
 			ArrayList<String> header = new ArrayList<String>();
@@ -81,7 +88,7 @@ public class XML2ExcelTransformer extends ExcelTransformer {
 	}
 
 	@Override
-	public ByteArrayOutputStream generateOutput() throws Exception {
+	public byte[] generateOutput() throws ModuleException {
 		// Create workbook
 		Workbook wb = null;
 		if(this.excelFormat.equalsIgnoreCase("xls")) {
@@ -90,11 +97,11 @@ public class XML2ExcelTransformer extends ExcelTransformer {
 			wb = new XSSFWorkbook();
 		}
 
-		addLog(AuditLogStatus.SUCCESS, "Constructing Excel output");
-		addLog(AuditLogStatus.SUCCESS, "Creating sheet " + this.sheetName);
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Constructing output Excel");
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Creating sheet " + this.sheetName);
 		// Create sheet
 		Sheet sheet = wb.createSheet(this.sheetName);
-		
+
 		// Loop through the 2D array of saved contents 
 		for(int i = 0; i < this.contents.size(); i++) {
 			Row row = sheet.createRow(i);
@@ -107,10 +114,14 @@ public class XML2ExcelTransformer extends ExcelTransformer {
 		}
 		// Write output stream
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		wb.write(baos);
-		baos.close();
+		try {
+			wb.write(baos);
+			baos.close();
+		} catch (IOException e) {
+			throw new ModuleException(e.getMessage(), e);
+		}
 
-		addLog(AuditLogStatus.SUCCESS, "Conversion complete");
-		return baos;
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Conversion complete");
+		return baos.toByteArray();
 	}
 }
