@@ -3,13 +3,13 @@
   <display-name>com.aia.xpi.af.modules.ejb</display-name>
     <enterprise-beans>
         <session>
-            <ejb-name>ExcelTransformBean</ejb-name>
+            <ejb-name>FormatConversionBean</ejb-name>
             <home>com.sap.aii.af.lib.mp.module.ModuleHome</home>
             <remote>com.sap.aii.af.lib.mp.module.ModuleRemote</remote>
             <local-home>com.sap.aii.af.lib.mp.module.ModuleLocalHome</local-home>
             <local>com.sap.aii.af.lib.mp.module.ModuleLocal</local>
             <service-endpoint/>
-            <ejb-class>com.equalize.xpi.af.modules.ExcelTransformBean</ejb-class>
+            <ejb-class>com.equalize.xpi.af.modules.FormatConversionBean</ejb-class>
             <session-type>Stateless</session-type>
             <transaction-type>Container</transaction-type>
         </session>        
@@ -23,28 +23,6 @@
             <ejb-class>com.equalize.xpi.af.modules.DynamicAttributeChangeBean</ejb-class>
             <session-type>Stateless</session-type>
             <transaction-type>Container</transaction-type>
-        </session> 
-        <session>
-            <ejb-name>DeepFCCBean</ejb-name>
-            <home>com.sap.aii.af.lib.mp.module.ModuleHome</home>
-            <remote>com.sap.aii.af.lib.mp.module.ModuleRemote</remote>
-            <local-home>com.sap.aii.af.lib.mp.module.ModuleLocalHome</local-home>
-            <local>com.sap.aii.af.lib.mp.module.ModuleLocal</local>
-            <service-endpoint/>
-            <ejb-class>com.equalize.xpi.af.modules.DeepFCCBean</ejb-class>
-            <session-type>Stateless</session-type>
-            <transaction-type>Container</transaction-type>
-        </session> 
-        <session>
-            <ejb-name>JSONTransformBean</ejb-name>
-            <home>com.sap.aii.af.lib.mp.module.ModuleHome</home>
-            <remote>com.sap.aii.af.lib.mp.module.ModuleRemote</remote>
-            <local-home>com.sap.aii.af.lib.mp.module.ModuleLocalHome</local-home>
-            <local>com.sap.aii.af.lib.mp.module.ModuleLocal</local>
-            <service-endpoint/>
-            <ejb-class>com.equalize.xpi.af.modules.JSONTransformBean</ejb-class>
-            <session-type>Stateless</session-type>
-            <transaction-type>Container</transaction-type>
-        </session>         
+        </session>        
     </enterprise-beans>
 </ejb-jar>
