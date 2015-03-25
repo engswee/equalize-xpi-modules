@@ -1,14 +1,15 @@
 package com.equalize.xpi.af.modules.excel;
 
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
@@ -19,245 +20,254 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-import com.sap.aii.af.lib.mp.module.ModuleContext;
-import com.sap.engine.interfaces.messaging.api.MessageKey;
-import com.sap.engine.interfaces.messaging.api.auditlog.AuditAccess;
+import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
+import com.equalize.xpi.af.modules.util.AuditLogHelper;
+import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
+import com.equalize.xpi.af.modules.util.ParameterHelper;
+import com.sap.aii.af.lib.mp.module.ModuleException;
+import com.sap.engine.interfaces.messaging.api.Message;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
 
-public class Excel2XMLTransformer extends ExcelTransformer {
+public class Excel2XMLTransformer extends AbstractModuleConverter {
 
 	// Module parameters
 	private String sheetName;
-	private String sheetIndex;
+	private int sheetIndex;
 	private String processFieldNames;
 	private String fieldNames;
-	private String columnCount;
+	private int columnCount = 0;
 	private String recordName;
 	private String documentName;
 	private String documentNamespace;
 	private String formatting;
-	private String evaluateFormulas;
+	private boolean evaluateFormulas;
 	private String emptyCellOutput;
 	private String emptyCellDefaultValue;
-	private String rowOffset;
-	private String skipEmptyRows;
-	private String indentXML;
-	private String debug;
+	private int rowOffset;
+	private boolean skipEmptyRows;
+	private int indentFactor;
+	private boolean debug;
 
 	private String[] columnNames;
 	private int noOfRows = 0;
-	private int noOfColumns = 0;
-	private int startingRow = 0;
 	private ArrayList<String[]> sheetContents;
 
 	// Constructor
-	public Excel2XMLTransformer(ModuleContext mc, MessageKey key, AuditAccess audit) {
-		super(mc, key, audit);
+	public Excel2XMLTransformer(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
+		super(msg, param, audit, dyncfg);
 	}
 
 	@Override
-	public void retrieveModuleParameters() throws Exception {
+	public void retrieveModuleParameters() throws ModuleException {
 		// Debug
-		this.debug = getParaWithDefault("debug","NO");
-		if(this.debug.equalsIgnoreCase("YES")) {
-			addLog(AuditLogStatus.WARNING, "WARNING: Debug activated! Use only in non-productive systems!");
+		this.debug = this.param.getBoolParameter("debug");
+		if(this.debug) {
+			this.audit.addLog(AuditLogStatus.WARNING, "WARNING: Debug activated! Use only in non-productive systems!");
 		}	
 		// Active sheet
-		this.sheetName = this.moduleParam.getContextData("sheetName");
-		this.sheetIndex = this.moduleParam.getContextData("sheetIndex");
-		if (this.sheetName == null && this.sheetIndex == null) {
-			throw new Exception("Parameter sheetName or sheetIndex is missing");
-		} else if (this.sheetName != null && this.sheetIndex != null) {
-			throw new Exception("Use only parameter sheetName or sheetIndex, not both");
-		} else if (this.sheetIndex != null) {
-			checkIntegerInput(this.sheetIndex, "sheetIndex");
-		}
-
-		// Row processing options
-		this.skipEmptyRows = getParaWithDefault("skipEmptyRows","YES");
-		if(this.skipEmptyRows.equalsIgnoreCase("NO")) {
-			addLog(AuditLogStatus.SUCCESS, "Empty rows will be included");
-		}
-		this.rowOffset = getParaWithDefault("rowOffset", "0");
-		this.startingRow = checkIntegerInput(this.rowOffset, "rowOffset");
-
-		// Determine number of columns and field names if any
-		this.processFieldNames = getParaWithErrorDescription("processFieldNames"); 
-		if (this.processFieldNames.equalsIgnoreCase("fromFile")) {
-			// this.noOfColumns remains null
-			if (this.startingRow == 0) {
-				this.startingRow++;
-				addLog(AuditLogStatus.SUCCESS, "Header row will be automatically skipped");
-			}
-		} else if (this.processFieldNames.equalsIgnoreCase("fromConfiguration")) {
-			this.fieldNames = this.moduleParam.getContextData("fieldNames");
-			if(this.fieldNames == null || this.fieldNames.replaceAll("\\s+", "").equals("")) {
-				throw new Exception("Parameter fieldNames is required when processFieldNames = fromConfiguration");
-			} else {
-				this.columnNames = this.fieldNames.split(",");
-				this.noOfColumns = this.columnNames.length;
-			}
-		} else if (this.processFieldNames.equalsIgnoreCase("notAvailable")) {
-			this.columnCount = this.moduleParam.getContextData("columnCount");
-			if(this.columnCount == null) {
-				throw new Exception("Parameter columnCount is required when processFieldNames = notAvailable");
-			} else {
-				this.noOfColumns = checkIntegerInput(this.columnCount, "columnCount");
-				if (this.noOfColumns <= 0 ) {
-					throw new Exception("Only positive integers allowed for columnCount");
-				}
-			}
-		} else {
-			throw new Exception("Value " + this.processFieldNames + " not valid for parameter processFieldNames");
+		this.sheetName = this.param.getParameter("sheetName");
+		String sheetIndexString = this.param.getParameter("sheetIndex");
+		if (this.sheetName == null && sheetIndexString == null) {
+			throw new ModuleException("Parameter sheetName or sheetIndex is missing");
+		} else if (this.sheetName != null && sheetIndexString != null) {
+			throw new ModuleException("Use only parameter sheetName or sheetIndex, not both");
+		} else if (sheetIndexString != null) {
+			this.sheetIndex = this.param.getIntMandatoryParameter("sheetIndex");
 		}
 
 		// Output XML document properties
-		this.recordName = getParaWithDefault("recordName","Record");
-		this.documentName = getParaWithErrorDescription("documentName");
-		this.documentNamespace = getParaWithErrorDescription("documentNamespace");
+		this.recordName = this.param.getParameter("recordName", "Record", true);
+		this.documentName = this.param.getMandatoryParameter("documentName");
+		this.documentNamespace = this.param.getMandatoryParameter("documentNamespace");
+
+		// Row processing options
+		this.skipEmptyRows = this.param.getBoolParameter("skipEmptyRows", "Y", false);
+		if(!this.skipEmptyRows) {
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Empty rows will be included");
+		}
+		this.rowOffset = this.param.getIntParameter("rowOffset");
+
+		// Determine number of columns and field names if any
+		this.processFieldNames = this.param.getMandatoryParameter("processFieldNames"); 
+		this.param.checkParamValidValues("processFieldNames", "fromFile,fromConfiguration,notAvailable");
+		if (this.processFieldNames.equalsIgnoreCase("fromFile")) {
+			// this.columnCount remains 0
+			if (this.rowOffset == 0) {
+				this.rowOffset++;
+				this.audit.addLog(AuditLogStatus.SUCCESS, "Header row will be automatically skipped");
+			}
+		} else if (this.processFieldNames.equalsIgnoreCase("fromConfiguration")) {
+			this.fieldNames = this.param.getParameter("fieldNames");
+			if(this.fieldNames == null || this.fieldNames.replaceAll("\\s+", "").isEmpty()) {
+				throw new ModuleException("Parameter 'fieldNames' required when 'processFieldNames' = fromConfiguration");
+			} else {
+				this.columnNames = this.fieldNames.split(",");
+				this.columnCount = this.columnNames.length;
+			}
+		} else if (this.processFieldNames.equalsIgnoreCase("notAvailable")) {
+			this.param.getConditionallyMandatoryParameter("columnCount", "processFieldNames", "notAvailable");			
+			this.columnCount = this.param.getIntParameter("columnCount");
+			if (this.columnCount <= 0 ) {
+				throw new ModuleException("Only positive integers allowed for columnCount");
+			}
+		}
 
 		// Output options
-		this.formatting = getParaWithDefault("formatting","excel");
+		this.formatting = this.param.getParameter("formatting", "excel", false);
+		this.param.checkParamValidValues("formatting", "excel,raw");
 		if(this.formatting.equalsIgnoreCase("raw")) {
-			addLog(AuditLogStatus.SUCCESS, "Cell contents will not be formatted, raw values displayed instead");
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Cell contents will not be formatted, raw values displayed instead");
 		}
-		this.evaluateFormulas = getParaWithDefault("evaluateFormulas","YES");
-		if(this.evaluateFormulas.equalsIgnoreCase("NO")) {
-			addLog(AuditLogStatus.SUCCESS, "Formulas will not be evaluated, formula logic displayed instead");
+		this.evaluateFormulas = this.param.getBoolParameter("evaluateFormulas", "Y", false);
+		if(!this.evaluateFormulas) {
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Formulas will not be evaluated, formula logic displayed instead");
 		}
-		this.emptyCellOutput = getParaWithDefault("emptyCellOutput","suppress");
+		this.emptyCellOutput = this.param.getParameter("emptyCellOutput", "suppress", false);
+		this.param.checkParamValidValues("emptyCellOutput", "suppress,defaultValue");
 		if (this.emptyCellOutput.equalsIgnoreCase("defaultValue")) {
-			this.emptyCellDefaultValue = getParaWithDefault("emptyCellDefaultValue",""); 
-			addLog(AuditLogStatus.SUCCESS, "Empty cells will be filled with default value: '" + this.emptyCellDefaultValue + "'");
+			this.emptyCellDefaultValue = this.param.getParameter("emptyCellDefaultValue", "", false); 
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Empty cells will be filled with default value: '" + this.emptyCellDefaultValue + "'");
 		}
-		this.indentXML = getParaWithDefault("indentXML","NO");
-		if(this.indentXML.equalsIgnoreCase("YES")) {
-			addLog(AuditLogStatus.SUCCESS, "XML output will be indented");
+		this.indentFactor = this.param.getIntParameter("indentFactor");
+		if(this.indentFactor > 0) {
+			this.audit.addLog(AuditLogStatus.SUCCESS, "XML output will be indented");
 		}		
 	}
 
 	@Override
-	public void parseInput(InputStream inStream) throws Exception {
+	public void parseInput() throws ModuleException {
 		// Get workbook 
-		Workbook wb = WorkbookFactory.create(inStream);
+		Workbook wb;
+		try {
+			wb = WorkbookFactory.create(this.payload.getInputStream());
+		} catch (Exception e) {
+			throw new ModuleException(e.getMessage(), e);
+		}
 		// Get the sheet
 		Sheet sheet = retrieveSheet(wb, this.sheetName, this.sheetIndex);	
 		// Get the number of rows and columns
-		if (this.noOfColumns == 0) {
-			this.noOfColumns = retrieveHeaderColumnCount(sheet);
+		if (this.columnCount == 0) {
+			this.columnCount = retrieveHeaderColumnCount(sheet);
 		}
 		this.noOfRows = sheet.getLastRowNum() + 1;
 
 		// Get the column names from header
 		if (this.processFieldNames.equalsIgnoreCase("fromFile")) {
-			this.columnNames = retrieveColumnNamesFromFileHeader(sheet, this.noOfColumns);
+			this.columnNames = retrieveColumnNamesFromFileHeader(sheet, this.columnCount);
 		}
 
 		// Get the cell contents of the sheet
 		this.sheetContents = extractSheetContents(sheet, wb, 
-				this.startingRow, this.noOfRows, this.noOfColumns, 
+				this.rowOffset, this.noOfRows, this.columnCount, 
 				this.skipEmptyRows, this.evaluateFormulas, this.formatting,
 				this.debug);
 	}
 
 	@Override
-	public ByteArrayOutputStream generateOutput() throws Exception {
+	public byte[] generateOutput() throws ModuleException {
+		try {
+			DocumentBuilder docBuilder;
+			docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document outDoc = docBuilder.newDocument();
 
-		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-		Document outDoc = docBuilder.newDocument();
+			Node outRoot = outDoc.createElementNS(this.documentNamespace,"ns:"+ this.documentName);
+			outDoc.appendChild(outRoot);
 
-		Node outRoot = outDoc.createElementNS(this.documentNamespace,"ns:"+ this.documentName);
-		outDoc.appendChild(outRoot);
-
-		addLog(AuditLogStatus.SUCCESS, "Constructing output XML");
-		// Loop through the 2D array of saved contents
-		for (int row = 0; row < this.sheetContents.size(); row++) {
-			String[] rowContent = this.sheetContents.get(row);
-			// Add new row
-			Node outRecord = addElementToNode(outDoc, outRoot, this.recordName);
-			for(int col = 0; col < rowContent.length; col++) {
-				if (rowContent[col] == null && this.emptyCellDefaultValue != null) {
-					rowContent[col] = this.emptyCellDefaultValue;
-				}
-				if (rowContent[col] != null) {
-					String fieldName;
-					if (this.columnNames != null) {
-						fieldName = this.columnNames[col];
-					} else {
-						fieldName = "Column" + Integer.toString(col+1);
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Constructing output XML");
+			// Loop through the 2D array of saved contents
+			for (int row = 0; row < this.sheetContents.size(); row++) {
+				String[] rowContent = this.sheetContents.get(row);
+				// Add new row
+				Node outRecord = addElementToNode(outDoc, outRoot, this.recordName);
+				for(int col = 0; col < rowContent.length; col++) {
+					if (rowContent[col] == null && this.emptyCellDefaultValue != null) {
+						rowContent[col] = this.emptyCellDefaultValue;
 					}
-					// Add fields of the row
-					addElementToNode(outDoc, outRecord, fieldName, rowContent[col]);
+					if (rowContent[col] != null) {
+						String fieldName;
+						if (this.columnNames != null) {
+							fieldName = this.columnNames[col];
+						} else {
+							fieldName = "Column" + Integer.toString(col+1);
+						}
+						// Add fields of the row
+						addElementToNode(outDoc, outRecord, fieldName, rowContent[col]);
+					}
 				}
 			}
-		}
-		// Transform the DOM to OutputStream
-		javax.xml.transform.Transformer transformer = TransformerFactory.newInstance().newTransformer();
-		transformer.setOutputProperty(OutputKeys.INDENT, this.indentXML); 
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		transformer.transform(new DOMSource(outDoc), new StreamResult(baos));
+			// Transform the DOM to OutputStream
+			javax.xml.transform.Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			if(this.indentFactor > 0) {
+				transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
+				transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(this.indentFactor));
+			}
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			transformer.transform(new DOMSource(outDoc), new StreamResult(baos));
 
-		addLog(AuditLogStatus.SUCCESS, "Conversion complete");
-		return baos;
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Conversion complete");
+			return baos.toByteArray();
+		} catch (Exception e) {
+			throw new ModuleException(e.getMessage(), e);
+		}
 	}
 
-	private Sheet retrieveSheet(Workbook wb, String name, String index) throws Exception {
+	private Sheet retrieveSheet(Workbook wb, String name, int sheetIndex) throws ModuleException {
 		Sheet sheet = null;
 		if (name != null) {
-			addLog(AuditLogStatus.SUCCESS, "Accessing sheet " + name);
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Accessing sheet " + name);
 			sheet = wb.getSheet(name);	
 			if (sheet == null) {
-				throw new Exception("Sheet " + name + " not found");
+				throw new ModuleException("Sheet " + name + " not found");
 			}
-		} else if (index != null) {
-			addLog(AuditLogStatus.SUCCESS, "Accessing sheet at index " + index);
-			sheet = wb.getSheetAt(Integer.parseInt(index));
+		} else {
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Accessing sheet at index " + sheetIndex);
+			sheet = wb.getSheetAt(sheetIndex);
 		}
 		return sheet;
 	}
 
-	private int retrieveHeaderColumnCount(Sheet sheet) throws Exception {
+	private int retrieveHeaderColumnCount(Sheet sheet) throws ModuleException {
 		Row header = sheet.getRow(0);
 		int lastCellNum = 0;
 		if (header != null) {
 			lastCellNum = header.getLastCellNum();
 		}
 		if (lastCellNum != 0) {
-			addLog(AuditLogStatus.SUCCESS, "No. of columns dynamically set to " + lastCellNum + " based on first row");
+			this.audit.addLog(AuditLogStatus.SUCCESS, "No. of columns dynamically set to " + lastCellNum + " based on first row");
 			return lastCellNum;
 		} else {
-			throw new Exception("No. of columns in first row is zero");
+			throw new ModuleException("No. of columns in first row is zero");
 		}
 	}
 
-	private String[] retrieveColumnNamesFromFileHeader(Sheet sheet, int columnNo) throws Exception {
+	private String[] retrieveColumnNamesFromFileHeader(Sheet sheet, int columnNo) throws ModuleException {
 		Row row = sheet.getRow(0);
-		addLog(AuditLogStatus.SUCCESS, "Retrieving column names from first row");
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Retrieving column names from first row");
 		String[] headerColumns = new String[columnNo];
 		for (int col = 0; col < columnNo; col++) {
 			Cell cell = row.getCell(col);			
 			if(cell == null) {
-				throw new Exception("Empty column name found");
+				throw new ModuleException("Empty column name found");
 			}
 			headerColumns[col] = cell.getStringCellValue();
 			String condensedName = headerColumns[col].replaceAll("\\s+", "");
-			if(condensedName.equals("")) {
-				throw new Exception("Empty column name found");
+			if(condensedName.isEmpty()) {
+				throw new ModuleException("Empty column name found");
 			}
 			if(!condensedName.equals(headerColumns[col])) {
-				addLog(AuditLogStatus.SUCCESS, "Renaming field '" + headerColumns[col] + "' to " + condensedName);
+				this.audit.addLog(AuditLogStatus.SUCCESS, "Renaming field '" + headerColumns[col] + "' to " + condensedName);
 				headerColumns[col] = condensedName;
 			}
 		}
 		return headerColumns;
 	}
 
-	private ArrayList<String[]> extractSheetContents(Sheet sheet, Workbook wb, int startRow, int noOfRows, int noOfColumns, String skipEmptyRows, String evaluateFormulas, String formatting, String debug) throws Exception {
+	private ArrayList<String[]> extractSheetContents(Sheet sheet, Workbook wb, int startRow, int noOfRows, int noOfColumns, boolean skipEmptyRows, boolean evaluateFormulas, String formatting, boolean debug) throws ModuleException {
 		if(startRow >= noOfRows) {
-			throw new Exception("Starting row is greater than last row of sheet");
+			throw new ModuleException("Starting row is greater than last row of sheet");
 		}
-		addLog(AuditLogStatus.SUCCESS, "Extracting Excel sheet contents");
-		addLog(AuditLogStatus.SUCCESS, "Start processing from row " + Integer.toString(startRow+1));
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Extracting Excel sheet contents");
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Start processing from row " + Integer.toString(startRow+1));
 		ArrayList<String[]> contents = new ArrayList<String[]>();
 		// Go through each row
 		for (int rowNo = startRow; rowNo < noOfRows; rowNo++) {
@@ -274,31 +284,31 @@ public class Excel2XMLTransformer extends ExcelTransformer {
 							contentFound = true;
 						}
 					}
-					if(debug.equalsIgnoreCase("YES")) {
-						addLog(AuditLogStatus.SUCCESS, "DEBUG Cell " + Integer.toString(rowNo+1) + ":" + Integer.toString(colNo+1) + 
+					if(debug) {
+						this.audit.addLog(AuditLogStatus.SUCCESS, "DEBUG Cell " + Integer.toString(rowNo+1) + ":" + Integer.toString(colNo+1) + 
 								" - " + rowContent[colNo]);
 					}
 				}
 				if (contentFound) {
 					contents.add(rowContent);
 				}
-			} else if(debug.equalsIgnoreCase("YES")) {
-				addLog(AuditLogStatus.SUCCESS, "DEBUG Row " + Integer.toString(rowNo+1) + " empty");
+			} else if(debug) {
+				this.audit.addLog(AuditLogStatus.SUCCESS, "DEBUG Row " + Integer.toString(rowNo+1) + " empty");
 			}
 			// Add empty rows if skip parameter set to NO
-			if (skipEmptyRows.equalsIgnoreCase("NO") && !contentFound) {
+			if (!skipEmptyRows && !contentFound) {
 				contents.add(new String[noOfColumns]);
 			}
 
 		}
 		if (contents.size()==0) {
-			throw new Exception("No rows with valid contents found");
+			throw new ModuleException("No rows with valid contents found");
 		} else {
 			return contents;
 		}
 	}
 
-	private String retrieveCellContent(Cell cell, Workbook wb, String evaluateFormulas, String formatting) {
+	private String retrieveCellContent(Cell cell, Workbook wb, boolean evaluateFormulas, String formatting) {
 		FormulaEvaluator evaluator = wb.getCreationHelper().createFormulaEvaluator();
 		DataFormatter formatter = new DataFormatter(true);
 		String cellContent = null;
@@ -307,7 +317,7 @@ public class Excel2XMLTransformer extends ExcelTransformer {
 		case Cell.CELL_TYPE_BLANK:
 			break;
 		case Cell.CELL_TYPE_FORMULA:
-			if (evaluateFormulas.equals("YES")) {
+			if (evaluateFormulas) {
 				cellContent = formatter.formatCellValue(cell, evaluator);
 			} else {
 				// Display the formula instead
@@ -349,5 +359,4 @@ public class Excel2XMLTransformer extends ExcelTransformer {
 		}		
 		return element;
 	}
-
 }
