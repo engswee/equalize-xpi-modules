@@ -5,23 +5,19 @@ All modules are written for EJB 3.0
 
 Main package - com.equalize.xpi.af.modules
 ----------------------------------------------------
-(1) ExcelTransformBean.java
+(1) DynamicAttributeChangeBean.java
+
+http://scn.sap.com/docs/DOC-61728 - DynamicAttributeChangeBean - The no-mapping solution to change Dynamic Configuration ... dynamically!
+
+(2) FormatConversionBean.java
 
 http://scn.sap.com/docs/DOC-59021 - ExcelTransformBean Part 1: Convert various Excel formats to simple XML easily
 
 http://scn.sap.com/docs/DOC-59281 - ExcelTransformBean Part 2: Convert simple XML to various Excel formats easily
 
-(2) DynamicAttributeChangeBean.java
-
-http://scn.sap.com/docs/DOC-61728 - DynamicAttributeChangeBean - The no-mapping solution to change Dynamic Configuration ... dynamically!
-
-(3) DeepFCCBean.java
-
 http://scn.sap.com/docs/DOC-62488 - DeepFCCBean - The better FCC at meeting your deep (structure) needs! (Part 1 - Deep XML to Flat File)
 
 http://scn.sap.com/docs/DOC-62559 - DeepFCCBean - The better FCC at meeting your deep (structure) needs! (Part 2 - Flat File to Deep XML)
-
-(4) JSONTransformBean.java
 
 http://scn.sap.com/docs/DOC-62782 - JSONTransformBean Part 1: Converting JSON content to XML
 
