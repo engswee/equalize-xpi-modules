@@ -2,20 +2,12 @@
 <ejb-j2ee-engine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ejb-j2ee-engine_3_0.xsd">
 	<enterprise-beans>
 		<enterprise-bean>
-			<ejb-name>ExcelTransformBean</ejb-name>
-			<jndi-name>Custom_AF_Modules/ExcelTransformBean</jndi-name>
+			<ejb-name>FormatConversionBean</ejb-name>
+			<jndi-name>Custom_AF_Modules/FormatConversionBean</jndi-name>
 		</enterprise-bean>
 		<enterprise-bean>
 			<ejb-name>DynamicAttributeChangeBean</ejb-name>
 			<jndi-name>Custom_AF_Modules/DynamicAttributeChangeBean</jndi-name>
-		</enterprise-bean>
-		<enterprise-bean>
-			<ejb-name>DeepFCCBean</ejb-name>
-			<jndi-name>Custom_AF_Modules/DeepFCCBean</jndi-name>
 		</enterprise-bean>		
-		<enterprise-bean>
-			<ejb-name>JSONTransformBean</ejb-name>
-			<jndi-name>Custom_AF_Modules/JSONTransformBean</jndi-name>
-		</enterprise-bean>			
 	</enterprise-beans>
 </ejb-j2ee-engine>
