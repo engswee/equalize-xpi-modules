@@ -4,6 +4,8 @@ AbstractModuleConverter.java - Abstract class for adapter module converters
 
 AuditLogHelper.java - Helper class for accessing audit log
 
+ConverterFactory.java - Factory class for dynamic instantiation of AbstractModuleConverter subclasses
+
 DynamicConfigurationHelper.java - Helper class for accessing Dynamic Configuration
 
 MessageLoggerHelper.java - Helper class for logging message
