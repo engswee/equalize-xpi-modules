@@ -19,6 +19,8 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 	private String documentName;
 	private String documentNamespace;
 	private int indentFactor;
+	private boolean allowArrayAtTop;
+	private String topArrayName;
 	private ArrayList<Field> inputContents;
 
 	public JSON2XMLConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
@@ -30,16 +32,23 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 		this.documentName = this.param.getMandatoryParameter("documentName");
 		this.documentNamespace = this.param.getMandatoryParameter("documentNamespace");
 		this.indentFactor = this.param.getIntParameter("indentFactor");
+		this.allowArrayAtTop = this.param.getBoolParameter("allowArrayAtTop", "N", false);
+		if(this.allowArrayAtTop) {
+			this.topArrayName = this.param.getConditionallyMandatoryParameter("topArrayName", "allowArrayAtTop", "Y");
+		}
 	}
 
 	@Override
 	public void parseInput() throws ModuleException {
 		// Parse input JSON contents
 		String content = this.payload.getText();
-		this.jsonIn = new ConversionJSONInput(content);
+		if(this.allowArrayAtTop) {
+			this.jsonIn = new ConversionJSONInput(content, this.topArrayName);
+		} else {
+			this.jsonIn = new ConversionJSONInput(content);
+		}
 		this.audit.addLog(AuditLogStatus.SUCCESS, "Parsing input JSON");
-		//this.inputContents = this.jsonIn.extractJSONContent();
-		this.inputContents = this.jsonIn.extractJSONContentArray();
+		this.inputContents = this.jsonIn.extractJSONContent();
 	}
 
 	@Override
@@ -48,7 +57,7 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 			// Create output converter and generate output DOM
 			this.domOut = new ConversionDOMOutput(this.documentName, this.documentNamespace);
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Constructing output XML");	
-			
+
 			// Generate OutputStream from DOM
 			if(this.indentFactor > 0) {
 				this.domOut.setIndentFactor(this.indentFactor);
