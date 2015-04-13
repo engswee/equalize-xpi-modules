@@ -18,8 +18,8 @@ public class XML2JSONConverter extends AbstractModuleConverter {
 	private int indentFactor;
 	private boolean skipRootNode;
 
-	public XML2JSONConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
-		super(msg, param, audit, dyncfg);
+	public XML2JSONConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
+		super(msg, param, audit, dyncfg, debug);
 	}
 	@Override
 	public void retrieveModuleParameters() throws ModuleException {
