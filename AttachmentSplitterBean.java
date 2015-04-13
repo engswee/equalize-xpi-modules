@@ -12,7 +12,6 @@ import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
 public class AttachmentSplitterBean extends AbstractModule {
 
 	private String mode;
-	private boolean keepAttachments;
 	private MessageDispatcher msgdisp;	
 	private String contentType;
 	private String qualityOfService;
@@ -27,7 +26,6 @@ public class AttachmentSplitterBean extends AbstractModule {
 			this.qualityOfService = this.param.getMandatoryParameter("qualityOfService");
 			this.param.checkParamValidValues("qualityOfService", "EO,EOIO,BE");
 			this.contentType = this.param.getParameter("contentType");
-			this.keepAttachments = this.param.getBoolParameter("keepAttachments", "N", false);
 
 			// Get attachments of the message
 			Iterator<Payload> iter = this.msg.getAttachmentIterator();
@@ -62,13 +60,6 @@ public class AttachmentSplitterBean extends AbstractModule {
 					}
 					// Dispatch child message
 					this.msgdisp.dispatchMessage();
-
-					// Remove attachments from main payload
-					if(!this.keepAttachments) {					
-						String attachmentName = childPayload.getName();
-						this.audit.addLog(AuditLogStatus.SUCCESS, "Removing attachment " + attachmentName + "from main payload");
-						this.msg.removeAttachment(attachmentName);
-					}
 				}
 			} else {
 				// No attachments in message
