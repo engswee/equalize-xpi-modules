@@ -34,8 +34,8 @@ public class XML2ExcelTransformer extends AbstractModuleConverter {
 	private boolean addHeaderFromXML;
 	private String[] columnNames;
 
-	public XML2ExcelTransformer(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
-		super(msg, param, audit, dyncfg);
+	public XML2ExcelTransformer(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
+		super(msg, param, audit, dyncfg, debug);
 	}
 
 	@Override
