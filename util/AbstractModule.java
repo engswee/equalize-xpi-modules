@@ -17,6 +17,7 @@ public abstract class AbstractModule implements Module {
 	protected ParameterHelper param;
 	protected DynamicConfigurationHelper dyncfg;
 	protected String messageLog;
+	protected boolean debug;
 	
 	@Override
 	public ModuleData process(ModuleContext moduleContext, ModuleData inputModuleData) throws ModuleException {
@@ -37,6 +38,12 @@ public abstract class AbstractModule implements Module {
 		}
 		
 		logMessageVersion("pre");
+		
+		// Debug
+		this.debug = this.param.getBoolParameter("debug");
+		if(this.debug) {
+			this.audit.addLog(AuditLogStatus.WARNING, "WARNING: Debug activated! Use only in non-productive systems!");
+		}
 		
 		// Implemented at subclass
 		processModule();
