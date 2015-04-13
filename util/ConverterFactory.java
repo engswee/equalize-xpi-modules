@@ -17,15 +17,15 @@ public class ConverterFactory {
 		return new ConverterFactory();
 	}
 
-	public AbstractModuleConverter newConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) throws ModuleException {
+	public AbstractModuleConverter newConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, boolean debug) throws ModuleException {
 		String converterClassName = param.getMandatoryParameter("converterClass");
 		audit.addLog(AuditLogStatus.SUCCESS, "Conversion using class: " + converterClassName);
 
 		try {
 			// Dynamic loading and instantiation of converter class
 			Class<?> converterClass = loadClass(converterClassName, audit);
-			Constructor<?> constructor = converterClass.getConstructor(Message.class, ParameterHelper.class, AuditLogHelper.class, DynamicConfigurationHelper.class);
-			AbstractModuleConverter conv = (AbstractModuleConverter) constructor.newInstance(msg, param, audit, dyncfg);
+			Constructor<?> constructor = converterClass.getConstructor(Message.class, ParameterHelper.class, AuditLogHelper.class, DynamicConfigurationHelper.class, Boolean.class);
+			AbstractModuleConverter conv = (AbstractModuleConverter) constructor.newInstance(msg, param, audit, dyncfg, debug);
 			return conv;
 		} catch (Exception e) {
 			audit.addLog(AuditLogStatus.ERROR, "Error initializing class: " + converterClassName);
