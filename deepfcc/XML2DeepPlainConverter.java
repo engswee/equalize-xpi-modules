@@ -27,8 +27,8 @@ public class XML2DeepPlainConverter extends AbstractModuleConverter {
 	private String recordsetStructure;
 	private final HashMap<String, RecordTypeParameters> recordTypes;
 
-	public XML2DeepPlainConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
-		super(msg, param, audit, dyncfg);
+	public XML2DeepPlainConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
+		super(msg, param, audit, dyncfg, debug);
 		this.recordTypes = new HashMap<String, RecordTypeParameters>();
 	}
 
