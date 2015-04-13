@@ -23,8 +23,8 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 	private String topArrayName;
 	private ArrayList<Field> inputContents;
 
-	public JSON2XMLConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
-		super(msg, param, audit, dyncfg);
+	public JSON2XMLConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
+		super(msg, param, audit, dyncfg, debug);
 	}
 
 	@Override
