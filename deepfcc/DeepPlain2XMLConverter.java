@@ -27,12 +27,11 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 	private final HashMap<String, RecordTypeParameters> recordTypes;
 	private String encoding;
 	private ArrayList<Field> nestedContents;
-	private boolean debug;
 	private int rowOffset;
 	private boolean trimContents;
 	
-	public DeepPlain2XMLConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
-		super(msg, param, audit, dyncfg);
+	public DeepPlain2XMLConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
+		super(msg, param, audit, dyncfg, debug);
 		this.recordTypes = new HashMap<String, RecordTypeParameters>();
 	}
 
@@ -43,7 +42,6 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 		this.documentNamespace = this.param.getMandatoryParameter("documentNamespace");
 		this.indentFactor = this.param.getIntParameter("indentFactor");
 		this.recordsetStructure = this.param.getMandatoryParameter("recordsetStructure");
-		this.debug = this.param.getBoolParameter("debug");
 		this.rowOffset = this.param.getIntParameter("rowOffset");
 		this.trimContents = this.param.getBoolParameter("trimContents", "Y", false);
 
