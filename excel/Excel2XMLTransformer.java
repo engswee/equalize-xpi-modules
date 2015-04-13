@@ -46,24 +46,18 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	private int rowOffset;
 	private boolean skipEmptyRows;
 	private int indentFactor;
-	private boolean debug;
 
 	private String[] columnNames;
 	private int noOfRows = 0;
 	private ArrayList<String[]> sheetContents;
 
 	// Constructor
-	public Excel2XMLTransformer(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
-		super(msg, param, audit, dyncfg);
+	public Excel2XMLTransformer(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
+		super(msg, param, audit, dyncfg, debug);
 	}
 
 	@Override
-	public void retrieveModuleParameters() throws ModuleException {
-		// Debug
-		this.debug = this.param.getBoolParameter("debug");
-		if(this.debug) {
-			this.audit.addLog(AuditLogStatus.WARNING, "WARNING: Debug activated! Use only in non-productive systems!");
-		}	
+	public void retrieveModuleParameters() throws ModuleException {	
 		// Active sheet
 		this.sheetName = this.param.getParameter("sheetName");
 		String sheetIndexString = this.param.getParameter("sheetIndex");
