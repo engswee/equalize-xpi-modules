@@ -15,6 +15,9 @@ public class AttachmentSplitterBean extends AbstractModule {
 	private MessageDispatcher msgdisp;	
 	private String contentType;
 	private String qualityOfService;
+	private boolean storeFileName;
+	private String fileNameAttr;
+	private String fileNameNS;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -26,6 +29,11 @@ public class AttachmentSplitterBean extends AbstractModule {
 			this.qualityOfService = this.param.getMandatoryParameter("qualityOfService");
 			this.param.checkParamValidValues("qualityOfService", "EO,EOIO,BE");
 			this.contentType = this.param.getParameter("contentType");
+			this.storeFileName = this.param.getBoolParameter("storeFileName", "N", false);
+			if(this.storeFileName) {
+				this.fileNameAttr = this.param.getParameter("fileNameAttr", "FileName", true);
+				this.fileNameNS = this.param.getParameter("fileNameNS", "http://sap.com/xi/XI/System/File", true);
+			}
 
 			// Get attachments of the message
 			Iterator<Payload> iter = this.msg.getAttachmentIterator();
@@ -47,7 +55,9 @@ public class AttachmentSplitterBean extends AbstractModule {
 				}
 				
 				// Iterate through the attachments and dispatch each as a child message
+				int count = 0;
 				while(iter.hasNext()) {
+					count++;
 					Payload childPayload = iter.next();
 					// Create child message and set reference message ID
 					this.msgdisp.createMessage(childPayload.getContent(), getDeliverySemantics(this.qualityOfService));
@@ -57,6 +67,9 @@ public class AttachmentSplitterBean extends AbstractModule {
 						this.msgdisp.setPayloadContentType(childPayload.getContentType());
 					} else {
 						this.msgdisp.setPayloadContentType(this.contentType);
+					}
+					if(this.storeFileName) {
+						this.msgdisp.addDynamicConfiguration(this.fileNameNS, this.fileNameAttr, retrieveFileName(childPayload.getContentType(), count));
 					}
 					// Dispatch child message
 					this.msgdisp.dispatchMessage();
@@ -79,5 +92,34 @@ public class AttachmentSplitterBean extends AbstractModule {
 			return DeliverySemantics.BestEffort;
 		}
 		throw new RuntimeException("Invalid QoS: " + qos);
+	}
+	
+	private String retrieveFileName(String contentType, int count) {
+		// Filename normally is included in the name parameter
+		// It can be enclosed in double quotes
+		// It can also be followed by other parameters or white spaces
+		// Some sample below:-
+		// text/plain;charset="UTF-8";name="file.txt" ;otherParam=ParamValue
+		// text/plain; charset=us-ascii; name=sample.txt
+		
+		// Get the value of the filename from parameter name
+		int nameIndex = contentType.indexOf("name=");
+		if(nameIndex == -1) {
+			// Set to default file name
+			this.audit.addLog(AuditLogStatus.WARNING, "Unable to retrieve file name from content type: " + contentType);
+			String defaultFileName = "Attachment" + count + ".txt";
+			this.audit.addLog(AuditLogStatus.WARNING, "Setting filename to: " + defaultFileName );
+			return defaultFileName;
+		}
+		String filename = contentType.substring(nameIndex+5);
+		// Check if there are other parameters after name and strip them
+		int additionalInfo = filename.indexOf(";");
+		if(additionalInfo != -1) {
+			filename = filename.substring(0, additionalInfo);
+		}
+		// Remove double quotes and white spaces
+		filename = filename.replaceAll("\"", "").trim();
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Setting filename to: " + filename );
+		return filename;
 	}
 }
