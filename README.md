@@ -5,11 +5,15 @@ All modules are written for EJB 3.0
 
 Main package - com.equalize.xpi.af.modules
 ----------------------------------------------------
-(1) DynamicAttributeChangeBean.java
+(1) AttachmentSplitterBean.java
+
+http://scn.sap.com/docs/DOC-63349 - AttachmentSplitterBean - Split attachments into multiple child messages
+
+(2) DynamicAttributeChangeBean.java
 
 http://scn.sap.com/docs/DOC-61728 - DynamicAttributeChangeBean - The no-mapping solution to change Dynamic Configuration ... dynamically!
 
-(2) FormatConversionBean.java
+(3) FormatConversionBean.java
 
 http://scn.sap.com/docs/DOC-59021 - ExcelTransformBean Part 1: Convert various Excel formats to simple XML easily
 
