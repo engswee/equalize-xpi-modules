@@ -8,6 +8,8 @@ ConverterFactory.java - Factory class for dynamic instantiation of AbstractModul
 
 DynamicConfigurationHelper.java - Helper class for accessing Dynamic Configuration
 
+MessageDispatcher.java - Helper class for creating child messages and dispatching them
+
 MessageLoggerHelper.java - Helper class for logging message
 
 ParameterHelper.java - Helper class for accessing module parameters
