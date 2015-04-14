@@ -38,6 +38,7 @@ public class MessageDispatcher {
 	private String actionNS;
 	private Message msg;
 	private Payload payload;
+	private DynamicConfigurationHelper dyncfg;
 
 	public MessageDispatcher(String channelID, AuditLogHelper audit) throws CPAException {
 		this.audit = audit;
@@ -95,6 +96,8 @@ public class MessageDispatcher {
 		// Set payload content and content type
 		this.payload.setContent(content);
 		setPayloadContentType(contentType);
+		// Set the DC helper
+		this.dyncfg = new DynamicConfigurationHelper(this.msg);
 		// Set payload as main payload of message
 		this.msg.setMainPayload(this.payload);			
 	}
@@ -109,6 +112,10 @@ public class MessageDispatcher {
 
 	public void setPayloadContentType(String type) throws InvalidParamException {
 		this.payload.setContentType(type);
+	}
+	
+	public void addDynamicConfiguration(String namespace, String attribute, String value) throws InvalidParamException {
+		this.dyncfg.add(namespace, attribute, value);
 	}
 
 	public void dispatchMessage() throws ResourceException, ModuleException {	
