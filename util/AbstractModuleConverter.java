@@ -10,13 +10,15 @@ public abstract class AbstractModuleConverter {
 	protected final AuditLogHelper audit;
 	protected final ParameterHelper param;
 	protected final DynamicConfigurationHelper dyncfg;
+	protected final boolean debug;
 	
-	public AbstractModuleConverter (Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg) {
+	public AbstractModuleConverter (Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, boolean debug) {
 		this.msg = msg;
 		this.payload = this.msg.getDocument();
 		this.param = param;
 		this.dyncfg = dyncfg;
-		this.audit = audit;						
+		this.audit = audit;	
+		this.debug = debug;
 	}
 	
 	public abstract void retrieveModuleParameters() throws ModuleException;
