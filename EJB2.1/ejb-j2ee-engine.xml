@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-j2ee-engine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ejb-j2ee-engine.xsd">
+	<enterprise-beans>
+		<enterprise-bean>
+			<ejb-name>FormatConversionBean</ejb-name>
+			<jndi-name>Custom_AF_Modules/FormatConversionBean</jndi-name>
+		</enterprise-bean>
+		<enterprise-bean>
+			<ejb-name>DynamicAttributeChangeBean</ejb-name>
+			<jndi-name>Custom_AF_Modules/DynamicAttributeChangeBean</jndi-name>
+		</enterprise-bean>
+		<enterprise-bean>
+			<ejb-name>AttachmentSplitterBean</ejb-name>
+			<jndi-name>Custom_AF_Modules/AttachmentSplitterBean</jndi-name>
+		</enterprise-bean>
+	</enterprise-beans>
+</ejb-j2ee-engine>
