@@ -27,6 +27,10 @@ http://scn.sap.com/docs/DOC-62782 - JSONTransformBean Part 1: Converting JSON co
 
 http://scn.sap.com/docs/DOC-62744 - JSONTransformBean Part 2: Converting XML to JSON content
 
+(4) SetCorrelationBean.java
+
+http://scn.sap.com/docs/DOC-63668 - Synchronous retrieval of dynamically specified file from file system/server
+
 Sub packages
 ----------------------------------------------------
 (1) com.equalize.xpi.af.modules.excel - sub package for classes related to ExcelTransformBean
