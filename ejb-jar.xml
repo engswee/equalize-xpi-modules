@@ -35,5 +35,16 @@
             <session-type>Stateless</session-type>
             <transaction-type>Container</transaction-type>
         </session>    
+        <session>
+            <ejb-name>SetCorrelationBean</ejb-name>
+            <home>com.sap.aii.af.lib.mp.module.ModuleHome</home>
+            <remote>com.sap.aii.af.lib.mp.module.ModuleRemote</remote>
+            <local-home>com.sap.aii.af.lib.mp.module.ModuleLocalHome</local-home>
+            <local>com.sap.aii.af.lib.mp.module.ModuleLocal</local>
+            <service-endpoint/>
+            <ejb-class>com.equalize.xpi.af.modules.SetCorrelationBean</ejb-class>
+            <session-type>Stateless</session-type>
+            <transaction-type>Container</transaction-type>
+        </session>
     </enterprise-beans>
 </ejb-jar>
