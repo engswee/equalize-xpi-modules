@@ -91,7 +91,7 @@ public class AttachmentSplitterBean extends AbstractModule {
 		} else if (qos.equals("BE")) {
 			return DeliverySemantics.BestEffort;
 		}
-		throw new RuntimeException("Invalid QoS: " + qos);
+		throw new IllegalArgumentException("Invalid QoS: " + qos);
 	}
 	
 	private String retrieveFileName(String contentType, int count) {
