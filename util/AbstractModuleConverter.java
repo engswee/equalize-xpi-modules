@@ -12,7 +12,7 @@ public abstract class AbstractModuleConverter {
 	protected final DynamicConfigurationHelper dyncfg;
 	protected final boolean debug;
 	
-	public AbstractModuleConverter (Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, boolean debug) {
+	public AbstractModuleConverter (Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
 		this.msg = msg;
 		this.payload = this.msg.getDocument();
 		this.param = param;
