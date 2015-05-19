@@ -29,6 +29,8 @@ http://scn.sap.com/docs/DOC-62744 - JSONTransformBean Part 2: Converting XML to 
 
 http://scn.sap.com/docs/DOC-63760 - Base64DecodeConverter - Base64 decoding made easy!
 
+http://scn.sap.com/docs/DOC-64087 - Base64EncodeConverter - Base64 encoding made easy!
+
 (4) SetCorrelationBean.java
 
 http://scn.sap.com/docs/DOC-63668 - Synchronous retrieval of dynamically specified file from file system/server
