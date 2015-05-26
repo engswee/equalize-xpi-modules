@@ -26,7 +26,7 @@ public class RecordTypeParameters {
 	private String enclEndEsc;
 	public String parentRecordType;
 
-	public RecordTypeParameters(String recordTypeName, String[] recordsetList, String encoding, ParameterHelper param, String convType) throws ModuleException {//String fieldSeparator, String fieldFixedLengths, String endSeparator, String fixedLengthTooShortHandling) {
+	public RecordTypeParameters(String recordTypeName, String[] recordsetList, String encoding, ParameterHelper param, String convType) throws ModuleException {
 		// Set parameter values for the record type
 		// 1 - Field Separator
 		String defaultFieldSeparator = param.getParameter("defaultFieldSeparator");
@@ -96,9 +96,13 @@ public class RecordTypeParameters {
 	}
 
 	private void storePlain2XMLParameters(String recordTypeName, String[] recordsetList, ParameterHelper param) throws ModuleException {
-		// Key field name and value
-		this.keyFieldName = param.getMandatoryParameter("keyFieldName");
-		this.keyFieldValue = param.getMandatoryParameter(recordTypeName + ".keyFieldValue");
+
+		String genericRecordType = param.getParameter("genericRecordType");
+		if(genericRecordType == null || !genericRecordType.equals(recordTypeName)) {
+			// Key field name and value
+			this.keyFieldName = param.getMandatoryParameter("keyFieldName");
+			this.keyFieldValue = param.getMandatoryParameter(recordTypeName + ".keyFieldValue");
+		}
 		// Parent record type
 		this.parentRecordType = param.getMandatoryParameter(recordTypeName + ".parent");
 		if(this.parentRecordType.equals(recordTypeName)) {
@@ -123,23 +127,25 @@ public class RecordTypeParameters {
 		if(!this.csvMode && this.fieldNames.length != this.fixedLengths.length) {
 			throw new ModuleException("No. of fields in 'fieldNames' and 'fieldFixedLengths' does not match for record type = '" + recordTypeName + "'");
 		}
-		// Index and position of key field in record type
-		boolean found = false;
-		for (int i = 0; i < this.fieldNames.length; i++) {
-			if(this.fieldNames[i].equals(this.keyFieldName)) {
-				this.keyFieldIndex = i;
-				found = true;
-				if(!this.csvMode) {
-					this.keyFieldLength = Integer.parseInt(this.fixedLengths[i]);
+		if(genericRecordType == null || !genericRecordType.equals(recordTypeName)) {
+			// Index and position of key field in record type
+			boolean found = false;
+			for (int i = 0; i < this.fieldNames.length; i++) {
+				if(this.fieldNames[i].equals(this.keyFieldName)) {
+					this.keyFieldIndex = i;
+					found = true;
+					if(!this.csvMode) {
+						this.keyFieldLength = Integer.parseInt(this.fixedLengths[i]);
+					}
+					break;
 				}
-				break;
+				if(!this.csvMode) {
+					this.keyFieldStartPosition += Integer.parseInt(this.fixedLengths[i]);
+				}
 			}
-			if(!this.csvMode) {
-				this.keyFieldStartPosition += Integer.parseInt(this.fixedLengths[i]);
+			if (!found) {
+				throw new ModuleException("Key field '" + this.keyFieldName + "' not found in '" + fieldNamesColumn + "'");
 			}
-		}
-		if (!found) {
-			throw new ModuleException("Key field '" + this.keyFieldName + "' not found in '" + fieldNamesColumn + "'");
 		}
 		// Enclosure signs
 		if(this.csvMode) {
