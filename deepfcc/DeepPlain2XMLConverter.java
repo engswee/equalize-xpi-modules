@@ -29,7 +29,8 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 	private ArrayList<Field> nestedContents;
 	private int rowOffset;
 	private boolean trimContents;
-	
+	private String genericRecordType;
+
 	public DeepPlain2XMLConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
 		super(msg, param, audit, dyncfg, debug);
 		this.recordTypes = new HashMap<String, RecordTypeParameters>();
@@ -44,7 +45,7 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 		this.recordsetStructure = this.param.getMandatoryParameter("recordsetStructure");
 		this.rowOffset = this.param.getIntParameter("rowOffset");
 		this.trimContents = this.param.getBoolParameter("trimContents", "Y", false);
-
+		this.genericRecordType = this.param.getParameter("genericRecordType");
 		// Get the parameters for each substructure type
 		String[] recordsetList = this.recordsetStructure.split(",");
 		for(String recordTypeName: recordsetList) {	
@@ -98,11 +99,11 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 		// Stack is used to track the depth of the traversal of the hierarchy
 		ArrayList<Field> depthStack = new ArrayList<Field>(this.recordTypes.size());
 		depthStack.add(new Field("Root:0", nestedContents));
-		
+
 		if(this.rowOffset > 0) {
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Processing starting from offset: " + this.rowOffset);
 		}
-		
+
 		// Get the raw line contents and process them line by line
 		ArrayList<String> rawLineContents = this.plainIn.getLineContents();			
 		for (int i = this.rowOffset; i < rawLineContents.size(); i++) {			
@@ -128,7 +129,11 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 				return keyName;
 			}
 		}
-		throw new ModuleException("Unable to determine record type for line " + (lineIndex+1) );
+		if(this.genericRecordType != null) {
+			return this.genericRecordType;
+		} else {
+			throw new ModuleException("Unable to determine record type for line " + (lineIndex+1) );
+		}
 	}
 
 	private ArrayList<Field> extractLineToFieldList(String lineRecordType, String lineInput) {
