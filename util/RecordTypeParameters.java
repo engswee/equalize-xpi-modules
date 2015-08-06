@@ -50,9 +50,7 @@ public class RecordTypeParameters {
 			this.fixedLengths = null;
 		} else {
 			String lengthsWithoutComma = tempFixedLengths.replaceAll(",", "");
-			try {
-				Integer.parseInt(lengthsWithoutComma);
-			} catch (NumberFormatException e) {
+			if(!checkNumeric(lengthsWithoutComma)) {
 				throw new ModuleException("Maintain only integers separated by commas for '"+ fieldFixedLengthsName + "'");
 			}
 			this.fixedLengths = tempFixedLengths.split(",");
@@ -241,6 +239,17 @@ public class RecordTypeParameters {
 					result[index] = fieldContent;
 				}
 				index++;
+			}
+		}
+		return result;
+	}
+	
+	private boolean checkNumeric(String input) {
+		boolean result = true;
+		for (int i = 0; i < input.length(); i++) {
+			if (!Character.isDigit(input.charAt(i))) {
+				result = false;
+				break;
 			}
 		}
 		return result;
