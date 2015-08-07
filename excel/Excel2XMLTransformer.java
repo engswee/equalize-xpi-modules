@@ -44,6 +44,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	private String emptyCellOutput;
 	private String emptyCellDefaultValue;
 	private int rowOffset;
+	private int columnOffset;
 	private boolean skipEmptyRows;
 	private int indentFactor;
 
@@ -74,12 +75,13 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 		this.documentName = this.param.getMandatoryParameter("documentName");
 		this.documentNamespace = this.param.getMandatoryParameter("documentNamespace");
 
-		// Row processing options
+		// Row & Column processing options
 		this.skipEmptyRows = this.param.getBoolParameter("skipEmptyRows", "Y", false);
 		if(!this.skipEmptyRows) {
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Empty rows will be included");
 		}
 		this.rowOffset = this.param.getIntParameter("rowOffset");
+		this.columnOffset = this.param.getIntParameter("columnOffset");		
 
 		// Determine number of columns and field names if any
 		this.processFieldNames = this.param.getMandatoryParameter("processFieldNames"); 
@@ -140,9 +142,10 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 		// Get the sheet
 		Sheet sheet = retrieveSheet(wb, this.sheetName, this.sheetIndex);	
 		// Get the number of rows and columns
-		if (this.columnCount == 0) {
+		if (this.columnCount == 0) { // this only happens if processFieldNames = fromFile
 			this.columnCount = retrieveHeaderColumnCount(sheet);
 		}
+
 		this.noOfRows = sheet.getLastRowNum() + 1;
 
 		// Get the column names from header
@@ -152,7 +155,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 
 		// Get the cell contents of the sheet
 		this.sheetContents = extractSheetContents(sheet, wb, 
-				this.rowOffset, this.noOfRows, this.columnCount, 
+				this.rowOffset, this.noOfRows, this.columnOffset, this.columnCount, 
 				this.skipEmptyRows, this.evaluateFormulas, this.formatting,
 				this.debug);
 	}
@@ -214,8 +217,8 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 				throw new ModuleException("Sheet " + name + " not found");
 			}
 		} else {
-			this.audit.addLog(AuditLogStatus.SUCCESS, "Accessing sheet at index " + sheetIndex);
 			sheet = wb.getSheetAt(sheetIndex);
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Accessing sheet " + sheet.getSheetName() + " at index " + sheetIndex);			
 		}
 		return sheet;
 	}
@@ -256,13 +259,15 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 		return headerColumns;
 	}
 
-	private ArrayList<String[]> extractSheetContents(Sheet sheet, Workbook wb, int startRow, int noOfRows, int noOfColumns, boolean skipEmptyRows, boolean evaluateFormulas, String formatting, boolean debug) throws ModuleException {
+	private ArrayList<String[]> extractSheetContents(Sheet sheet, Workbook wb, int startRow, int noOfRows, int startCol, int noOfColumns, boolean skipEmptyRows, boolean evaluateFormulas, String formatting, boolean debug) throws ModuleException {
 		if(startRow >= noOfRows) {
 			throw new ModuleException("Starting row is greater than last row of sheet");
 		}
 		this.audit.addLog(AuditLogStatus.SUCCESS, "Extracting Excel sheet contents");
 		this.audit.addLog(AuditLogStatus.SUCCESS, "Start processing from row " + Integer.toString(startRow+1));
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Start processing from column " + Integer.toString(startCol+1));
 		ArrayList<String[]> contents = new ArrayList<String[]>();
+		int lastColumn = startCol + noOfColumns;
 		// Go through each row
 		for (int rowNo = startRow; rowNo < noOfRows; rowNo++) {
 			Row row = sheet.getRow(rowNo);
@@ -270,11 +275,11 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 			if (row != null) {
 				String[] rowContent = new String[noOfColumns];
 				// Go through each column cell of the current row
-				for (int colNo = 0; colNo < noOfColumns; colNo++) {
+				for (int colNo = startCol; colNo < lastColumn; colNo++) {
 					Cell cell = row.getCell(colNo);
 					if (cell != null) {
-						rowContent[colNo] = retrieveCellContent(cell, wb, evaluateFormulas, formatting);
-						if(rowContent[colNo] != null) {
+						rowContent[colNo - startCol] = retrieveCellContent(cell, wb, evaluateFormulas, formatting);
+						if(rowContent[colNo - startCol] != null) {
 							contentFound = true;
 						}
 					}
