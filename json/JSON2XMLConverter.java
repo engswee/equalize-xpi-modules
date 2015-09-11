@@ -19,6 +19,8 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 	private String documentName;
 	private String documentNamespace;
 	private int indentFactor;
+	private boolean escapeInvalidNameStartChar;
+	private boolean mangleInvalidNameChar;
 	private boolean allowArrayAtTop;
 	private String topArrayName;
 	private ArrayList<Field> inputContents;
@@ -31,7 +33,9 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 	public void retrieveModuleParameters() throws ModuleException {
 		this.documentName = this.param.getMandatoryParameter("documentName");
 		this.documentNamespace = this.param.getMandatoryParameter("documentNamespace");
-		this.indentFactor = this.param.getIntParameter("indentFactor");
+		this.indentFactor = this.param.getIntParameter("indentFactor");		
+		this.escapeInvalidNameStartChar = this.param.getBoolParameter("escapeInvalidNameStartChar", "N", false);
+		this.mangleInvalidNameChar = this.param.getBoolParameter("mangleInvalidNameChar", "N", false);
 		this.allowArrayAtTop = this.param.getBoolParameter("allowArrayAtTop", "N", false);
 		if(this.allowArrayAtTop) {
 			this.topArrayName = this.param.getConditionallyMandatoryParameter("topArrayName", "allowArrayAtTop", "Y");
@@ -63,6 +67,9 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 				this.domOut.setIndentFactor(this.indentFactor);
 				this.audit.addLog(AuditLogStatus.SUCCESS, "Output XML will be indented");
 			}
+			
+			this.domOut.setEscapeInvalidNameStartChar(this.escapeInvalidNameStartChar);
+			this.domOut.setMangleInvalidNameChar(this.mangleInvalidNameChar);
 
 			ByteArrayOutputStream baos = this.domOut.generateDOMOutput(this.inputContents);
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Conversion complete");
