@@ -87,7 +87,7 @@ public class DynamicAttributeChangeBean extends AbstractModule {
 			String timestampFormat = this.param.getParameter("timestampFormat","yyyyMMdd-HHmmss-SSS", true);
 			try {					
 				Date date = new Date();
-				DateFormat dateFormat = new SimpleDateFormat(timestampFormat);//"ABC");
+				DateFormat dateFormat = new SimpleDateFormat(timestampFormat);
 				String valBeforeExt = outAttrVal.substring(0, outAttrVal.lastIndexOf(extension));
 				outAttrVal = valBeforeExt + dateFormat.format(date) + extension;
 			} catch (IllegalArgumentException e) {
