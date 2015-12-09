@@ -159,8 +159,8 @@ public class RecordTypeParameters {
 		String currentLineKeyFieldValue = null;
 		if (this.csvMode) {
 			String[] inputFieldContents = splitLineBySeparator(lineInput);
-			if (inputFieldContents.length >= this.keyFieldIndex) {
-				if (inputFieldContents[this.keyFieldIndex].equals(this.keyFieldValue)) {
+			if (this.keyFieldIndex <= inputFieldContents.length) {
+				if (this.keyFieldValue.equals(inputFieldContents[this.keyFieldIndex])) {
 					currentLineKeyFieldValue = this.keyFieldValue;
 				}
 			}
@@ -180,7 +180,7 @@ public class RecordTypeParameters {
 			for (int i = 0; i < this.fieldNames.length; i++ ) {
 				String content = "";
 				if(i < inputFieldContents.length) {
-					content = inputFieldContents[i];
+					content = (inputFieldContents[i] == null) ? "" : inputFieldContents[i];
 				}
 				fields[i] = createNewField(this.fieldNames[i], content, trim);
 			}
@@ -241,6 +241,7 @@ public class RecordTypeParameters {
 				index++;
 			}
 		}
+		// If there are less fields than this.fieldNames.length, the last objects in result[] could be null
 		return result;
 	}
 	
