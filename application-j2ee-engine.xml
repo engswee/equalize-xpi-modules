@@ -38,6 +38,7 @@
 			provider-name="sap.com" 
 			target-type="library">com.sap.base.technology.facade</reference-target>
 	</reference>
+	<provider-name>equalize.com</provider-name>	
 	<fail-over-enable 
 		mode="disable" 
 		xsi:type="fail-over-enableType_disable"/>
