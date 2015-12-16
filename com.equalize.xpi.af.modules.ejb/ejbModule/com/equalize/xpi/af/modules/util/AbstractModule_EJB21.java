@@ -15,7 +15,7 @@ import com.sap.engine.interfaces.messaging.api.XMLPayload;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
 import com.sap.engine.interfaces.messaging.api.exception.InvalidParamException;
 
-public abstract class AbstractModule implements SessionBean, Module {
+public abstract class AbstractModule_EJB21 implements SessionBean, Module {
 
 	/**
 	 * 
