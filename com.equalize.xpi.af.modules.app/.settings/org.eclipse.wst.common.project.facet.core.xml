@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+  <runtime name="sapruntime"/>
+  <fixed facet="jst.ear"/>
+  <installed facet="jst.ear" version="5.0"/>
+  <installed facet="jst.ext.ear" version="5.0"/>
+</faceted-project>

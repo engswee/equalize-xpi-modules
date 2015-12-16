@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application-j2ee-engine 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="application-j2ee-engine.xsd">
+	<reference 
+		reference-type="hard">
+		<reference-target 
+			provider-name="sap.com" 
+			target-type="service">engine.security.facade</reference-target>
+	</reference>
+	<reference 
+		reference-type="hard">
+		<reference-target 
+			provider-name="sap.com" 
+			target-type="library">engine.j2ee14.facade</reference-target>
+	</reference>
+	<reference 
+		reference-type="hard">
+		<reference-target 
+			provider-name="sap.com" 
+			target-type="service">com.sap.aii.af.svc.facade</reference-target>
+	</reference>
+	<reference 
+		reference-type="hard">
+		<reference-target 
+			provider-name="sap.com" 
+			target-type="interface">com.sap.aii.af.ifc.facade</reference-target>
+	</reference>
+	<reference 
+		reference-type="hard">
+		<reference-target 
+			provider-name="sap.com" 
+			target-type="library">com.sap.aii.af.lib.facade</reference-target>
+	</reference>
+	<reference 
+		reference-type="hard">
+		<reference-target 
+			provider-name="sap.com" 
+			target-type="library">com.sap.base.technology.facade</reference-target>
+	</reference>
+	<provider-name>equalize.com</provider-name>
+	<fail-over-enable 
+		mode="disable" 
+		xsi:type="fail-over-enableType_disable"/>
+</application-j2ee-engine>

@@ -1,0 +1,18 @@
+Version History
+
+------------------------------------------------------
+1.0.2 - Released 12 Dec 2015
+------------------------------------------------------
+1) application-j2ee-engine.xml - added provider name so that the Manifest file gets generated with correct vendor instead of reserved "sap.com"
+
+------------------------------------------------------
+1.0.1 - Released 9 Dec 2015
+------------------------------------------------------
+1) Incorporated Semantic Versioning 2.0.0 (http://semver.org/)
+	Version number format = MAJOR.MINOR.PATCH, where:
+		MAJOR version incremented for incompatible API changes,
+		MINOR version incremented for addition of functionality in a backwards-compatible manner
+		PATCH version incremented for backwards-compatible bug fixes.
+		
+2) Include Release Notes in META-INF folder of EAR file
+3) Handled scenario for DeepPlain2XMLConverter when input file is field-separated but the last separator is present but the field is not present

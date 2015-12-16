@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<TSSAP-INFO>
+
+<Properties>
+<Property key="j2ee.archive.name" value="com.equalize.xpi.af.modules.app.ear"/>
+<Property key="j2ee.archive.location" value="/"/>
+</Properties>
+</TSSAP-INFO>
