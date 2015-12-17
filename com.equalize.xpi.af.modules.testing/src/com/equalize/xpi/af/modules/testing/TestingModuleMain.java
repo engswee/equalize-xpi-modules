@@ -22,7 +22,7 @@ import com.sap.aii.af.lib.mp.module.ModuleData;
 import com.sap.aii.af.service.cpa.CPAException;
 import com.sap.aii.af.service.cpa.CPAObjectType;
 import com.sap.aii.af.service.cpa.Channel;
-import com.sap.aii.af.service.cpa.LookupManager;
+//import com.sap.aii.af.service.cpa.LookupManager;
 import com.sap.engine.interfaces.messaging.api.AckType;
 import com.sap.engine.interfaces.messaging.api.Action;
 import com.sap.engine.interfaces.messaging.api.DeliverySemantics;
@@ -291,7 +291,7 @@ class ModuleContextImpl implements ModuleContext {
 			return val;
 
 		if (fallback) {
-			if (this.channel == null) {
+/*			if (this.channel == null) {
 				try {
 					LookupManager lookupManager = LookupManager.getInstance();
 					this.channel = ((Channel) lookupManager.getCPAObject(
@@ -299,7 +299,7 @@ class ModuleContextImpl implements ModuleContext {
 				} catch (CPAException ce) {
 					this.channel = null;
 				}
-			}
+			}*/
 			if (this.channel != null) {
 				try {
 					val = this.channel.getValueAsString(name);

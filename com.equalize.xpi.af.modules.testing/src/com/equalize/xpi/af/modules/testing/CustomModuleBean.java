@@ -5,9 +5,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import javax.ejb.EJBException;
+/*import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
-import javax.ejb.SessionContext;
+import javax.ejb.SessionContext;*/
 import com.sap.aii.af.lib.mp.module.Module;
 import com.sap.aii.af.lib.mp.module.ModuleContext;
 import com.sap.aii.af.lib.mp.module.ModuleData;
@@ -21,13 +21,13 @@ import com.sap.engine.interfaces.messaging.api.auditlog.AuditAccess;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
 import com.sap.engine.interfaces.messaging.api.exception.MessagingException;
 
-public class CustomModuleBean implements SessionBean, Module {
+public class CustomModuleBean implements Module {
 
  /**
   * 
   */
  private static final long serialVersionUID = 4538833485635759438L;
- private SessionContext myContext;
+ //private SessionContext myContext;
  private AuditAccess audit;
  
  @Override
@@ -95,7 +95,7 @@ public class CustomModuleBean implements SessionBean, Module {
   return inputModuleData;
  }
 
- @Override
+/* @Override
  public void ejbActivate() throws EJBException, RemoteException {
  }
 
@@ -110,7 +110,7 @@ public class CustomModuleBean implements SessionBean, Module {
  @Override
  public void setSessionContext(SessionContext context) throws EJBException, RemoteException {
   myContext = context;
- }
+ }*/
 
  private void addLog (MessageKey msgKey, AuditLogStatus status, String message) {
   if (audit != null) {
