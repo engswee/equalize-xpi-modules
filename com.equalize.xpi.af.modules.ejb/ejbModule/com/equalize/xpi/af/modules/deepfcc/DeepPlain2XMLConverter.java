@@ -111,7 +111,7 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 			// Determine record type for line
 			String lineRecordType = determineRecordType(currentLine, i);
 			// Extract the content of line into node containing field-value pairs
-			ArrayList<Field> lineNode = extractLineToFieldList(lineRecordType, currentLine);
+			ArrayList<Field> lineNode = extractLineToFieldList(lineRecordType, currentLine, i);
 			// Get the parent node for current line from stack
 			ArrayList<Field> parentNode = getParentNode(depthStack, lineRecordType, i+1, lineNode);
 			// Add the line node contents to the parent node
@@ -136,10 +136,10 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 		}
 	}
 
-	private ArrayList<Field> extractLineToFieldList(String lineRecordType, String lineInput) {
+	private ArrayList<Field> extractLineToFieldList(String lineRecordType, String lineInput, int lineIndex) throws ModuleException {
 		ArrayList<Field> fieldList = new ArrayList<Field>();		
 		// Extract the fields of the current line based on the line's record type
-		Field[] currentLineFields = this.recordTypes.get(lineRecordType).extractLineContents(lineInput, this.trimContents);				
+		Field[] currentLineFields = this.recordTypes.get(lineRecordType).extractLineContents(lineInput, this.trimContents, lineIndex);				
 		for (Field field : currentLineFields) {
 			fieldList.add(new Field(field.fieldName, field.fieldContent));
 		}

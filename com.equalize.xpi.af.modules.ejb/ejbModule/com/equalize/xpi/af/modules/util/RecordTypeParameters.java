@@ -1,5 +1,8 @@
 package com.equalize.xpi.af.modules.util;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import com.equalize.xpi.util.converter.Field;
 import com.equalize.xpi.util.converter.MyStringTokenizer;
 import com.equalize.xpi.util.converter.Separator;
@@ -24,6 +27,8 @@ public class RecordTypeParameters {
 	private String enclEnd;
 	private String enclBeginEsc;
 	private String enclEndEsc;
+	protected String missingLastFields;
+	protected String additionalLastFields;	
 	public String parentRecordType;
 
 	public RecordTypeParameters(String recordTypeName, String[] recordsetList, String encoding, ParameterHelper param, String convType) throws ModuleException {
@@ -122,6 +127,8 @@ public class RecordTypeParameters {
 		String fieldNamesColumn = recordTypeName + ".fieldNames";
 		String tempFieldNames = param.getMandatoryParameter(fieldNamesColumn);
 		this.fieldNames = tempFieldNames.split(",");
+		// Validate the field names
+		validateFieldNames(this.fieldNames);
 		if(!this.csvMode && this.fieldNames.length != this.fixedLengths.length) {
 			throw new ModuleException("No. of fields in 'fieldNames' and 'fieldFixedLengths' does not match for record type = '" + recordTypeName + "'");
 		}
@@ -153,6 +160,9 @@ public class RecordTypeParameters {
 			this.enclEndEsc = param.getParameter(recordTypeName + ".enclosureSignEndEscape", this.enclBeginEsc, false);
 			this.enclosureConversion = param.getBoolParameter(recordTypeName + ".enclosureConversion", "Y", false);
 		}
+		// Structure deviations
+		this.missingLastFields = param.getParameter(recordTypeName + ".missingLastFields", "ignore", false);
+		this.additionalLastFields = param.getParameter(recordTypeName + ".additionalLastFields", "ignore", false);
 	}
 
 	public String parseKeyFieldValue (String lineInput) {
@@ -173,27 +183,60 @@ public class RecordTypeParameters {
 		return currentLineKeyFieldValue;
 	}
 
-	public Field[] extractLineContents(String lineInput, boolean trim) {
-		Field[] fields = new Field[this.fieldNames.length];
+	public Field[] extractLineContents(String lineInput, boolean trim, int lineIndex) throws ModuleException {
+		ArrayList<Field> fields = new ArrayList<Field>();
+		// (A) Field separator
 		if (this.csvMode) {
 			String[] inputFieldContents = splitLineBySeparator(lineInput);
-			for (int i = 0; i < this.fieldNames.length; i++ ) {
+			int outputSize = inputFieldContents.length; // Use length of input line for default 'ignore' or anything else
+			// Content has less fields than specified in configuration
+			if(inputFieldContents.length < this.fieldNames.length) {				
+				if(this.missingLastFields.equalsIgnoreCase("add")) {
+					outputSize = this.fieldNames.length;
+				} else if(this.missingLastFields.equalsIgnoreCase("error")) {
+					throw new ModuleException("Line " + (lineIndex+1) + " has less fields than configured");
+				}
+			// Content has more fields than specified in configuration	
+			} else if (inputFieldContents.length > this.fieldNames.length) {
+				outputSize = this.fieldNames.length; // Default to length of configuration fields
+				if(this.additionalLastFields.equalsIgnoreCase("error")) {
+					throw new ModuleException("Line " + (lineIndex+1) + " has more fields than configured");
+				}
+			}
+			for (int i = 0; i < outputSize; i++ ) {
 				String content = "";
 				if(i < inputFieldContents.length) {
 					content = (inputFieldContents[i] == null) ? "" : inputFieldContents[i];
 				}
-				fields[i] = createNewField(this.fieldNames[i], content, trim);
+				fields.add(createNewField(this.fieldNames[i], content, trim));
 			}
+		// (B) Fixed length	
 		} else {
 			int start = 0;
 			for(int i = 0; i < this.fieldNames.length; i++) {
 				int length = Integer.parseInt(this.fixedLengths[i]);
 				String content = dynamicSubstring(lineInput, start, length);
-				fields[i] = createNewField(this.fieldNames[i], content, trim);
+				
+				if(lineInput.length() < start) {
+					if(this.missingLastFields.equalsIgnoreCase("error")) {
+						throw new ModuleException("Line " + (lineIndex+1) + " has less fields than configured");
+					} else if(this.missingLastFields.equalsIgnoreCase("add")) {
+						fields.add(createNewField(this.fieldNames[i], content, trim));
+					}
+				} else {
+					fields.add(createNewField(this.fieldNames[i], content, trim));
+				}
+				// Set start location for next field
 				start += length;
+				
+				// After the last configured field, check if there are any more content in the input
+				if(i == this.fieldNames.length - 1 && lineInput.length() > start && 
+				   this.additionalLastFields.equalsIgnoreCase("error")) {
+						throw new ModuleException("Line " + (lineIndex+1) + " has more fields than configured");
+				}
 			}
 		}	
-		return fields;
+		return fields.toArray(new Field[fields.size()]);
 	}
 
 	private Field createNewField(String fieldName, String fieldValue, boolean trim) {
@@ -226,23 +269,20 @@ public class RecordTypeParameters {
 
 	private String[] splitLineBySeparator(String input) {
 		// Split input with enclosure signs and escapes
-		String[] result = new String[this.fieldNames.length];
-		int index = 0;
+		ArrayList<String> contents = new ArrayList<String>();
 		MyStringTokenizer tokenizer = new MyStringTokenizer(input, this.fieldSeparator, this.enclBegin, this.enclEnd, this.enclBeginEsc, this.enclEndEsc, true);
-		for(int i = 0; i < tokenizer.countTokens() && index < this.fieldNames.length; i++) {
+		for(int i = 0; i < tokenizer.countTokens(); i++) {	
 			String fieldContent = (String)tokenizer.nextElement();
 			// If the token field content is not a separator, then store it in the output array
 			if(!fieldContent.equalsIgnoreCase(this.fieldSeparator)) {
 				if(this.enclosureConversion) {
-					result[index] = tokenizer.convertEncls(fieldContent);
+					contents.add(tokenizer.convertEncls(fieldContent));
 				} else {
-					result[index] = fieldContent;
+					contents.add(fieldContent);
 				}
-				index++;
 			}
 		}
-		// If there are less fields than this.fieldNames.length, the last objects in result[] could be null
-		return result;
+		return contents.toArray(new String[contents.size()]);
 	}
 	
 	private boolean checkNumeric(String input) {
@@ -254,5 +294,17 @@ public class RecordTypeParameters {
 			}
 		}
 		return result;
+	}
+	
+	private void validateFieldNames(String[] fieldNames) throws ModuleException {
+		// No duplicates in field names
+		HashMap<String, String> map = new HashMap<String, String>();
+		for(int i = 0; i < fieldNames.length; i++) {
+			if(map.containsKey(fieldNames[i])) {
+				throw new ModuleException("Duplicate field found in 'fieldNames': " + fieldNames[i]);
+			} else {
+				map.put(fieldNames[i], null);
+			}
+		}
 	}
 }
