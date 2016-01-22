@@ -54,7 +54,6 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 				throw new ModuleException("'Root' is a reserved name and not allowed in parameter 'recordsetStructure'");
 			}
 			if(!this.recordTypes.containsKey(recordTypeName)) {
-				//this.recordTypes.put(recordTypeName, new RecordTypeParameters(recordTypeName, recordsetList, this.encoding, this.param, "plain2xml"));
 				RecordTypeParametersPlain2XML rtp = (RecordTypeParametersPlain2XML) RecordTypeParametersFactory.newInstance().newParameter(recordTypeName, recordsetList, this.encoding, this.param, "plain2xml");
 				rtp.setAdditionalParameters(recordTypeName, recordsetList, this.param);
 				this.recordTypes.put(recordTypeName, rtp);

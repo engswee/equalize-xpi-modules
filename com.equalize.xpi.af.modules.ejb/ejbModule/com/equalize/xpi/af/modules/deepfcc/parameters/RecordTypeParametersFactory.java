@@ -29,7 +29,6 @@ public class RecordTypeParametersFactory {
 			Separator sep = new Separator(fieldSeparator, encoding);
 			fieldSeparator = sep.toString();
 		}
-		//this.fieldSeparator = fieldSeparator;
 
 		// 2 - Fixed Lengths
 		String fieldFixedLengthsName = recordTypeName + ".fieldFixedLengths";

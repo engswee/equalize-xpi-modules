@@ -1,6 +1,15 @@
 Version History
 
 ------------------------------------------------------
+1.1.0 - Released 22 Jan 2016
+------------------------------------------------------
+1) Following changes to DeepFCC converters
+	- New optional parameters <StructureName>.additionalFields and <StructureName>.missingFields to handle
+	  structure deviations between configured parameters and actual file content for DeepPlain2XMLConverter
+    - Validate that fieldNames do not have duplicates for DeepPlain2XMLConverter
+    - Refactor RecordTypeParameters.java - moved package and split into different classes
+
+------------------------------------------------------
 1.0.2 - Released 12 Dec 2015
 ------------------------------------------------------
 1) application-j2ee-engine.xml - added provider name so that the Manifest file gets generated with correct vendor instead of reserved "sap.com"

@@ -41,7 +41,6 @@ public class XML2DeepPlainConverter extends AbstractModuleConverter {
 		String[] recordsetList = this.recordsetStructure.split(",");
 		for(String recordTypeName: recordsetList) {	
 			if(!this.recordTypes.containsKey(recordTypeName)) {
-				//this.recordTypes.put(recordTypeName, new RecordTypeParameters(recordTypeName, recordsetList, this.encoding, this.param, "xml2plain"));
 				RecordTypeParametersXML2Plain rtp = (RecordTypeParametersXML2Plain) RecordTypeParametersFactory.newInstance().newParameter(recordTypeName, recordsetList, this.encoding, this.param, "xml2plain");
 				rtp.setAdditionalParameters(recordTypeName, this.param, this.encoding);
 				this.recordTypes.put(recordTypeName, rtp);

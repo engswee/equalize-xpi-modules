@@ -10,7 +10,6 @@ public abstract class RecordTypeParametersPlain2XML {
 	public final String fieldSeparator;
 	public final String[] fixedLengths;
 	public String endSeparator;
-	//public boolean csvMode;
 	// Plain to XML
 	private String keyFieldName;
 	protected String keyFieldValue;
