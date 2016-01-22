@@ -5,11 +5,12 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.equalize.xpi.af.modules.deepfcc.parameters.RecordTypeParametersFactory;
+import com.equalize.xpi.af.modules.deepfcc.parameters.RecordTypeParametersPlain2XML;
 import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
 import com.equalize.xpi.af.modules.util.AuditLogHelper;
 import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
 import com.equalize.xpi.af.modules.util.ParameterHelper;
-import com.equalize.xpi.af.modules.util.RecordTypeParameters;
 import com.equalize.xpi.util.converter.ConversionDOMOutput;
 import com.equalize.xpi.util.converter.ConversionPlainInput;
 import com.equalize.xpi.util.converter.Field;
@@ -24,7 +25,7 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 	private String documentNamespace;
 	private int indentFactor;
 	private String recordsetStructure;
-	private final HashMap<String, RecordTypeParameters> recordTypes;
+	private final HashMap<String, RecordTypeParametersPlain2XML> recordTypes;
 	private String encoding;
 	private ArrayList<Field> nestedContents;
 	private int rowOffset;
@@ -33,7 +34,7 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 
 	public DeepPlain2XMLConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
 		super(msg, param, audit, dyncfg, debug);
-		this.recordTypes = new HashMap<String, RecordTypeParameters>();
+		this.recordTypes = new HashMap<String, RecordTypeParametersPlain2XML>();
 	}
 
 	@Override
@@ -53,7 +54,10 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 				throw new ModuleException("'Root' is a reserved name and not allowed in parameter 'recordsetStructure'");
 			}
 			if(!this.recordTypes.containsKey(recordTypeName)) {
-				this.recordTypes.put(recordTypeName, new RecordTypeParameters(recordTypeName, recordsetList, this.encoding, this.param, "plain2xml"));
+				//this.recordTypes.put(recordTypeName, new RecordTypeParameters(recordTypeName, recordsetList, this.encoding, this.param, "plain2xml"));
+				RecordTypeParametersPlain2XML rtp = (RecordTypeParametersPlain2XML) RecordTypeParametersFactory.newInstance().newParameter(recordTypeName, recordsetList, this.encoding, this.param, "plain2xml");
+				rtp.setAdditionalParameters(recordTypeName, recordsetList, this.param);
+				this.recordTypes.put(recordTypeName, rtp);
 			}
 		}
 	}
@@ -123,7 +127,7 @@ public class DeepPlain2XMLConverter extends AbstractModuleConverter {
 	private String determineRecordType(String inputLine, int lineIndex) throws ModuleException {
 		// Loop through all record sets and parse to figure out key value
 		for (String keyName: this.recordTypes.keySet()){
-			RecordTypeParameters recordType = this.recordTypes.get(keyName);
+			RecordTypeParametersPlain2XML recordType = this.recordTypes.get(keyName);
 			String keyValue = recordType.parseKeyFieldValue(inputLine);
 			if (keyValue != null) {
 				return keyName;

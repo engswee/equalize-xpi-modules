@@ -170,7 +170,7 @@ public class RecordTypeParameters {
 		if (this.csvMode) {
 			String[] inputFieldContents = splitLineBySeparator(lineInput);
 			if (this.keyFieldIndex <= inputFieldContents.length) {
-				if (this.keyFieldValue.equals(inputFieldContents[this.keyFieldIndex])) {
+				if (inputFieldContents[this.keyFieldIndex].equals(this.keyFieldValue)) {
 					currentLineKeyFieldValue = this.keyFieldValue;
 				}
 			}

@@ -5,11 +5,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.equalize.xpi.af.modules.deepfcc.parameters.RecordTypeParametersFactory;
+import com.equalize.xpi.af.modules.deepfcc.parameters.RecordTypeParametersXML2Plain;
 import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
 import com.equalize.xpi.af.modules.util.AuditLogHelper;
 import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
 import com.equalize.xpi.af.modules.util.ParameterHelper;
-import com.equalize.xpi.af.modules.util.RecordTypeParameters;
 import com.equalize.xpi.util.converter.ConversionDOMInput;
 import com.equalize.xpi.util.converter.ConversionPlainOutput;
 import com.equalize.xpi.util.converter.Converter;
@@ -25,11 +26,11 @@ public class XML2DeepPlainConverter extends AbstractModuleConverter {
 	private XMLElementContainer rootXML;
 	private String encoding;
 	private String recordsetStructure;
-	private final HashMap<String, RecordTypeParameters> recordTypes;
+	private final HashMap<String, RecordTypeParametersXML2Plain> recordTypes;
 
 	public XML2DeepPlainConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
 		super(msg, param, audit, dyncfg, debug);
-		this.recordTypes = new HashMap<String, RecordTypeParameters>();
+		this.recordTypes = new HashMap<String, RecordTypeParametersXML2Plain>();
 	}
 
 	@Override
@@ -40,7 +41,10 @@ public class XML2DeepPlainConverter extends AbstractModuleConverter {
 		String[] recordsetList = this.recordsetStructure.split(",");
 		for(String recordTypeName: recordsetList) {	
 			if(!this.recordTypes.containsKey(recordTypeName)) {
-				this.recordTypes.put(recordTypeName, new RecordTypeParameters(recordTypeName, recordsetList, this.encoding, this.param, "xml2plain"));
+				//this.recordTypes.put(recordTypeName, new RecordTypeParameters(recordTypeName, recordsetList, this.encoding, this.param, "xml2plain"));
+				RecordTypeParametersXML2Plain rtp = (RecordTypeParametersXML2Plain) RecordTypeParametersFactory.newInstance().newParameter(recordTypeName, recordsetList, this.encoding, this.param, "xml2plain");
+				rtp.setAdditionalParameters(recordTypeName, this.param, this.encoding);
+				this.recordTypes.put(recordTypeName, rtp);
 			}
 		}
 	}
@@ -101,7 +105,7 @@ public class XML2DeepPlainConverter extends AbstractModuleConverter {
 			throw new ModuleException("Record Type " + segmentName + " not listed in parameter 'recordsetStructure'");
 		}
 
-		RecordTypeParameters rtp = this.recordTypes.get(segmentName);
+		RecordTypeParametersXML2Plain rtp = this.recordTypes.get(segmentName);
 		if (rtp.fixedLengths != null) {
 			checkFieldCountConsistency(segmentName, childFields, rtp.fixedLengths.length);
 		}
