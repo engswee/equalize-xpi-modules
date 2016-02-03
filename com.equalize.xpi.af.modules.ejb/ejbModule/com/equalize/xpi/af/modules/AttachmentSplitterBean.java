@@ -16,6 +16,7 @@ public class AttachmentSplitterBean extends AbstractModule {
 	private String contentType;
 	private String qualityOfService;
 	private boolean storeFileName;
+	private boolean filenameFromAttachmentName;
 	private String fileNameAttr;
 	private String fileNameNS;
 
@@ -30,6 +31,7 @@ public class AttachmentSplitterBean extends AbstractModule {
 			this.param.checkParamValidValues("qualityOfService", "EO,EOIO,BE");
 			this.contentType = this.param.getParameter("contentType");
 			this.storeFileName = this.param.getBoolParameter("storeFileName", "N", false);
+			this.filenameFromAttachmentName = this.param.getBoolParameter("filenameFromAttachmentName", "N", false);
 			if(this.storeFileName) {
 				this.fileNameAttr = this.param.getParameter("fileNameAttr", "FileName", true);
 				this.fileNameNS = this.param.getParameter("fileNameNS", "http://sap.com/xi/XI/System/File", true);
@@ -69,7 +71,15 @@ public class AttachmentSplitterBean extends AbstractModule {
 						this.msgdisp.setPayloadContentType(this.contentType);
 					}
 					if(this.storeFileName) {
-						this.msgdisp.addDynamicConfiguration(this.fileNameNS, this.fileNameAttr, retrieveFileName(childPayload.getContentType(), count));
+						if (!this.filenameFromAttachmentName){
+							this.msgdisp.addDynamicConfiguration(this.fileNameNS, this.fileNameAttr, retrieveFileName(childPayload.getContentType(), count));
+						}
+						else {
+							this.msgdisp.addDynamicConfiguration(this.fileNameNS, this.fileNameAttr, childPayload.getName());
+							this.audit.addLog(AuditLogStatus.SUCCESS, "Got filename from Payload name");
+							this.audit.addLog(AuditLogStatus.SUCCESS, "Set filename to: " + childPayload.getName() );
+						}
+						
 					}
 					// Dispatch child message
 					this.msgdisp.dispatchMessage();
