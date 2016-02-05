@@ -58,7 +58,7 @@ public class TestingModuleMain {
 										  "");								  //Serialization Context
 
 			// Get payload from file
-			InputStream inpStr = new FileInputStream(new File("C:\\Users\\engswee\\Desktop\\input.xml"));
+			InputStream inpStr = new FileInputStream(new File("TestData/input.txt"));
 			ByteArrayOutputStream baos = InputStreamToBAOS(inpStr);
 
 			// Set XML payload as the main document of the message
@@ -99,7 +99,7 @@ public class TestingModuleMain {
 			Message output = (Message) data.getPrincipalData();
 			ByteArrayInputStream bais = (ByteArrayInputStream) output.getDocument().getInputStream();
 			baos = InputStreamToBAOS(bais);
-			FileOutputStream fileOutStr = new FileOutputStream(new File("C:\\Users\\engswee\\Desktop\\output.txt"));
+			FileOutputStream fileOutStr = new FileOutputStream(new File("TestData/output.txt"));
 			baos.writeTo(fileOutStr);
 			fileOutStr.close();
 
