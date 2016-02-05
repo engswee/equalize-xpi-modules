@@ -15,6 +15,7 @@ public class AttachmentSplitterBean extends AbstractModule {
 	private MessageDispatcher msgdisp;	
 	private String contentType;
 	private String qualityOfService;
+	private String sequenceId;
 	private boolean storeFileName;
 	private boolean filenameFromAttachmentName;
 	private String fileNameAttr;
@@ -28,6 +29,9 @@ public class AttachmentSplitterBean extends AbstractModule {
 			this.mode = this.param.getMandatoryParameter("mode");
 			this.param.checkParamValidValues("mode", "binding,channel");
 			this.qualityOfService = this.param.getMandatoryParameter("qualityOfService");
+			if (this.qualityOfService.equals("EOIO")){
+				this.sequenceId = this.param.getConditionallyMandatoryParameter("sequenceId", "qualityOfService", "EOIO");
+			}
 			this.param.checkParamValidValues("qualityOfService", "EO,EOIO,BE");
 			this.contentType = this.param.getParameter("contentType");
 			this.storeFileName = this.param.getBoolParameter("storeFileName", "N", false);
@@ -62,7 +66,12 @@ public class AttachmentSplitterBean extends AbstractModule {
 					count++;
 					Payload childPayload = iter.next();
 					// Create child message and set reference message ID
-					this.msgdisp.createMessage(childPayload.getContent(), getDeliverySemantics(this.qualityOfService));
+					if (this.qualityOfService.equals("EOIO")){
+						this.msgdisp.createMessage(childPayload.getContent(), getDeliverySemantics(this.qualityOfService), this.sequenceId);
+					}
+					else {
+						this.msgdisp.createMessage(childPayload.getContent(), getDeliverySemantics(this.qualityOfService));
+					}
 					this.msgdisp.setRefToMessageId(this.msg.getMessageId());
 					// Set child message content type
 					if(this.contentType == null) {

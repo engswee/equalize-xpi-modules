@@ -74,10 +74,14 @@ public class MessageDispatcher {
 	}
 
 	public void createMessage(byte[] content, DeliverySemantics ds) throws NamingException, MessagingException {
-		createMessage(content, ds, "application/xml; charset=UTF-8");
+		createMessage(content, ds, "application/xml; charset=UTF-8", "");
+	}
+	
+	public void createMessage(byte[] content, DeliverySemantics ds, String sequenceId) throws NamingException, MessagingException {
+		createMessage(content, ds, "application/xml; charset=UTF-8", sequenceId);
 	}
 
-	public void createMessage(byte[] content, DeliverySemantics ds, String contentType) throws NamingException, MessagingException {					
+	public void createMessage(byte[] content, DeliverySemantics ds, String contentType, String sequenceId) throws NamingException, MessagingException {					
 		Party fp = new Party(this.fromParty);
 		Party tp = new Party(this.toParty);
 		Service fs = new Service(this.fromService);
@@ -91,6 +95,9 @@ public class MessageDispatcher {
 		// Create message with header details and QOS
 		this.msg = mf.createMessage(fp, tp, fs, ts, a);
 		this.msg.setDeliverySemantics(ds);
+		if (ds.equals(DeliverySemantics.ExactlyOnceInOrder)){
+			this.msg.setSequenceId(sequenceId);
+		}
 		// Create payload
 		this.payload = this.msg.createPayload();
 		// Set payload content and content type
