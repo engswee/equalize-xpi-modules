@@ -4,4 +4,4 @@
 		<Input1>5</Input1>
 		<Input2>7</Input2>
 	</Add>
-</MT_Calculator_Input	>
+</MT_Calculator_Input>
