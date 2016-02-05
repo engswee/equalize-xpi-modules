@@ -1,6 +1,13 @@
 Version History
 
 ------------------------------------------------------
+1.2.0 - Released 5 Feb 2016
+------------------------------------------------------
+1) Added additional parameter filenameFromAttachmentName for AttachmentSplitterBean
+	- retrieve file name from name of payload instead of content type
+	- changes courtesy of https://github.com/codebude
+
+------------------------------------------------------
 1.1.0 - Released 22 Jan 2016
 ------------------------------------------------------
 1) Following changes to DeepFCC converters
