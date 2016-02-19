@@ -1,29 +1,41 @@
 Version History
 
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+1.3.0 - Released 19 Feb 2016
+----------------------------------------------------------------------------------------------------
+1) Fix EOIO processing for AttachmentSplitterBean
+	- added parameter sequenceId which is mandatory for EOIO processing
+	- changes courtesy of https://github.com/codebude
+2) Added additional parameter replaceMainWithAttachment for AttachmentSplitterBean
+	- Main payload can be replaced by first attachment if main payload is no longer required after
+	  splitting
+	
+----------------------------------------------------------------------------------------------------
 1.2.0 - Released 5 Feb 2016
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1) Added additional parameter filenameFromAttachmentName for AttachmentSplitterBean
 	- retrieve file name from name of payload instead of content type
 	- changes courtesy of https://github.com/codebude
 
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1.1.0 - Released 22 Jan 2016
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1) Following changes to DeepFCC converters
-	- New optional parameters <StructureName>.additionalFields and <StructureName>.missingFields to handle
-	  structure deviations between configured parameters and actual file content for DeepPlain2XMLConverter
+	- New optional parameters <StructureName>.additionalFields and <StructureName>.missingFields to
+	  handle structure deviations between configured parameters and actual file content for 
+	  DeepPlain2XMLConverter
     - Validate that fieldNames do not have duplicates for DeepPlain2XMLConverter
     - Refactor RecordTypeParameters.java - moved package and split into different classes
 
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1.0.2 - Released 12 Dec 2015
-------------------------------------------------------
-1) application-j2ee-engine.xml - added provider name so that the Manifest file gets generated with correct vendor instead of reserved "sap.com"
+----------------------------------------------------------------------------------------------------
+1) application-j2ee-engine.xml - added provider name so that the Manifest file gets generated with
+   correct vendor instead of reserved "sap.com"
 
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1.0.1 - Released 9 Dec 2015
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1) Incorporated Semantic Versioning 2.0.0 (http://semver.org/)
 	Version number format = MAJOR.MINOR.PATCH, where:
 		MAJOR version incremented for incompatible API changes,
@@ -31,4 +43,5 @@ Version History
 		PATCH version incremented for backwards-compatible bug fixes.
 		
 2) Include Release Notes in META-INF folder of EAR file
-3) Handled scenario for DeepPlain2XMLConverter when input file is field-separated but the last separator is present but the field is not present
+3) Handled scenario for DeepPlain2XMLConverter when input file is field-separated but the last
+   separator is present but the field is not present
