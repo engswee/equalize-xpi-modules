@@ -22,5 +22,9 @@
 			<ejb-name>SetMailAttachmentNameBean</ejb-name>
 			<jndi-name>Custom_AF_Modules/SetMailAttachmentNameBean</jndi-name>
 		</enterprise-bean>
+		<enterprise-bean>
+			<ejb-name>UnzipSplitterBean</ejb-name>
+			<jndi-name>Custom_AF_Modules/UnzipSplitterBean</jndi-name>
+		</enterprise-bean>
 	</enterprise-beans>
 </ejb-j2ee-engine>

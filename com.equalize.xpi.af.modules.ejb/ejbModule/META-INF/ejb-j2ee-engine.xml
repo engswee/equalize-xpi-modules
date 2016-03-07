@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ejb-j2ee-engine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ejb-j2ee-engine_3_0.xsd">
+<ejb-j2ee-engine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ejb-j2ee-engine_3_0.xsd">
 	<enterprise-beans>
 		<enterprise-bean>
 			<ejb-name>FormatConversionBean</ejb-name>
@@ -21,5 +22,9 @@
 			<ejb-name>SetMailAttachmentNameBean</ejb-name>
 			<jndi-name>Custom_AF_Modules/SetMailAttachmentNameBean</jndi-name>
 		</enterprise-bean>			
+		<enterprise-bean>
+			<ejb-name>UnzipSplitterBean</ejb-name>
+			<jndi-name>Custom_AF_Modules/UnzipSplitterBean</jndi-name>
+		</enterprise-bean>
 	</enterprise-beans>
 </ejb-j2ee-engine>
