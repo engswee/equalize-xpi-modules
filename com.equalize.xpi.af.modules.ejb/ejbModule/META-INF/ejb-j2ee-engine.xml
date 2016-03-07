@@ -16,6 +16,10 @@
 		<enterprise-bean>
 			<ejb-name>SetCorrelationBean</ejb-name>
 			<jndi-name>Custom_AF_Modules/SetCorrelationBean</jndi-name>
-		</enterprise-bean>		
+		</enterprise-bean>	
+		<enterprise-bean>
+			<ejb-name>SetMailAttachmentNameBean</ejb-name>
+			<jndi-name>Custom_AF_Modules/SetMailAttachmentNameBean</jndi-name>
+		</enterprise-bean>			
 	</enterprise-beans>
 </ejb-j2ee-engine>
