@@ -1,6 +1,14 @@
 Version History
 
 ----------------------------------------------------------------------------------------------------
+1.4.0 - Released 15 Mar 2016
+----------------------------------------------------------------------------------------------------
+1) Initial release of new module SetMailAttachmentNameBean
+	- https://scn.sap.com/docs/DOC-71368
+	- SetMailAttachmentNameBean - Setting dynamic attachment name for main payload
+2) Clean up several README.md
+	  
+----------------------------------------------------------------------------------------------------
 1.3.0 - Released 19 Feb 2016
 ----------------------------------------------------------------------------------------------------
 1) Fix EOIO processing for AttachmentSplitterBean
