@@ -26,5 +26,9 @@
 			<ejb-name>UnzipSplitterBean</ejb-name>
 			<jndi-name>Custom_AF_Modules/UnzipSplitterBean</jndi-name>
 		</enterprise-bean>
+		<enterprise-bean>
+			<ejb-name>KeyStoreAccessBean</ejb-name>
+			<jndi-name>Custom_AF_Modules/KeyStoreAccessBean</jndi-name>
+		</enterprise-bean>	
 	</enterprise-beans>
 </ejb-j2ee-engine>
