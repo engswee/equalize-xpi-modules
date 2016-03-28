@@ -39,6 +39,10 @@ http://scn.sap.com/docs/DOC-63668 - Synchronous retrieval of dynamically specifi
 
 https://scn.sap.com/docs/DOC-71368 - SetMailAttachmentNameBean - Setting dynamic attachment name for main payload
 
+(6) SetMailAttachmentNameBean.java
+
+https://scn.sap.com/docs/DOC-71584 - UnzipSplitterBean - Split zip entries into child messages
+
 Other projects
 ----------------------------------------------------
 (1) com.equalize.xpi.af.modules.testing - Java project for standalone module testing in NWDS based on following SCN article
