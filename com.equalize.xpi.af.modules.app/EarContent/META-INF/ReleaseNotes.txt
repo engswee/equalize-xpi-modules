@@ -1,6 +1,13 @@
 Version History
 
 ----------------------------------------------------------------------------------------------------
+1.5.1 - Released 28 Mar 2016
+----------------------------------------------------------------------------------------------------
+1) Change for UnzipSplitterBean
+	- When parameter reuse = Y, use module context to retrieve existing channel ID for processing
+	  of child messages
+	
+----------------------------------------------------------------------------------------------------
 1.5.0 - Released 28 Mar 2016
 ----------------------------------------------------------------------------------------------------
 1) Initial release of new module UnzipSplitterBean

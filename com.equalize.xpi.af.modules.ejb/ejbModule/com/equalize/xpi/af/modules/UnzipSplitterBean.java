@@ -26,11 +26,13 @@ public class UnzipSplitterBean extends AbstractModule {
 	@Override
 	protected void processModule() throws ModuleException {
 		// Module parameters
-		this.mode = this.param.getMandatoryParameter("mode");
+		this.reuse = this.param.getBoolParameter("reuse", "Y", true);
+		if(!this.reuse) {
+			this.mode = this.param.getMandatoryParameter("mode");
+		}
 		this.fileNameAttr = this.param.getParameter("fileNameAttr", "FileName", true);
 		this.fileNameNS = this.param.getParameter("fileNameNS", "http://sap.com/xi/XI/System/File", true);
 		this.mimeType = this.param.getParameter("mimeType", "application/xml", false);
-		this.reuse = this.param.getBoolParameter("reuse", "Y", true);
 
 		// Retrieve reuse Indicator to check if this is a child message routed back into the same channel
 		String reuseIndicator = this.dyncfg.get(reuseNS, "reuseIndicator");
@@ -41,7 +43,11 @@ public class UnzipSplitterBean extends AbstractModule {
 				this.audit.addLog(AuditLogStatus.SUCCESS, "Processing of child message in same channel is skipped");
 			} else {
 				// Create message dispatcher
-				if(this.mode.equals("binding")) {
+				if(this.reuse) {
+					String channelID = this.mc.getChannelID();
+					this.audit.addLog(AuditLogStatus.SUCCESS, "Retrieving current channel ID for processing of child messages");
+					this.msgdisp = new MessageDispatcher(channelID, this.audit);
+				} else if(this.mode.equals("binding")) {
 					String adapterType = this.param.getConditionallyMandatoryParameter("adapterType", "mode", "binding");
 					String adapterNS = this.param.getConditionallyMandatoryParameter("adapterNS", "mode", "binding");
 					String fromParty = this.param.getParameter("fromParty", "", false);
