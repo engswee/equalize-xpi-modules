@@ -15,6 +15,10 @@ public class ConversionZipInput {
 		this.zis = new ZipInputStream(new ByteArrayInputStream(content));
 	}
 	
+	public ConversionZipInput(byte[] content) throws IOException {
+		this.zis = new ZipInputStream(new ByteArrayInputStream(content));
+	}
+	
 	public LinkedHashMap<String, byte[]> getEntriesContent() throws IOException {
 		ZipEntry ze = null;
 		LinkedHashMap<String, byte[]> map = new LinkedHashMap<String, byte[]>();

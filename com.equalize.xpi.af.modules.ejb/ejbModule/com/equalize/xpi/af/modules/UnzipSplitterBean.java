@@ -64,7 +64,7 @@ public class UnzipSplitterBean extends AbstractModule {
 
 				// Parse the zip file and extract the entries into a map
 				this.audit.addLog(AuditLogStatus.SUCCESS, "Parsing zip file");
-				ConversionZipInput in = new ConversionZipInput(this.payload.getInputStream());
+				ConversionZipInput in = new ConversionZipInput(this.payload.getContent());
 				LinkedHashMap<String, byte[]> map = in.getEntriesContent();
 				this.audit.addLog(AuditLogStatus.SUCCESS, "Total number of zip entries: " + map.size());
 

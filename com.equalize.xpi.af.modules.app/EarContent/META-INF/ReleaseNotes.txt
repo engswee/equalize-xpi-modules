@@ -1,6 +1,20 @@
 Version History
 
 ----------------------------------------------------------------------------------------------------
+1.6.0 - Released 31 Mar 2016
+----------------------------------------------------------------------------------------------------
+1) XML2JSONConverter
+	- Add new parameters forceArrayAll & arrayFieldList to support forcing of output as JSONArray
+	  irrespective of number of values in input
+	- Reorder JSON output to ensure it follows sequence of input
+2) UnzipSplitterBean
+	- Switch to using getContent() to access bytes directly instead of getInputStream()
+3) New converters in com.equalize.xpi.util
+	- ConversionZipOutput
+	- ConversionGZIPInput
+	- ConversionSAXInput (incomplete)
+
+----------------------------------------------------------------------------------------------------
 1.5.2 - Released 30 Mar 2016
 ----------------------------------------------------------------------------------------------------
 1) Minor changes on approach to retrieve ModuleContext
