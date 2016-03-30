@@ -1,16 +1,16 @@
 package com.equalize.xpi.util.converter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class XMLElementContainer {
 
 	private final String elementName;
-	private final HashMap<String, Integer> childFieldList;
+	private final LinkedHashMap<String, Integer> childFieldList;
 	private final ArrayList<Field> childFields;
 	
 	public XMLElementContainer(String elementName) {
-		this.childFieldList = new HashMap<String, Integer>();
+		this.childFieldList = new LinkedHashMap<String, Integer>();
 		this.childFields = new ArrayList<Field>();
 		this.elementName = elementName;
 	}
@@ -19,7 +19,7 @@ public class XMLElementContainer {
 		return this.elementName;
 	}	
 	
-	public HashMap<String, Integer> getChildFieldList() {
+	public LinkedHashMap<String, Integer> getChildFieldList() {
 		return this.childFieldList;
 	}
 

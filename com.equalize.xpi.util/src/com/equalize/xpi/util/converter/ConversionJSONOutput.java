@@ -3,12 +3,16 @@ package com.equalize.xpi.util.converter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
 
 public class ConversionJSONOutput {
 
+	private boolean forceArray = false;
+	private HashMap<String, String> arrayFields;
+	
 	public String generateJSONText(XMLElementContainer xmlElement, boolean skipRoot, int indentFactor) {
 		JSONObject jo = new JSONObject();
 		constructJSONContentfromXML(jo, xmlElement);
@@ -33,9 +37,17 @@ public class ConversionJSONOutput {
 	public ByteArrayOutputStream generateJSONOutputStream(XMLElementContainer element, boolean skipRoot) throws IOException {
 		return generateJSONOutputStream(element, skipRoot, 0);
 	}
+	
+	public void setForceArray(boolean forceArray) {
+		this.forceArray = forceArray;
+	}
+
+	public void setArrayFields(HashMap<String, String> arrayFields) {
+		this.arrayFields = arrayFields;
+	}
 
 	private void constructJSONContentfromXML(JSONObject parent, XMLElementContainer element) {
-		HashMap<String, JSONArray> map = new HashMap<String, JSONArray>();
+		LinkedHashMap<String, JSONArray> map = new LinkedHashMap<String, JSONArray>();
 		// Process all the child fields of the XML element
 		for (Field childField : element.getChildFields()) {
 			// Check if it is an array first
@@ -51,18 +63,19 @@ public class ConversionJSONOutput {
 				// If it is a string, directly add it to parent
 				putObjectIntoJSONObject(count, map, parent, childField.fieldName, fieldContent);
 			}
-		}
-		// If there were any JSONArray added into the map, add them to the parent
-		if(!map.isEmpty()) {
-			for(String keyName: map.keySet()) {
-				parent.put(keyName, map.get(keyName));
+			// If a JSONArray is created for this field and hasn't been added to the parent,
+			// then add the JSONArray to the parent
+			if(map.containsKey(childField.fieldName) && !parent.has(childField.fieldName)) {
+				parent.put(childField.fieldName, map.get(childField.fieldName));
 			}
 		}
 	}
 	
-	private void putObjectIntoJSONObject(int fieldCount, HashMap<String, JSONArray> jsonArrMap, JSONObject parent, String fieldName, Object child) {
-		if (fieldCount > 1) {
-			// If it is an array, put it into the corrersponding JSON array in the map
+	private void putObjectIntoJSONObject(int fieldCount, LinkedHashMap<String, JSONArray> jsonArrMap, JSONObject parent, String fieldName, Object child) {
+		// If it is an array, put it into the corresponding JSON array in the map		
+		if (fieldCount > 1 || 
+		    this.forceArray || 
+			(this.arrayFields != null && this.arrayFields.containsKey(fieldName)) ) {
 			JSONArray ja = getJSONArray(jsonArrMap, fieldName); 
 			ja.put(child);
 		} else {
@@ -75,7 +88,7 @@ public class ConversionJSONOutput {
 		return jo.toString(indentFactor);
 	}
 
-	private JSONArray getJSONArray(HashMap<String, JSONArray> map, String arrayName) {
+	private JSONArray getJSONArray(LinkedHashMap<String, JSONArray> map, String arrayName) {
 		// Get the current JSONArray for this key or create a new JSONArray
 		if(map.containsKey(arrayName)) {
 			return map.get(arrayName);
