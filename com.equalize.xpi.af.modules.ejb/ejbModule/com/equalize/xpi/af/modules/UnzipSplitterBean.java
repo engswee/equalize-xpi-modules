@@ -44,7 +44,7 @@ public class UnzipSplitterBean extends AbstractModule {
 			} else {
 				// Create message dispatcher
 				if(this.reuse) {
-					String channelID = this.mc.getChannelID();
+					String channelID = this.param.getModuleContext().getChannelID();
 					this.audit.addLog(AuditLogStatus.SUCCESS, "Retrieving current channel ID for processing of child messages");
 					this.msgdisp = new MessageDispatcher(channelID, this.audit);
 				} else if(this.mode.equals("binding")) {

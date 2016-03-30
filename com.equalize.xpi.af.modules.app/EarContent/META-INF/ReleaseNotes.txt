@@ -1,6 +1,14 @@
 Version History
 
 ----------------------------------------------------------------------------------------------------
+1.5.2 - Released 30 Mar 2016
+----------------------------------------------------------------------------------------------------
+1) Minor changes on approach to retrieve ModuleContext
+	- AbstractModule.java - remove protected attribute for ModuleContext
+	- ParameterHelper.java - add getter for ModuleContext
+	- UnzipSplitterBean.java - retrieve ModuleContext via getter of ParameterHelper.java
+
+----------------------------------------------------------------------------------------------------
 1.5.1 - Released 28 Mar 2016
 ----------------------------------------------------------------------------------------------------
 1) Change for UnzipSplitterBean

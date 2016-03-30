@@ -18,7 +18,6 @@ public abstract class AbstractModule implements Module {
 	protected DynamicConfigurationHelper dyncfg;
 	protected String messageLog;
 	protected boolean debug;
-	protected ModuleContext mc;
 	
 	@Override
 	public ModuleData process(ModuleContext moduleContext, ModuleData inputModuleData) throws ModuleException {
@@ -28,8 +27,7 @@ public abstract class AbstractModule implements Module {
 		this.payload = this.msg.getDocument();
 		this.audit = new AuditLogHelper(this.msg);
 		this.param = new ParameterHelper(moduleContext, this.audit);
-		this.dyncfg = new DynamicConfigurationHelper(this.msg);	
-		this.mc = moduleContext;
+		this.dyncfg = new DynamicConfigurationHelper(this.msg);
 		// Entered module successfully
 		this.audit.addLog(AuditLogStatus.SUCCESS, this.getClass().getName() + ": Module Initialized");
 		
