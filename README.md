@@ -45,9 +45,5 @@ https://scn.sap.com/docs/DOC-71584 - UnzipSplitterBean - Split zip entries into 
 
 Other projects
 ----------------------------------------------------
-(1) com.equalize.xpi.af.modules.testing - Java project for standalone module testing in NWDS based on following SCN article
-
-http://scn.sap.com/community/pi-and-soa-middleware/blog/2014/10/01/standalone-testing-of-adapter-module-in-nwds
-
-(2) com.equalize.xpi.util - Java project for common utilities used for format conversion
+(1) com.equalize.xpi.util - Java project for common utilities used for format conversion
 
