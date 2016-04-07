@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<MT_Calculator_Input xmlns:ns0="urn://equalize/POC">
-	<Add>
-		<Input1>5</Input1>
-		<Input2>7</Input2>
-	</Add>
-</MT_Calculator_Input>
