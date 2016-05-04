@@ -34,6 +34,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	private String sheetName;
 	private int sheetIndex;
 	private String processFieldNames;
+	private int headerRow = 0;
 	private String fieldNames;
 	private int columnCount = 0;
 	private String recordName;
@@ -87,6 +88,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 		this.processFieldNames = this.param.getMandatoryParameter("processFieldNames"); 
 		this.param.checkParamValidValues("processFieldNames", "fromFile,fromConfiguration,notAvailable");
 		if (this.processFieldNames.equalsIgnoreCase("fromFile")) {
+			this.headerRow = this.param.getIntParameter("headerRow");
 			// this.columnCount remains 0
 			if (this.rowOffset == 0) {
 				this.rowOffset++;
@@ -224,7 +226,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	}
 
 	private int retrieveHeaderColumnCount(Sheet sheet) throws ModuleException {
-		Row header = sheet.getRow(0);
+		Row header = sheet.getRow(this.headerRow);
 		int lastCellNum = 0;
 		if (header != null) {
 			lastCellNum = header.getLastCellNum();
@@ -238,7 +240,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	}
 
 	private String[] retrieveColumnNamesFromFileHeader(Sheet sheet, int columnNo) throws ModuleException {
-		Row row = sheet.getRow(0);
+		Row row = sheet.getRow(this.headerRow);
 		this.audit.addLog(AuditLogStatus.SUCCESS, "Retrieving column names from first row");
 		String[] headerColumns = new String[columnNo];
 		for (int col = 0; col < columnNo; col++) {
