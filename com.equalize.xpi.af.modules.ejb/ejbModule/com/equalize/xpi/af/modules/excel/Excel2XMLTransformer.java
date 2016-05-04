@@ -249,7 +249,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 				throw new ModuleException("Empty column name found");
 			}
 			headerColumns[col] = cell.getStringCellValue();
-			String condensedName = headerColumns[col].replaceAll("\\s+", "");
+			String condensedName = headerColumns[col].replaceAll("[^A-Za-z0-9]", "");
 			if(condensedName.isEmpty()) {
 				throw new ModuleException("Empty column name found");
 			}
