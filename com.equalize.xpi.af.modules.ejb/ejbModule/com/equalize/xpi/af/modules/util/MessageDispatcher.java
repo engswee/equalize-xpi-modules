@@ -14,7 +14,6 @@ import com.sap.aii.af.service.cpa.Binding;
 import com.sap.aii.af.service.cpa.CPAException;
 import com.sap.aii.af.service.cpa.CPAObjectType;
 import com.sap.aii.af.service.cpa.Channel;
-import com.sap.aii.af.service.cpa.LookupManager;
 import com.sap.engine.interfaces.messaging.api.Action;
 import com.sap.engine.interfaces.messaging.api.ConnectionFactory;
 import com.sap.engine.interfaces.messaging.api.DeliverySemantics;
@@ -44,7 +43,7 @@ public class MessageDispatcher {
 		this.audit = audit;
 		this.channelID = channelID;
 		this.audit.addLog(AuditLogStatus.SUCCESS, "Searching for matching channel");
-		Channel channel = (Channel) LookupManager.getInstance().getCPAObject(CPAObjectType.CHANNEL, this.channelID);
+		Channel channel = (Channel) CPAFactory.getInstance().getLookupManager().getCPAObject(CPAObjectType.CHANNEL, this.channelID);
 		this.audit.addLog(AuditLogStatus.SUCCESS, "Successfully found channel " + channel.getChannelName() + " for " + this.channelID);
 		// This only works correctly if there is there is exactly one binding for the channel
 		Binding binding = CPAFactory.getInstance().getLookupManager().getBindingByChannelId(channel.getObjectId());
