@@ -269,19 +269,19 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 				throw new ModuleException("Empty column name found");
 			}
 			headerColumns[col] = cell.getStringCellValue();
-			String condensedName = headerColumns[col].replaceAll("\\s+", "");
+			String fieldName = headerColumns[col].replaceAll("\\s+", "");
 
 			// ensure only valid chars are included in the XML element name
 			if (this.onlyValidCharsInXMLName) {
-				condensedName = XMLChar.stripInvalidCharsFromName(condensedName);
+				fieldName = XMLChar.stripInvalidCharsFromName(fieldName);
 			}
 			
-			if(condensedName.isEmpty()) {
+			if(fieldName.isEmpty()) {
 				throw new ModuleException("Empty column name found");
 			}
-			if(!condensedName.equals(headerColumns[col])) {
-				this.audit.addLog(AuditLogStatus.SUCCESS, "Renaming field '" + headerColumns[col] + "' to " + condensedName);
-				headerColumns[col] = condensedName;
+			if(!fieldName.equals(headerColumns[col])) {
+				this.audit.addLog(AuditLogStatus.SUCCESS, "Renaming field '" + headerColumns[col] + "' to " + fieldName);
+				headerColumns[col] = fieldName;
 			}
 		}
 		return headerColumns;
