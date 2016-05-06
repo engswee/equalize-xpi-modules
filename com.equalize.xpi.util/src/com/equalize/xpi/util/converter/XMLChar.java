@@ -1061,4 +1061,57 @@ public class XMLChar {
         return value.substring(start, end + 1);
     } // trim(String):String
 
+    /*
+     * [5] Name ::= (Letter | '_' | ':') (NameChar)*
+     */
+    /**
+     * Strips characters to form a valid Name according to [5]
+     * in the XML 1.0 Recommendation
+     *
+     * @param name string to check
+     * @return true valid name
+     */
+    public static String stripInvalidCharsFromName(String name) {
+        final int length = name.length();
+        if (length > 0) {
+	        StringBuffer nameWithValidChars = new StringBuffer();
+
+			// Check first char is valid for XML element name
+			char ch = name.charAt(0);
+	        if (XMLChar.isNameStart(ch)) {
+	            nameWithValidChars.append(ch);
+	        }
+	        
+	        // Check remaining chars are valid for XML element name
+	        for (int i = 1; i < length; ++i) {
+	            ch = name.charAt(i);
+	            if (XMLChar.isName(ch)) {
+	                nameWithValidChars.append(ch);
+	            }
+	        }
+
+	        // XML element name must not start with XML in either form
+	        // 1. ensure we can perform substring on first three chars
+	        if (nameWithValidChars.length() >= 3) {
+
+	        	// 2. ensure XML name does not start with XML in either form
+	        	if (nameWithValidChars.substring(0, 3).equalsIgnoreCase("XML")) {
+	        		
+	        		// 3. ensure we can substring after first three chars 
+		        	if (nameWithValidChars.length() > 3) {
+		        		name = nameWithValidChars.substring(3);
+		        	} else {
+		        		name = "";
+		        	}
+		        	
+	        	} else {
+	        		name = nameWithValidChars.toString();
+	        	}
+	        	
+	        } else {
+	        	name = nameWithValidChars.toString();
+	        }
+        }
+        return name;
+    }
 } // class XMLChar

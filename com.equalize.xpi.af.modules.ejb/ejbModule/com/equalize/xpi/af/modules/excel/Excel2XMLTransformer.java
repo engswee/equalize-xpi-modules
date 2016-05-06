@@ -24,6 +24,7 @@ import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
 import com.equalize.xpi.af.modules.util.AuditLogHelper;
 import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
 import com.equalize.xpi.af.modules.util.ParameterHelper;
+import com.equalize.xpi.util.converter.XMLChar;
 import com.sap.aii.af.lib.mp.module.ModuleException;
 import com.sap.engine.interfaces.messaging.api.Message;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
@@ -35,6 +36,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	private int sheetIndex;
 	private String processFieldNames;
 	private int headerRow = 0;
+	private boolean onlyValidCharsInXMLName;
 	private String fieldNames;
 	private int columnCount = 0;
 	private String recordName;
@@ -88,6 +90,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 		this.processFieldNames = this.param.getMandatoryParameter("processFieldNames"); 
 		this.param.checkParamValidValues("processFieldNames", "fromFile,fromConfiguration,notAvailable");
 		if (this.processFieldNames.equalsIgnoreCase("fromFile")) {
+			this.onlyValidCharsInXMLName = this.param.getBoolParameter("onlyValidCharsInXMLName", "N", false);
 			this.headerRow = this.param.getIntParameter("headerRow");
 			// this.columnCount remains 0
 			if (this.rowOffset == 0) {
@@ -249,7 +252,13 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 				throw new ModuleException("Empty column name found");
 			}
 			headerColumns[col] = cell.getStringCellValue();
-			String condensedName = headerColumns[col].replaceAll("[^A-Za-z0-9]", "");
+			String condensedName = headerColumns[col].replaceAll("\\s+", "");
+
+			// ensure only valid chars are included in the XML element name
+			if (this.onlyValidCharsInXMLName) {
+				condensedName = XMLChar.stripInvalidCharsFromName(condensedName);
+			}
+			
 			if(condensedName.isEmpty()) {
 				throw new ModuleException("Empty column name found");
 			}
