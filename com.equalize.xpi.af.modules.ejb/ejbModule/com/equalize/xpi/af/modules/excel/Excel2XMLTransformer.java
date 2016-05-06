@@ -47,6 +47,7 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	private String emptyCellOutput;
 	private String emptyCellDefaultValue;
 	private int rowOffset;
+	private boolean rowOffsetFromHeaderRow;
 	private int columnOffset;
 	private boolean skipEmptyRows;
 	private int indentFactor;
@@ -84,6 +85,9 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Empty rows will be included");
 		}
 		this.rowOffset = this.param.getIntParameter("rowOffset");
+		if (this.rowOffset < 0) {
+			throw new ModuleException("Only positive integers or 0 allowed for parameter 'rowOffset'");
+		}
 		this.columnOffset = this.param.getIntParameter("columnOffset");		
 
 		// Determine number of columns and field names if any
@@ -91,12 +95,25 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 		this.param.checkParamValidValues("processFieldNames", "fromFile,fromConfiguration,notAvailable");
 		if (this.processFieldNames.equalsIgnoreCase("fromFile")) {
 			this.onlyValidCharsInXMLName = this.param.getBoolParameter("onlyValidCharsInXMLName", "N", false);
+			this.rowOffsetFromHeaderRow = this.param.getBoolParameter("rowOffsetFromHeaderRow", "N", false);
 			this.headerRow = this.param.getIntParameter("headerRow");
+			if (this.headerRow < 0) {
+				throw new ModuleException("Only positive integers or 0 allowed for parameter 'headerRow'");
+			}
 			// this.columnCount remains 0
 			if (this.rowOffset == 0) {
 				this.rowOffset++;
-				this.audit.addLog(AuditLogStatus.SUCCESS, "Header row will be automatically skipped");
 			}
+			if (rowOffsetFromHeaderRow) {
+				this.rowOffset = this.headerRow + this.rowOffset;
+			}
+			// throw an exception if headerRow is equal to or larger than rowOffset.
+			if (this.headerRow >= this.rowOffset) {
+				String errorMessage = "Parameter 'headerRow' : " + this.headerRow + " is equal to or larger than parameter 'rowOffset' : " + this.rowOffset + ". Please ensure 'rowOffset' is larger than 'headerRow' or set parameter 'rowOffsetFromHeaderRow' = 'Y'";
+				this.audit.addLog(AuditLogStatus.ERROR, errorMessage);
+				throw new ModuleException(errorMessage);
+			}
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Data will be read from row " + this.rowOffset);
 		} else if (this.processFieldNames.equalsIgnoreCase("fromConfiguration")) {
 			this.fieldNames = this.param.getParameter("fieldNames");
 			if(this.fieldNames == null || this.fieldNames.replaceAll("\\s+", "").isEmpty()) {
@@ -235,16 +252,16 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 			lastCellNum = header.getLastCellNum();
 		}
 		if (lastCellNum != 0) {
-			this.audit.addLog(AuditLogStatus.SUCCESS, "No. of columns dynamically set to " + lastCellNum + " based on first row");
+			this.audit.addLog(AuditLogStatus.SUCCESS, "No. of columns dynamically set to " + lastCellNum + " based on row " + this.headerRow);
 			return lastCellNum;
 		} else {
-			throw new ModuleException("No. of columns in first row is zero");
+			throw new ModuleException("No. of columns in row " + this.headerRow + " is zero.");
 		}
 	}
 
 	private String[] retrieveColumnNamesFromFileHeader(Sheet sheet, int columnNo) throws ModuleException {
 		Row row = sheet.getRow(this.headerRow);
-		this.audit.addLog(AuditLogStatus.SUCCESS, "Retrieving column names from first row");
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Retrieving column names from row " + this.headerRow);
 		String[] headerColumns = new String[columnNo];
 		for (int col = 0; col < columnNo; col++) {
 			Cell cell = row.getCell(col);			
