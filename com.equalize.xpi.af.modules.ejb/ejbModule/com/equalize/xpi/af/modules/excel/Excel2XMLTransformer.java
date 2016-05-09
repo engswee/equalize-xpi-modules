@@ -47,7 +47,6 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	private String emptyCellOutput;
 	private String emptyCellDefaultValue;
 	private int rowOffset;
-	private boolean rowOffsetFromHeaderRow;
 	private int columnOffset;
 	private boolean skipEmptyRows;
 	private int indentFactor;
@@ -85,9 +84,6 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Empty rows will be included");
 		}
 		this.rowOffset = this.param.getIntParameter("rowOffset");
-		if (this.rowOffset < 0) {
-			throw new ModuleException("Only positive integers or 0 allowed for parameter 'rowOffset'");
-		}
 		this.columnOffset = this.param.getIntParameter("columnOffset");		
 
 		// Determine number of columns and field names if any
@@ -95,25 +91,16 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 		this.param.checkParamValidValues("processFieldNames", "fromFile,fromConfiguration,notAvailable");
 		if (this.processFieldNames.equalsIgnoreCase("fromFile")) {
 			this.onlyValidCharsInXMLName = this.param.getBoolParameter("onlyValidCharsInXMLName", "N", false);
-			this.rowOffsetFromHeaderRow = this.param.getBoolParameter("rowOffsetFromHeaderRow", "N", false);
 			this.headerRow = this.param.getIntParameter("headerRow");
-			if (this.headerRow < 0) {
-				throw new ModuleException("Only positive integers or 0 allowed for parameter 'headerRow'");
-			}
 			// this.columnCount remains 0
 			if (this.rowOffset == 0) {
-				this.rowOffset++;
-			}
-			if (rowOffsetFromHeaderRow) {
-				this.rowOffset = this.headerRow + this.rowOffset;
+				this.rowOffset = this.headerRow + 1;
+				this.audit.addLog(AuditLogStatus.ERROR, "Processing automatically skipped to row after header row");
 			}
 			// throw an exception if headerRow is equal to or larger than rowOffset.
 			if (this.headerRow >= this.rowOffset) {
-				String errorMessage = "Parameter 'headerRow' : " + this.headerRow + " is equal to or larger than parameter 'rowOffset' : " + this.rowOffset + ". Please ensure 'rowOffset' is larger than 'headerRow' or set parameter 'rowOffsetFromHeaderRow' = 'Y'";
-				this.audit.addLog(AuditLogStatus.ERROR, errorMessage);
-				throw new ModuleException(errorMessage);
+				throw new ModuleException("Parameter 'rowOffset' must be larger than parameter 'headerRow'");
 			}
-			this.audit.addLog(AuditLogStatus.SUCCESS, "Data will be read from row " + this.rowOffset);
 		} else if (this.processFieldNames.equalsIgnoreCase("fromConfiguration")) {
 			this.fieldNames = this.param.getParameter("fieldNames");
 			if(this.fieldNames == null || this.fieldNames.replaceAll("\\s+", "").isEmpty()) {
