@@ -1,6 +1,38 @@
 Version History
 
 ----------------------------------------------------------------------------------------------------
+1.6.1 - Released 5 May 2016
+----------------------------------------------------------------------------------------------------
+Following changes courtesy of https://github.com/jvandborg
+
+1) Excel2XMLTransformer
+	- New optional parameter 'headerRow' when parameter 'processFieldNames' = 'fromFile'.
+	  This allows configuration of which row in the sheet to retrieve the header column names.
+	  If the parameter 'headerRow' is set to 0 (default) or a positive integer
+	  value the XML element names are created from that row.
+
+	  If parameter 'rowOffset' is set to '0' (default) it will be automatically adjusted to read 
+	  data from the row following parameter 'headerRow' e.g. if 'headerRow' = 2 and
+	  'rowOffset' = 0, then data will be read from 'rowOffset' = 'headerRow' + 1 (effectively data
+	  is read from row 3)
+
+	- New optional parameter 'onlyValidCharsInXMLName' when parameter 
+	  'processFieldNames' = 'fromFile'. This allows for stripping of invalid XML characters in
+	  the column names.
+
+	  If the parameter is equal to 'N' (default) XML element names are handled the same way as 
+	  before the new feature was included.
+
+	  If the parameter is equal to 'Y' each header column name is checked for invalid characters 
+	  and they are stripped from the XML element name.
+
+2) MessageDispatcher
+	- Use CPAFactory to get the LookupManager instead of directly accessing it
+	
+3) XMLChar
+	- New static public method stripInvalidCharsFromName() to strip invalid XML characters
+	
+----------------------------------------------------------------------------------------------------
 1.6.0 - Released 31 Mar 2016
 ----------------------------------------------------------------------------------------------------
 1) XML2JSONConverter
