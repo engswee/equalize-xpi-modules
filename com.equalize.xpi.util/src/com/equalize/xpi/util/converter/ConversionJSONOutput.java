@@ -2,6 +2,7 @@ package com.equalize.xpi.util.converter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -38,12 +39,67 @@ public class ConversionJSONOutput {
 		return generateJSONOutputStream(element, skipRoot, 0);
 	}
 	
+	public String generateJSONText(ArrayList<Field> fields, String rootName, int indentFactor) {
+		JSONObject jo = new JSONObject();
+		constructJSONContent(jo, fields);
+		if (rootName.trim().equalsIgnoreCase("")) {
+			return getJSONText(jo, indentFactor);
+		} else {
+			JSONObject rootjo = new JSONObject();
+			rootjo.put(rootName, jo);
+			return getJSONText(rootjo, indentFactor);
+		}
+	}
+	
+	public String generateJSONText(ArrayList<Field> fields, int indentFactor) {
+		return generateJSONText(fields, "", indentFactor);
+	}
+	
 	public void setForceArray(boolean forceArray) {
 		this.forceArray = forceArray;
 	}
 
 	public void setArrayFields(HashMap<String, String> arrayFields) {
 		this.arrayFields = arrayFields;
+	}
+	
+	private void constructJSONContent(JSONObject parent, ArrayList<Field> fields) {
+		for(Field fld: fields) {
+			constructJSONContent(parent, fld.fieldName, fld.fieldContent);
+		}
+	}
+	
+	private void constructJSONContent(JSONObject parent, String keyName, Object[] contents) {
+		JSONArray ja = new JSONArray();
+		JSONObject jo = new JSONObject();
+		if(contents.length > 1) {
+			parent.put(keyName, ja);
+		} else {
+			parent.put(keyName, jo);
+		}
+		// Go through each item of the array
+		for (Object entry: contents) {
+			if(contents.length > 1) {
+				JSONObject childjo = new JSONObject();
+				ja.put(childjo);
+				constructJSONContent(childjo, keyName, entry);
+			} else {
+				constructJSONContent(jo, keyName, entry);
+			}
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void constructJSONContent(JSONObject parent, String keyName, Object fieldContent) {
+		if(fieldContent instanceof Object[]) {
+			constructJSONContent(parent, keyName, (Object[]) fieldContent);
+		} else if (fieldContent instanceof ArrayList<?>){
+			constructJSONContent(parent, (ArrayList<Field>) fieldContent);
+		} else if (fieldContent == null) {
+			// NOP
+		} else {
+			parent.put(keyName, fieldContent.toString());
+		}
 	}
 
 	private void constructJSONContentfromXML(JSONObject parent, XMLElementContainer element) {
