@@ -155,7 +155,7 @@ public class AttachmentSplitterBean extends AbstractModule {
 				}
 				cType = payload.getAttribute(contentDispoName);
 				
-				int nameIndex = cType.indexOf("name=");
+				nameIndex = cType.indexOf("name=");
 				if(nameIndex == -1) {
 					// Set to default file name
 					this.audit.addLog(AuditLogStatus.WARNING, "Unable to retrieve file name from content-disposition: " + cType);
