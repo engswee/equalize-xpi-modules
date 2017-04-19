@@ -1,5 +1,7 @@
 package com.equalize.xpi.af.modules.json;
 
+import java.util.HashMap;
+
 import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
 import com.equalize.xpi.af.modules.util.AuditLogHelper;
 import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
@@ -17,6 +19,8 @@ public class XML2JSONConverter extends AbstractModuleConverter {
 	private XMLElementContainer rootXML;
 	private int indentFactor;
 	private boolean skipRootNode;
+	private boolean forceArrayAll;
+	private HashMap<String, String> arrayFields;
 
 	public XML2JSONConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
 		super(msg, param, audit, dyncfg, debug);
@@ -25,6 +29,31 @@ public class XML2JSONConverter extends AbstractModuleConverter {
 	public void retrieveModuleParameters() throws ModuleException {
 		this.indentFactor = this.param.getIntParameter("indentFactor");
 		this.skipRootNode = this.param.getBoolParameter("skipRootNode");
+		this.forceArrayAll = this.param.getBoolParameter("forceArrayAll", "N", false);
+		
+		// Undecided between using a comma separated parameter or
+		// and enumeration of parameters with "array." prefix
+		String arrayFieldList = this.param.getParameter("arrayFieldList");
+		this.arrayFields = new HashMap<String, String>();
+		if(arrayFieldList != null && !arrayFieldList.trim().equalsIgnoreCase("")) {
+			String[] fields = arrayFieldList.split(",");
+			for(String field: fields) {
+				if(!this.arrayFields.containsKey(field))
+					this.arrayFields.put(field, null);
+			}
+		}
+				
+		/*		
+		// Iterate through enumeration to get elements that should use JSON Array
+		Enumeration<String> keys = this.param.getModuleContext().getContextDataKeys();
+		this.jsonArray = new ArrayList<String>();
+		while(keys.hasMoreElements()) {
+			String key = keys.nextElement();
+			if(key.startsWith("array.")) {
+				String fieldname = this.param.getParameter(key);
+				this.jsonArray.add(fieldname);
+			}
+		}*/
 	}
 
 	@Override
@@ -45,6 +74,9 @@ public class XML2JSONConverter extends AbstractModuleConverter {
 		try {
 			// Create output converter and generate output JSON
 			this.jsonOut = new ConversionJSONOutput();
+			// Pass in additional parameters for forcing arrays in output
+			this.jsonOut.setForceArray(this.forceArrayAll);
+			this.jsonOut.setArrayFields(this.arrayFields);
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Constructing output JSON");
 			String output = this.jsonOut.generateJSONText(this.rootXML, this.skipRootNode, this.indentFactor);
 

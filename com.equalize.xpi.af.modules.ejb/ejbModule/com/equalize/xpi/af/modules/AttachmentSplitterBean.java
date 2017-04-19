@@ -20,6 +20,7 @@ public class AttachmentSplitterBean extends AbstractModule {
 	private boolean filenameFromAttachmentName;
 	private String fileNameAttr;
 	private String fileNameNS;
+	private boolean replaceMainWithAttachment;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -40,6 +41,7 @@ public class AttachmentSplitterBean extends AbstractModule {
 				this.fileNameAttr = this.param.getParameter("fileNameAttr", "FileName", true);
 				this.fileNameNS = this.param.getParameter("fileNameNS", "http://sap.com/xi/XI/System/File", true);
 			}
+			this.replaceMainWithAttachment = this.param.getBoolParameter("replaceMainWithAttachment", "N", false);
 
 			// Get attachments of the message
 			Iterator<Payload> iter = this.msg.getAttachmentIterator();
@@ -65,33 +67,34 @@ public class AttachmentSplitterBean extends AbstractModule {
 				while(iter.hasNext()) {
 					count++;
 					Payload childPayload = iter.next();
-					// Create child message and set reference message ID
-					if (this.qualityOfService.equals("EOIO")){
-						this.msgdisp.createMessage(childPayload.getContent(), getDeliverySemantics(this.qualityOfService), this.sequenceId);
-					}
-					else {
-						this.msgdisp.createMessage(childPayload.getContent(), getDeliverySemantics(this.qualityOfService));
-					}
-					this.msgdisp.setRefToMessageId(this.msg.getMessageId());
-					// Set child message content type
-					if(this.contentType == null) {
-						this.msgdisp.setPayloadContentType(childPayload.getContentType());
+					if(this.replaceMainWithAttachment && count == 1) {						
+						// Replace the main document with content from first attachment
+						this.payload.setContent(childPayload.getContent());
+						if(this.storeFileName) {
+							this.dyncfg.change(this.fileNameNS, this.fileNameAttr, retrieveFileName(childPayload, count));
+						}
+						this.audit.addLog(AuditLogStatus.SUCCESS, "Replacing main payload with first attachment's content");
 					} else {
-						this.msgdisp.setPayloadContentType(this.contentType);
-					}
-					if(this.storeFileName) {
-						if (!this.filenameFromAttachmentName){
-							this.msgdisp.addDynamicConfiguration(this.fileNameNS, this.fileNameAttr, retrieveFileName(childPayload.getContentType(), count));
+						// Create child message and set reference message ID
+						if (this.qualityOfService.equals("EOIO")){
+							this.msgdisp.createMessage(childPayload.getContent(), getDeliverySemantics(this.qualityOfService), this.sequenceId);
 						}
 						else {
-							this.msgdisp.addDynamicConfiguration(this.fileNameNS, this.fileNameAttr, childPayload.getName());
-							this.audit.addLog(AuditLogStatus.SUCCESS, "Got filename from Payload name");
-							this.audit.addLog(AuditLogStatus.SUCCESS, "Set filename to: " + childPayload.getName() );
+							this.msgdisp.createMessage(childPayload.getContent(), getDeliverySemantics(this.qualityOfService));
 						}
-						
+						this.msgdisp.setRefToMessageId(this.msg.getMessageId());
+						// Set child message content type
+						if(this.contentType == null) {
+							this.msgdisp.setPayloadContentType(childPayload.getContentType());
+						} else {
+							this.msgdisp.setPayloadContentType(this.contentType);
+						}
+						if(this.storeFileName) {
+							this.msgdisp.addDynamicConfiguration(this.fileNameNS, this.fileNameAttr, retrieveFileName(childPayload, count));						
+						}
+						// Dispatch child message
+						this.msgdisp.dispatchMessage();
 					}
-					// Dispatch child message
-					this.msgdisp.dispatchMessage();
 				}
 			} else {
 				// No attachments in message
@@ -113,31 +116,41 @@ public class AttachmentSplitterBean extends AbstractModule {
 		throw new IllegalArgumentException("Invalid QoS: " + qos);
 	}
 	
-	private String retrieveFileName(String contentType, int count) {
-		// Filename normally is included in the name parameter
-		// It can be enclosed in double quotes
-		// It can also be followed by other parameters or white spaces
-		// Some sample below:-
-		// text/plain;charset="UTF-8";name="file.txt" ;otherParam=ParamValue
-		// text/plain; charset=us-ascii; name=sample.txt
-		
-		// Get the value of the filename from parameter name
-		int nameIndex = contentType.indexOf("name=");
-		if(nameIndex == -1) {
-			// Set to default file name
-			this.audit.addLog(AuditLogStatus.WARNING, "Unable to retrieve file name from content type: " + contentType);
-			String defaultFileName = "Attachment" + count + ".txt";
-			this.audit.addLog(AuditLogStatus.WARNING, "Setting filename to: " + defaultFileName );
-			return defaultFileName;
+	private String retrieveFileName(Payload payload, int count) {
+		// Filename could either be from:-
+		// i) Attachment's payload name
+		// ii) Attachment's content type
+		String filename = null;
+		if(this.filenameFromAttachmentName) {
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Getting filename from Payload name");
+			filename = payload.getName();
+		} else {
+			// Filename normally is included in the name parameter
+			// It can be enclosed in double quotes
+			// It can also be followed by other parameters or white spaces
+			// Some sample below:-
+			// text/plain;charset="UTF-8";name="file.txt" ;otherParam=ParamValue
+			// text/plain; charset=us-ascii; name=sample.txt
+			
+			// Get the value of the filename from parameter name
+			String cType = payload.getContentType();
+			int nameIndex = cType.indexOf("name=");
+			if(nameIndex == -1) {
+				// Set to default file name
+				this.audit.addLog(AuditLogStatus.WARNING, "Unable to retrieve file name from content type: " + cType);
+				String defaultFileName = "Attachment" + count + ".txt";
+				this.audit.addLog(AuditLogStatus.WARNING, "Setting filename to: " + defaultFileName );
+				return defaultFileName;
+			}
+			filename = cType.substring(nameIndex+5);
+			// Check if there are other parameters after name and strip them
+			int additionalInfo = filename.indexOf(";");
+			if(additionalInfo != -1) {
+				filename = filename.substring(0, additionalInfo);
+			}
+			// Remove double quotes and white spaces
+			filename = filename.replaceAll("\"", "").trim();
 		}
-		String filename = contentType.substring(nameIndex+5);
-		// Check if there are other parameters after name and strip them
-		int additionalInfo = filename.indexOf(";");
-		if(additionalInfo != -1) {
-			filename = filename.substring(0, additionalInfo);
-		}
-		// Remove double quotes and white spaces
-		filename = filename.replaceAll("\"", "").trim();
 		this.audit.addLog(AuditLogStatus.SUCCESS, "Setting filename to: " + filename );
 		return filename;
 	}

@@ -101,4 +101,8 @@ public class ParameterHelper {
 			}
 		}
 	}
+	
+	public ModuleContext getModuleContext() {
+		return this.mc;
+	}
 }

@@ -24,6 +24,7 @@ import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
 import com.equalize.xpi.af.modules.util.AuditLogHelper;
 import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
 import com.equalize.xpi.af.modules.util.ParameterHelper;
+import com.equalize.xpi.util.converter.XMLChar;
 import com.sap.aii.af.lib.mp.module.ModuleException;
 import com.sap.engine.interfaces.messaging.api.Message;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
@@ -34,6 +35,8 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	private String sheetName;
 	private int sheetIndex;
 	private String processFieldNames;
+	private int headerRow = 0;
+	private boolean onlyValidCharsInXMLName;
 	private String fieldNames;
 	private int columnCount = 0;
 	private String recordName;
@@ -87,10 +90,16 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 		this.processFieldNames = this.param.getMandatoryParameter("processFieldNames"); 
 		this.param.checkParamValidValues("processFieldNames", "fromFile,fromConfiguration,notAvailable");
 		if (this.processFieldNames.equalsIgnoreCase("fromFile")) {
+			this.onlyValidCharsInXMLName = this.param.getBoolParameter("onlyValidCharsInXMLName", "N", false);
+			this.headerRow = this.param.getIntParameter("headerRow");
 			// this.columnCount remains 0
 			if (this.rowOffset == 0) {
-				this.rowOffset++;
-				this.audit.addLog(AuditLogStatus.SUCCESS, "Header row will be automatically skipped");
+				this.rowOffset = this.headerRow + 1;
+				this.audit.addLog(AuditLogStatus.ERROR, "Processing automatically skipped to row after header row");
+			}
+			// throw an exception if headerRow is equal to or larger than rowOffset.
+			if (this.headerRow >= this.rowOffset) {
+				throw new ModuleException("Parameter 'rowOffset' must be larger than parameter 'headerRow'");
 			}
 		} else if (this.processFieldNames.equalsIgnoreCase("fromConfiguration")) {
 			this.fieldNames = this.param.getParameter("fieldNames");
@@ -224,22 +233,22 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 	}
 
 	private int retrieveHeaderColumnCount(Sheet sheet) throws ModuleException {
-		Row header = sheet.getRow(0);
+		Row header = sheet.getRow(this.headerRow);
 		int lastCellNum = 0;
 		if (header != null) {
 			lastCellNum = header.getLastCellNum();
 		}
 		if (lastCellNum != 0) {
-			this.audit.addLog(AuditLogStatus.SUCCESS, "No. of columns dynamically set to " + lastCellNum + " based on first row");
+			this.audit.addLog(AuditLogStatus.SUCCESS, "No. of columns dynamically set to " + lastCellNum + " based on row " + this.headerRow);
 			return lastCellNum;
 		} else {
-			throw new ModuleException("No. of columns in first row is zero");
+			throw new ModuleException("No. of columns in row " + this.headerRow + " is zero.");
 		}
 	}
 
 	private String[] retrieveColumnNamesFromFileHeader(Sheet sheet, int columnNo) throws ModuleException {
-		Row row = sheet.getRow(0);
-		this.audit.addLog(AuditLogStatus.SUCCESS, "Retrieving column names from first row");
+		Row row = sheet.getRow(this.headerRow);
+		this.audit.addLog(AuditLogStatus.SUCCESS, "Retrieving column names from row " + this.headerRow);
 		String[] headerColumns = new String[columnNo];
 		for (int col = 0; col < columnNo; col++) {
 			Cell cell = row.getCell(col);			
@@ -247,13 +256,19 @@ public class Excel2XMLTransformer extends AbstractModuleConverter {
 				throw new ModuleException("Empty column name found");
 			}
 			headerColumns[col] = cell.getStringCellValue();
-			String condensedName = headerColumns[col].replaceAll("\\s+", "");
-			if(condensedName.isEmpty()) {
+			String fieldName = headerColumns[col].replaceAll("\\s+", "");
+
+			// ensure only valid chars are included in the XML element name
+			if (this.onlyValidCharsInXMLName) {
+				fieldName = XMLChar.stripInvalidCharsFromName(fieldName);
+			}
+			
+			if(fieldName.isEmpty()) {
 				throw new ModuleException("Empty column name found");
 			}
-			if(!condensedName.equals(headerColumns[col])) {
-				this.audit.addLog(AuditLogStatus.SUCCESS, "Renaming field '" + headerColumns[col] + "' to " + condensedName);
-				headerColumns[col] = condensedName;
+			if(!fieldName.equals(headerColumns[col])) {
+				this.audit.addLog(AuditLogStatus.SUCCESS, "Renaming field '" + headerColumns[col] + "' to " + fieldName);
+				headerColumns[col] = fieldName;
 			}
 		}
 		return headerColumns;

@@ -1,29 +1,117 @@
 Version History
 
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+1.6.1 - Released 5 May 2016
+----------------------------------------------------------------------------------------------------
+Following changes courtesy of https://github.com/jvandborg
+
+1) Excel2XMLTransformer
+	- New optional parameter 'headerRow' when parameter 'processFieldNames' = 'fromFile'.
+	  This allows configuration of which row in the sheet to retrieve the header column names.
+	  If the parameter 'headerRow' is set to 0 (default) or a positive integer
+	  value the XML element names are created from that row.
+
+	  If parameter 'rowOffset' is set to '0' (default) it will be automatically adjusted to read 
+	  data from the row following parameter 'headerRow' e.g. if 'headerRow' = 2 and
+	  'rowOffset' = 0, then data will be read from 'rowOffset' = 'headerRow' + 1 (effectively data
+	  is read from row 3)
+
+	- New optional parameter 'onlyValidCharsInXMLName' when parameter 
+	  'processFieldNames' = 'fromFile'. This allows for stripping of invalid XML characters in
+	  the column names.
+
+	  If the parameter is equal to 'N' (default) XML element names are handled the same way as 
+	  before the new feature was included.
+
+	  If the parameter is equal to 'Y' each header column name is checked for invalid characters 
+	  and they are stripped from the XML element name.
+
+2) MessageDispatcher
+	- Use CPAFactory to get the LookupManager instead of directly accessing it
+	
+3) XMLChar
+	- New static public method stripInvalidCharsFromName() to strip invalid XML characters
+	
+----------------------------------------------------------------------------------------------------
+1.6.0 - Released 31 Mar 2016
+----------------------------------------------------------------------------------------------------
+1) XML2JSONConverter
+	- Add new parameters forceArrayAll & arrayFieldList to support forcing of output as JSONArray
+	  irrespective of number of values in input
+	- Reorder JSON output to ensure it follows sequence of input
+2) UnzipSplitterBean
+	- Switch to using getContent() to access bytes directly instead of getInputStream()
+3) New converters in com.equalize.xpi.util
+	- ConversionZipOutput
+	- ConversionGZIPInput
+	- ConversionSAXInput (incomplete)
+
+----------------------------------------------------------------------------------------------------
+1.5.2 - Released 30 Mar 2016
+----------------------------------------------------------------------------------------------------
+1) Minor changes on approach to retrieve ModuleContext
+	- AbstractModule.java - remove protected attribute for ModuleContext
+	- ParameterHelper.java - add getter for ModuleContext
+	- UnzipSplitterBean.java - retrieve ModuleContext via getter of ParameterHelper.java
+
+----------------------------------------------------------------------------------------------------
+1.5.1 - Released 28 Mar 2016
+----------------------------------------------------------------------------------------------------
+1) Change for UnzipSplitterBean
+	- When parameter reuse = Y, use module context to retrieve existing channel ID for processing
+	  of child messages
+	
+----------------------------------------------------------------------------------------------------
+1.5.0 - Released 28 Mar 2016
+----------------------------------------------------------------------------------------------------
+1) Initial release of new module UnzipSplitterBean
+	- https://scn.sap.com/docs/DOC-71584
+	- UnzipSplitterBean - Split zip entries into child messages
+	
+----------------------------------------------------------------------------------------------------
+1.4.0 - Released 15 Mar 2016
+----------------------------------------------------------------------------------------------------
+1) Initial release of new module SetMailAttachmentNameBean
+	- https://scn.sap.com/docs/DOC-71368
+	- SetMailAttachmentNameBean - Setting dynamic attachment name for main payload
+2) Clean up several README.md
+	  
+----------------------------------------------------------------------------------------------------
+1.3.0 - Released 19 Feb 2016
+----------------------------------------------------------------------------------------------------
+1) Fix EOIO processing for AttachmentSplitterBean
+	- added parameter sequenceId which is mandatory for EOIO processing
+	- changes courtesy of https://github.com/codebude
+2) Added additional parameter replaceMainWithAttachment for AttachmentSplitterBean
+	- Main payload can be replaced by first attachment if main payload is no longer required after
+	  splitting
+	
+----------------------------------------------------------------------------------------------------
 1.2.0 - Released 5 Feb 2016
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1) Added additional parameter filenameFromAttachmentName for AttachmentSplitterBean
 	- retrieve file name from name of payload instead of content type
 	- changes courtesy of https://github.com/codebude
 
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1.1.0 - Released 22 Jan 2016
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1) Following changes to DeepFCC converters
-	- New optional parameters <StructureName>.additionalFields and <StructureName>.missingFields to handle
-	  structure deviations between configured parameters and actual file content for DeepPlain2XMLConverter
+	- New optional parameters <StructureName>.additionalFields and <StructureName>.missingFields to
+	  handle structure deviations between configured parameters and actual file content for 
+	  DeepPlain2XMLConverter
     - Validate that fieldNames do not have duplicates for DeepPlain2XMLConverter
     - Refactor RecordTypeParameters.java - moved package and split into different classes
 
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1.0.2 - Released 12 Dec 2015
-------------------------------------------------------
-1) application-j2ee-engine.xml - added provider name so that the Manifest file gets generated with correct vendor instead of reserved "sap.com"
+----------------------------------------------------------------------------------------------------
+1) application-j2ee-engine.xml - added provider name so that the Manifest file gets generated with
+   correct vendor instead of reserved "sap.com"
 
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1.0.1 - Released 9 Dec 2015
-------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 1) Incorporated Semantic Versioning 2.0.0 (http://semver.org/)
 	Version number format = MAJOR.MINOR.PATCH, where:
 		MAJOR version incremented for incompatible API changes,
@@ -31,4 +119,5 @@ Version History
 		PATCH version incremented for backwards-compatible bug fixes.
 		
 2) Include Release Notes in META-INF folder of EAR file
-3) Handled scenario for DeepPlain2XMLConverter when input file is field-separated but the last separator is present but the field is not present
+3) Handled scenario for DeepPlain2XMLConverter when input file is field-separated but the last
+   separator is present but the field is not present

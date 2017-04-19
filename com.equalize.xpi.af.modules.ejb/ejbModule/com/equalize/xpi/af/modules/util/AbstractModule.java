@@ -27,7 +27,7 @@ public abstract class AbstractModule implements Module {
 		this.payload = this.msg.getDocument();
 		this.audit = new AuditLogHelper(this.msg);
 		this.param = new ParameterHelper(moduleContext, this.audit);
-		this.dyncfg = new DynamicConfigurationHelper(this.msg);	
+		this.dyncfg = new DynamicConfigurationHelper(this.msg);
 		// Entered module successfully
 		this.audit.addLog(AuditLogStatus.SUCCESS, this.getClass().getName() + ": Module Initialized");
 		

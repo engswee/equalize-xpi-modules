@@ -3,7 +3,7 @@ Equalize PI Custom Adapter Modules
 This repository contains the source code for PI custom EJB adapter modules.
 All modules are written for EJB 3.0
 
-Main package - com.equalize.xpi.af.modules
+Main project - com.equalize.xpi.af.modules.app (EAR) & com.equalize.xpi.af.modules.ejb (EJB)
 ----------------------------------------------------
 (1) AttachmentSplitterBean.java
 
@@ -35,21 +35,15 @@ http://scn.sap.com/docs/DOC-64087 - Base64EncodeConverter - Base64 encoding made
 
 http://scn.sap.com/docs/DOC-63668 - Synchronous retrieval of dynamically specified file from file system/server
 
-Sub packages
+(5) SetMailAttachmentNameBean.java
+
+https://scn.sap.com/docs/DOC-71368 - SetMailAttachmentNameBean - Setting dynamic attachment name for main payload
+
+(6) SetMailAttachmentNameBean.java
+
+https://scn.sap.com/docs/DOC-71584 - UnzipSplitterBean - Split zip entries into child messages
+
+Other projects
 ----------------------------------------------------
-(1) com.equalize.xpi.af.modules.excel - sub package for classes related to ExcelTransformBean
+(1) com.equalize.xpi.util - Java project for common utilities used for format conversion
 
-(2) com.equalize.xpi.af.modules.util - common helper classes for adapter module
-
-(3) com.equalize.xpi.af.modules.testing - sub package for classes related to standalone module testing in NWDS based on following SCN article
-
-http://scn.sap.com/community/pi-and-soa-middleware/blog/2014/10/01/standalone-testing-of-adapter-module-in-nwds
-
-(4) com.equalize.xpi.af.modules.deepfcc - sub package for classes related to DeepFCCBean
-
-(5) com.equalize.xpi.af.modules.json - sub package for classes related to JSONTransformBean
-
-Dependencies
-----------------------------------------------------
-(1) com.equalize.xpi.util.converter - Library for format conversion from following repository
-https://github.com/engswee/com.equalize.xpi.util
