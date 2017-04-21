@@ -164,9 +164,7 @@ public class AttachmentSplitterBean extends AbstractModule {
 					this.audit.addLog(AuditLogStatus.WARNING, "Setting filename to: " + defaultFileName );
 					return defaultFileName;
 				}
-				else{
-					filename = cType.substring(nameIndex+9);
-				}
+				filename = cType.substring(nameIndex+9);				
 			}
 			else{
 				filename = cType.substring(nameIndex+5);
