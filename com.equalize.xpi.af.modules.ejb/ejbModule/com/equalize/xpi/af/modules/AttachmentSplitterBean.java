@@ -133,16 +133,43 @@ public class AttachmentSplitterBean extends AbstractModule {
 			// text/plain; charset=us-ascii; name=sample.txt
 			
 			// Get the value of the filename from parameter name
+			this.audit.addLog(AuditLogStatus.SUCCESS, "Trying to get filename from content-type header.");
 			String cType = payload.getContentType();
 			int nameIndex = cType.indexOf("name=");
 			if(nameIndex == -1) {
-				// Set to default file name
-				this.audit.addLog(AuditLogStatus.WARNING, "Unable to retrieve file name from content type: " + cType);
-				String defaultFileName = "Attachment" + count + ".txt";
-				this.audit.addLog(AuditLogStatus.WARNING, "Setting filename to: " + defaultFileName );
-				return defaultFileName;
+				
+				//Name wasn't found in Content-Type. Write to log.
+				this.audit.addLog(AuditLogStatus.WARNING, "Unable to retrieve file name from content-type: " + cType);
+				
+				//Filename isn't in ContentType, so ContentDisposition is checked	
+				this.audit.addLog(AuditLogStatus.SUCCESS, "Trying to get filename from content-disposition header.");
+				
+				Set<String> attributeList = payload.getAttributeNames();
+				String contentDispoName = "";
+				
+				//Handle different header attribute styles
+				if (attributeList.contains("Content-Disposition")){
+					contentDispoName = "Content-Disposition";
+				}
+				if (attributeList.contains("content-disposition")){
+					contentDispoName = "content-disposition";
+				}
+				cType = payload.getAttribute(contentDispoName);
+				
+				nameIndex = cType.indexOf("filename=");
+				if(nameIndex == -1) {
+					// Set to default file name
+					this.audit.addLog(AuditLogStatus.WARNING, "Unable to retrieve file name from content-disposition: " + cType);
+					String defaultFileName = "Attachment" + count + ".txt";
+					this.audit.addLog(AuditLogStatus.WARNING, "Setting filename to: " + defaultFileName );
+					return defaultFileName;
+				}
+				filename = cType.substring(nameIndex+9);				
 			}
-			filename = cType.substring(nameIndex+5);
+			else{
+				filename = cType.substring(nameIndex+5);
+			}
+			
 			// Check if there are other parameters after name and strip them
 			int additionalInfo = filename.indexOf(";");
 			if(additionalInfo != -1) {
