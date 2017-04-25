@@ -31,7 +31,7 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 
 	@Override
 	public void retrieveModuleParameters() throws ModuleException {
-		this.documentName = this.param.getMandatoryParameter("documentName");
+		this.documentName = this.param.getMandatoryParameter("documentName");  //eg MT_myMessageType
 		this.documentNamespace = this.param.getMandatoryParameter("documentNamespace");
 		this.indentFactor = this.param.getIntParameter("indentFactor");		
 		this.escapeInvalidNameStartChar = this.param.getBoolParameter("escapeInvalidNameStartChar", "N", false);
