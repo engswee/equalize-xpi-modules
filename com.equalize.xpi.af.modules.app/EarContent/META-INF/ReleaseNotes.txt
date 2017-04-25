@@ -1,6 +1,18 @@
 Version History
 
 ----------------------------------------------------------------------------------------------------
+1.7.0 - Released 25 Apr 2017
+----------------------------------------------------------------------------------------------------
+Just realised that the last release should have been tagged as 1.7.0 ... oh well....
+
+Following changes courtesy of https://github.com/codebude. 
+
+1) AttachmentSplitterBean
+	- Added fallback logic to retrieve filename from Content-Disposition if the filename cannot be
+	  found in Content Type per issue https://github.com/engswee/equalize-xpi-modules/issues/7
+	  raised by https://github.com/robwarde
+
+----------------------------------------------------------------------------------------------------
 1.6.1 - Released 5 May 2016
 ----------------------------------------------------------------------------------------------------
 Following changes courtesy of https://github.com/jvandborg

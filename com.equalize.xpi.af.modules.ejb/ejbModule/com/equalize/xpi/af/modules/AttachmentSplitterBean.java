@@ -1,6 +1,7 @@
 package com.equalize.xpi.af.modules;
 
 import java.util.Iterator;
+import java.util.Set;
 
 import com.equalize.xpi.af.modules.util.AbstractModule;
 import com.equalize.xpi.af.modules.util.MessageDispatcher;
