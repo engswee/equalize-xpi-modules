@@ -2,7 +2,7 @@ package com.equalize.xpi.util.converter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import org.json.JSONArray;
 public class ConversionJSONOutput {
 
 	private boolean forceArray = false;
-	private HashMap<String, String> arrayFields;
+	private HashSet<String> arrayFields;
 	
 	public String generateJSONText(XMLElementContainer xmlElement, boolean skipRoot, int indentFactor) {
 		JSONObject jo = new JSONObject();
@@ -42,7 +42,7 @@ public class ConversionJSONOutput {
 		this.forceArray = forceArray;
 	}
 
-	public void setArrayFields(HashMap<String, String> arrayFields) {
+	public void setArrayFields(HashSet<String> arrayFields) {
 		this.arrayFields = arrayFields;
 	}
 
@@ -75,7 +75,7 @@ public class ConversionJSONOutput {
 		// If it is an array, put it into the corresponding JSON array in the map		
 		if (fieldCount > 1 || 
 		    this.forceArray || 
-			(this.arrayFields != null && this.arrayFields.containsKey(fieldName)) ) {
+			(this.arrayFields != null && this.arrayFields.contains(fieldName)) ) {
 			JSONArray ja = getJSONArray(jsonArrMap, fieldName); 
 			ja.put(child);
 		} else {

@@ -1,6 +1,6 @@
 package com.equalize.xpi.af.modules.json;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
 import com.equalize.xpi.af.modules.util.AuditLogHelper;
@@ -20,7 +20,7 @@ public class XML2JSONConverter extends AbstractModuleConverter {
 	private int indentFactor;
 	private boolean skipRootNode;
 	private boolean forceArrayAll;
-	private HashMap<String, String> arrayFields;
+	private HashSet<String> arrayFields;
 
 	public XML2JSONConverter(Message msg, ParameterHelper param, AuditLogHelper audit, DynamicConfigurationHelper dyncfg, Boolean debug) {
 		super(msg, param, audit, dyncfg, debug);
@@ -34,12 +34,12 @@ public class XML2JSONConverter extends AbstractModuleConverter {
 		// Undecided between using a comma separated parameter or
 		// and enumeration of parameters with "array." prefix
 		String arrayFieldList = this.param.getParameter("arrayFieldList");
-		this.arrayFields = new HashMap<String, String>();
+		this.arrayFields = new HashSet<String>();
 		if(arrayFieldList != null && !arrayFieldList.trim().equalsIgnoreCase("")) {
 			String[] fields = arrayFieldList.split(",");
 			for(String field: fields) {
-				if(!this.arrayFields.containsKey(field))
-					this.arrayFields.put(field, null);
+				if(!this.arrayFields.contains(field))
+					this.arrayFields.add(field);
 			}
 		}
 				

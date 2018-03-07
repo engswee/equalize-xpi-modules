@@ -1,6 +1,6 @@
 package com.equalize.xpi.af.modules.deepfcc.parameters;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 import com.equalize.xpi.af.modules.util.ParameterHelper;
 import com.equalize.xpi.util.converter.Field;
@@ -50,7 +50,7 @@ public abstract class RecordTypeParametersPlain2XML {
 		String tempFieldNames = param.getMandatoryParameter(fieldNamesColumn);
 		this.fieldNames = tempFieldNames.split(",");
 		// Validate the field names
-		validateFieldNames(this.fieldNames);
+		validateFieldNames(recordTypeName, this.fieldNames);
 		// Structure deviations
 		this.missingLastFields = param.getParameter(recordTypeName + ".missingLastFields", "ignore", false);
 		this.additionalLastFields = param.getParameter(recordTypeName + ".additionalLastFields", "ignore", false);
@@ -95,14 +95,14 @@ public abstract class RecordTypeParametersPlain2XML {
 		}
 	}
 
-	private void validateFieldNames(String[] fieldNames) throws ModuleException {
+	private void validateFieldNames(String recordTypeName, String[] fieldNames) throws ModuleException {
 		// No duplicates in field names
-		HashMap<String, String> map = new HashMap<String, String>();
+		HashSet<String> set = new HashSet<String>();
 		for(int i = 0; i < fieldNames.length; i++) {
-			if(map.containsKey(fieldNames[i])) {
-				throw new ModuleException("Duplicate field found in 'fieldNames': " + fieldNames[i]);
+			if(set.contains(fieldNames[i])) {
+				throw new ModuleException("Duplicate field found in '" + recordTypeName + ".fieldNames': " + fieldNames[i]);
 			} else {
-				map.put(fieldNames[i], null);
+				set.add(fieldNames[i]);
 			}
 		}
 	}
