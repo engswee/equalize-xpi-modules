@@ -82,7 +82,7 @@ public class XML2JSONConverter extends AbstractModuleConverter {
 
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Conversion complete");
 			this.payload.setContentType("application/json; charset=utf-8");
-			return output.getBytes();
+			return output.getBytes("UTF-8");
 		} catch (Exception e) {
 			this.audit.addLog(AuditLogStatus.ERROR, e.getMessage());
 			throw new ModuleException(e.getMessage(), e);
