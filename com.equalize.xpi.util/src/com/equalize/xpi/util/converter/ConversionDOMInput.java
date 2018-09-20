@@ -23,7 +23,7 @@ public class ConversionDOMInput {
 
 	public ConversionDOMInput(InputStream inStream) throws ParserConfigurationException, SAXException, IOException {
 		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-		this.doc = docBuilder.parse(collapseIndentedXMLStream(inStream));
+		this.doc = docBuilder.parse(inStream);
 	}
 
 	public ConversionDOMInput(String string, String encoding) throws ParserConfigurationException, SAXException, IOException {
@@ -66,34 +66,30 @@ public class ConversionDOMInput {
 	}
 
 	private Object parseNode(Node node) {
-		// If it is a leaf node, then the first child is a text node containing the field value
-		Node firstChild = node.getFirstChild();
-		if (firstChild == null) {
-			// If there is no first child, it is an empty leaf node
-			return "";
-		} else {
-			String fieldValue = firstChild.getNodeValue();
-			if(fieldValue != null) {
-				return fieldValue;
-			}
-		}
-		// Otherwise, it is a node with children nodes, so recursively parse the children nodes
+		boolean hasChildElements = false;
+		String textContent = "";
+
+		// Recursively parse the children nodes
 		XMLElementContainer element = new XMLElementContainer(node.getNodeName());
 		NodeList nl = node.getChildNodes();
 		for (int i = 0; i < nl.getLength(); i++) {
 			Node child = nl.item(i);
-			if(child.getNodeType() == Node.ELEMENT_NODE) {
-				element.addChildField(child.getNodeName(), parseNode(child));
-			}
+			switch(child.getNodeType()) {
+				case Node.ELEMENT_NODE:
+					hasChildElements = true;
+					element.addChildField(child.getNodeName(), parseNode(child));
+					break;
+				case Node.TEXT_NODE:
+					textContent = child.getNodeValue();
+					break;
+				}
 		}
-		return element;
-	}
-
-	private InputStream collapseIndentedXMLStream(InputStream inStream) throws IOException {
-		String input = Converter.toString(inStream);		
-		// Remove all whitespaces between > and  <
-		String consolidatedLine = input.replaceAll(">\\W+<", "><");
-		return Converter.toInputStream(consolidatedLine);
+		// If an element node has no further child element nodes, then it is a leaf node
+		// If it has child text node, then it should extract that text node
+		if(!hasChildElements)			
+			return textContent.trim();		
+		else
+			return element;
 	}
 
 	/*	public static String getTextOfChildElement (Node parentNode, String elementName) {
