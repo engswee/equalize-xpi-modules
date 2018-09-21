@@ -1,6 +1,17 @@
 Version History
 
 ----------------------------------------------------------------------------------------------------
+1.7.1 - Released 21 Sep 2018
+----------------------------------------------------------------------------------------------------
+1) XML2JSONConverter
+	- Use specific UTF-8 encoding when converting JSON text output to bytes. This fixes corruption
+	  issue on special characters that could occur when system's default encoding is not UTF-8
+2) ConversionDOMInput
+	- Update logic to handle white space indentation of XML input
+3) Added .gitattributes file
+	- Introduce end-of-line normalization for files
+	  
+----------------------------------------------------------------------------------------------------
 1.7.0 - Released 25 Apr 2017
 ----------------------------------------------------------------------------------------------------
 Just realised that the last release should have been tagged as 1.7.0 ... oh well....
