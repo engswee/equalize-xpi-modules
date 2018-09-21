@@ -1,0 +1,9 @@
+# Normalize all other text files not explicitly specified
+# Check-in - converts to LF
+# Check-out - depends on core.autocrlf or core.eol
+* text=auto
+
+# Always normalize following files
+*.java text
+*.xml text
+*.txt text
