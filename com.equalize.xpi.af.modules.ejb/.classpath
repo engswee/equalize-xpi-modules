@@ -19,11 +19,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="com.sap.ext.libs.xpi.classpathContainer/adapter"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/com.equalize.xpi.util"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/dom4j-1.6.1.jar"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/poi-3.9-20121203.jar"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/poi-ooxml-3.9-20121203.jar"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/poi-ooxml-schemas-3.9-20121203.jar"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/xmlbeans-2.3.0.jar"/>
+	<classpathentry kind="var" path="EXT_LIB/Apache_POI/poi-3.17.jar"/>
+	<classpathentry kind="var" path="EXT_LIB/Apache_POI/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="var" path="EXT_LIB/Apache_POI/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="var" path="EXT_LIB/Apache_POI/xmlbeans-2.3.0.jar"/>	
+	<classpathentry kind="var" path="EXT_LIB/Apache_POI/commons-collections4-4.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PI_LIB"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
