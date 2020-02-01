@@ -18,18 +18,25 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+import com.equalize.xpi.util.converter.Field;
+import com.equalize.xpi.util.converter.XMLChar;
+
 public class ConversionDOMOutput {
 	private final Document doc;
 	private final Node rootNode;
 	private int indentFactor = 0;
 	private boolean escapeInvalidNameStartChar = false;
 	private boolean mangleInvalidNameChar = false;
+	// @aluferraz - Begin
+	private boolean considerEmptyArrays;
+	private boolean considerNullAsString;
+	// @aluferraz - End
 
 	public ConversionDOMOutput(String rootName, String namespace) throws ParserConfigurationException {
 		DocumentBuilder docBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		this.doc = docBuilder.newDocument();
 		if (!namespace.isEmpty()) {
-			this.rootNode = this.doc.createElementNS(namespace,"ns:"+ rootName);
+			this.rootNode = this.doc.createElementNS(namespace, "ns:" + rootName);
 		} else {
 			this.rootNode = this.doc.createElement(rootName);
 		}
@@ -70,7 +77,7 @@ public class ConversionDOMOutput {
 		return convertDOMtoBAOS();
 	}
 
-	public void generateDOMOutput(ArrayList<Field> fieldList, OutputStream outStream) throws TransformerException{
+	public void generateDOMOutput(ArrayList<Field> fieldList, OutputStream outStream) throws TransformerException {
 		constructDOMContent(this.rootNode, fieldList);
 		convertDOMtoOutputStream(outStream);
 	}
@@ -78,12 +85,13 @@ public class ConversionDOMOutput {
 	private void convertDOMtoOutputStream(OutputStream outStream) throws TransformerException {
 		// Transform the DOM to OutputStream
 		Transformer transformer = TransformerFactory.newInstance().newTransformer();
-		if (this.indentFactor > 0) { 
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes"); 
-			//transformer.setOutputProperty(OutputKeys.ENCODING, xmlEncoding);
-			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", Integer.toString(this.indentFactor));
+		if (this.indentFactor > 0) {
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			// transformer.setOutputProperty(OutputKeys.ENCODING, xmlEncoding);
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount",
+					Integer.toString(this.indentFactor));
 		}
-		transformer.transform(new DOMSource(this.doc), new StreamResult(outStream)); 
+		transformer.transform(new DOMSource(this.doc), new StreamResult(outStream));
 	}
 
 	private ByteArrayOutputStream convertDOMtoBAOS() throws TransformerException {
@@ -102,21 +110,32 @@ public class ConversionDOMOutput {
 
 	private void constructDOMContent(Node parentNode, String keyName, Object[] contents) throws TransformerException {
 		// Go through each item of the array
-		for (Object entry: contents) {
+		for (Object entry : contents) {
 			constructDOMContent(parentNode, keyName, entry);
 		}
+		// @aluferraz - Begin
+		if (contents.length == 0 && this.considerEmptyArrays) {
+			constructDOMContent(parentNode, keyName, "");
+		}
+		// @aluferraz - End
 	}
 
 	@SuppressWarnings("unchecked")
 	private void constructDOMContent(Node parentNode, String keyName, Object fieldContent) throws TransformerException {
-		if(fieldContent instanceof Object[]) {
+		if (fieldContent instanceof Object[]) {
 			constructDOMContent(parentNode, keyName, (Object[]) fieldContent);
-		} else if (fieldContent instanceof ArrayList<?>){
+		} else if (fieldContent instanceof ArrayList<?>) {
 			Node node = addElementToNode(parentNode, keyName);
 			constructDOMContent(node, (ArrayList<Field>) fieldContent);
-		} else if (fieldContent == null) {
-			// NOP
-		} else {
+		}
+		// @aluferraz - Begin
+		else if (fieldContent == null) {
+			if (this.considerNullAsString) {
+				addElementToNode(parentNode, keyName, "");
+			}
+		}
+		// @aluferraz - End
+		else {
 			addElementToNode(parentNode, keyName, fieldContent.toString());
 		}
 	}
@@ -124,7 +143,7 @@ public class ConversionDOMOutput {
 	private Node addElementToNode(Node parentNode, String elementName) throws TransformerException {
 		try {
 			Node element = null;
-			if(this.escapeInvalidNameStartChar || this.mangleInvalidNameChar) {
+			if (this.escapeInvalidNameStartChar || this.mangleInvalidNameChar) {
 				element = this.doc.createElement(generateElementName(elementName));
 			} else {
 				element = this.doc.createElement(elementName);
@@ -136,30 +155,36 @@ public class ConversionDOMOutput {
 		}
 	}
 
-	private Node addElementToNode(Node parentNode, String elementName, String elementTextValue) throws TransformerException {
+	private Node addElementToNode(Node parentNode, String elementName, String elementTextValue)
+			throws TransformerException {
 		Node element = addElementToNode(parentNode, elementName);
 		if (elementTextValue != null) {
 			element.appendChild(this.doc.createTextNode(elementTextValue));
-		}		
+		}
+		// @aluferraz - Begin
+		else if (this.considerNullAsString) {
+			element.appendChild(this.doc.createTextNode(""));
+		}
+		// @aluferraz - End
 		return element;
 	}
 
 	private String generateElementName(String elementName) {
 		StringBuilder sb = new StringBuilder();
-		for(int i = 0; i < elementName.length(); i++) {
+		for (int i = 0; i < elementName.length(); i++) {
 			char c = elementName.charAt(i);
 			// First char of XML element
-			if(i == 0 && this.escapeInvalidNameStartChar) {
-				if(Character.isDigit(c)) {
+			if (i == 0 && this.escapeInvalidNameStartChar) {
+				if (Character.isDigit(c)) {
 					sb.append("__").append(c);
-				} else if(!XMLChar.isNameStart(c)) {
+				} else if (!XMLChar.isNameStart(c)) {
 					String hex = String.format("%04x", (int) c);
 					sb.append("__u" + hex);
 				} else {
 					sb.append(c);
 				}
 			} else if (this.mangleInvalidNameChar) {
-				if(!XMLChar.isName(c)) {
+				if (!XMLChar.isName(c)) {
 					String hex = String.format("%04x", (int) c);
 					sb.append("__u" + hex);
 				} else {
@@ -171,4 +196,22 @@ public class ConversionDOMOutput {
 		}
 		return sb.toString();
 	}
+
+	// @aluferraz - Begin
+	public boolean isConsiderEmptyArrays() {
+		return considerEmptyArrays;
+	}
+
+	public void setConsiderEmptyArrays(boolean considerEmptyArrays) {
+		this.considerEmptyArrays = considerEmptyArrays;
+	}
+
+	public boolean isConsiderNullAsString() {
+		return considerNullAsString;
+	}
+
+	public void setConsiderNullAsString(boolean considerNullAsString) {
+		this.considerNullAsString = considerNullAsString;
+	}
+	// @aluferraz - End
 }

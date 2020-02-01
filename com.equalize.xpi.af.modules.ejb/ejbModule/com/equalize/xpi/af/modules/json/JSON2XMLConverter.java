@@ -6,7 +6,6 @@ import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
 import com.equalize.xpi.af.modules.util.AuditLogHelper;
 import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
 import com.equalize.xpi.af.modules.util.ParameterHelper;
-import com.equalize.xpi.util.converter.ConversionDOMOutput;
 import com.equalize.xpi.util.converter.ConversionJSONInput;
 import com.equalize.xpi.util.converter.Field;
 import com.sap.aii.af.lib.mp.module.ModuleException;
@@ -22,6 +21,10 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 	private boolean escapeInvalidNameStartChar;
 	private boolean mangleInvalidNameChar;
 	private boolean allowArrayAtTop;
+	//@aluferraz - Begin
+	private boolean considerEmptyArrays;
+	private boolean considerNullAsString;
+	//@aluferraz  - End
 	private String topArrayName;
 	private ArrayList<Field> inputContents;
 
@@ -37,6 +40,10 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 		this.escapeInvalidNameStartChar = this.param.getBoolParameter("escapeInvalidNameStartChar", "N", false);
 		this.mangleInvalidNameChar = this.param.getBoolParameter("mangleInvalidNameChar", "N", false);
 		this.allowArrayAtTop = this.param.getBoolParameter("allowArrayAtTop", "N", false);
+		//@aluferraz - Begin
+		this.considerEmptyArrays = this.param.getBoolParameter("considerEmptyArrays", "N", false);
+		this.considerNullAsString = this.param.getBoolParameter("considerNullAsString", "N", false);
+		//@aluferraz - End
 		if(this.allowArrayAtTop) {
 			this.topArrayName = this.param.getConditionallyMandatoryParameter("topArrayName", "allowArrayAtTop", "Y");
 		}
@@ -59,6 +66,7 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 	public byte[] generateOutput() throws ModuleException {
 		try {
 			// Create output converter and generate output DOM
+			
 			this.domOut = new ConversionDOMOutput(this.documentName, this.documentNamespace);
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Constructing output XML");	
 
@@ -70,6 +78,11 @@ public class JSON2XMLConverter extends AbstractModuleConverter {
 			
 			this.domOut.setEscapeInvalidNameStartChar(this.escapeInvalidNameStartChar);
 			this.domOut.setMangleInvalidNameChar(this.mangleInvalidNameChar);
+			
+			//@aluferraz - Begin
+			this.domOut.setConsiderEmptyArrays(this.considerEmptyArrays);
+			this.domOut.setConsiderNullAsString(this.considerNullAsString);
+			//@aluferraz - End
 
 			ByteArrayOutputStream baos = this.domOut.generateDOMOutput(this.inputContents);
 			this.audit.addLog(AuditLogStatus.SUCCESS, "Conversion complete");

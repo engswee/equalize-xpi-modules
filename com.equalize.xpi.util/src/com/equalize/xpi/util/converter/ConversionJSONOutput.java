@@ -6,17 +6,31 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 
 import org.json.JSONObject;
+
+import com.equalize.xpi.util.converter.Converter;
+import com.equalize.xpi.util.converter.Field;
+import com.equalize.xpi.util.converter.XMLElementContainer;
+
 import org.json.JSONArray;
 
 public class ConversionJSONOutput {
 
 	private boolean forceArray = false;
 	private HashSet<String> arrayFields;
+	private String topArrayName = "";
 	
+
+
 	public String generateJSONText(XMLElementContainer xmlElement, boolean skipRoot, int indentFactor) {
 		JSONObject jo = new JSONObject();
 		constructJSONContentfromXML(jo, xmlElement);
 		if (skipRoot) {
+			//@aluferraz - Begin
+			if (!this.topArrayName.isEmpty()) {
+				JSONArray ja = jo.getJSONArray(this.topArrayName);
+				return getJSONText(ja, indentFactor);
+			}
+			//@aluferraz - End			
 			return getJSONText(jo, indentFactor);
 		} else {
 			JSONObject rootjo = new JSONObject();
@@ -87,6 +101,11 @@ public class ConversionJSONOutput {
 	private String getJSONText(JSONObject jo, int indentFactor) {
 		return jo.toString(indentFactor);
 	}
+	//@aluferraz - Begin
+	private String getJSONText(JSONArray jo, int indentFactor) {
+		return jo.toString(indentFactor);
+	}
+	//@aluferraz - End
 
 	private JSONArray getJSONArray(LinkedHashMap<String, JSONArray> map, String arrayName) {
 		// Get the current JSONArray for this key or create a new JSONArray
@@ -97,5 +116,13 @@ public class ConversionJSONOutput {
 			map.put(arrayName, ja);
 			return ja;
 		}
+	}
+	
+	public String getTopArrayName() {
+		return topArrayName;
+	}
+
+	public void setTopArrayName(String topArrayName) {
+		this.topArrayName = topArrayName;
 	}
 }
