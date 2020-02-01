@@ -8,10 +8,12 @@ import com.equalize.xpi.af.modules.util.AuditLogHelper;
 import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
 import com.equalize.xpi.af.modules.util.ParameterHelper;
 import com.equalize.xpi.util.converter.ConversionDOMInput;
+import com.equalize.xpi.util.converter.ConversionJSONOutput;
 import com.equalize.xpi.util.converter.XMLElementContainer;
 import com.sap.aii.af.lib.mp.module.ModuleException;
 import com.sap.engine.interfaces.messaging.api.Message;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
+
 
 public class XML2JSONConverter extends AbstractModuleConverter {
 	private ConversionDOMInput domIn;

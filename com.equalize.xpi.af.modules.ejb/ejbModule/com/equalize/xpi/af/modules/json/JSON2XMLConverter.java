@@ -6,11 +6,13 @@ import com.equalize.xpi.af.modules.util.AbstractModuleConverter;
 import com.equalize.xpi.af.modules.util.AuditLogHelper;
 import com.equalize.xpi.af.modules.util.DynamicConfigurationHelper;
 import com.equalize.xpi.af.modules.util.ParameterHelper;
+import com.equalize.xpi.util.converter.ConversionDOMOutput;
 import com.equalize.xpi.util.converter.ConversionJSONInput;
 import com.equalize.xpi.util.converter.Field;
 import com.sap.aii.af.lib.mp.module.ModuleException;
 import com.sap.engine.interfaces.messaging.api.Message;
 import com.sap.engine.interfaces.messaging.api.auditlog.AuditLogStatus;
+
 
 public class JSON2XMLConverter extends AbstractModuleConverter {
 	private ConversionJSONInput jsonIn;
