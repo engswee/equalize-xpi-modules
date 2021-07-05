@@ -1,0 +1,2 @@
+http://sap.com/xi/XI/System/File;FileName;Order_1234.txt
+http://sap.com/xi/XI/SFTP/SFTP;FileName;Order_1234.xml

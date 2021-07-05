@@ -1,0 +1,25 @@
+   //************************************
+   // JSONTransformBean
+   //************************************ 
+   // (A) - JSON2XML
+   inFile = new File("TestData/JSONTransformBean/JSON2XML_Scenario1_glossary.json");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.json.JSON2XMLConverter" );
+   contextData.put("documentName", "MT_JSON2XML");
+   contextData.put("documentNamespace", "urn:equalize:com");
+   contextData.put("indentFactor", "2");
+   
+   inFile = new File("TestData/JSONTransformBean/JSON2XML_Scenario3_array.json");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.json.JSON2XMLConverter" );
+   contextData.put("documentName", "MT_JSON2XML");
+   contextData.put("documentNamespace", "urn:equalize:com");
+   contextData.put("indentFactor", "2");
+   contextData.put("allowArrayAtTop", "Y");
+   contextData.put("topArrayName", "record");
+   
+   // (B) - XML2JSON
+   inFile = new File("TestData/JSONTransformBean/XML2JSON_Scenario1.txt");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.json.XML2JSONConverter" );
+   contextData.put("indentFactor", "2");
+   contextData.put("skipRootNode", "Y");
+   contextData.put("messageLog", "post");
+   contextData.put("logLocation", "json");

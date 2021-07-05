@@ -1,0 +1,6 @@
+converterClass	com.equalize.xpi.af.modules.json.JSON2XMLConverter
+documentName	MT_JSON2XML
+documentNamespace	urn:equalize:com
+indentFactor	2
+allowArrayAtTop	Y
+topArrayName	record

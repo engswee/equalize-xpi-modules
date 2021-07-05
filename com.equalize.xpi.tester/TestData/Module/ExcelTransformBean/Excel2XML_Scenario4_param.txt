@@ -1,0 +1,9 @@
+converterClass	com.equalize.xpi.af.modules.excel.Excel2XMLTransformer
+sheetName	Sheet1
+processFieldNames	fromFile
+documentName	MT_Order
+documentNamespace	urn:equalize:com
+indentFactor	2
+headerRow	1
+rowOffset	3
+onlyValidCharsInXMLName	Y

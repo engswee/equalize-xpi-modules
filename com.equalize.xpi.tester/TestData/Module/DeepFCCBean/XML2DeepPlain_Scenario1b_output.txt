@@ -1,0 +1,4 @@
+D    Delivery2 
+O    Delivery2Order2_A  
+I    Order10        90        
+I    Order20        80        

@@ -1,0 +1,5 @@
+converterClass	com.equalize.xpi.af.modules.base64.Base64EncodeConverter
+outputType	xml
+documentName	MT_Base64
+documentNamespace	urn:dummy
+base64FieldName	b64string

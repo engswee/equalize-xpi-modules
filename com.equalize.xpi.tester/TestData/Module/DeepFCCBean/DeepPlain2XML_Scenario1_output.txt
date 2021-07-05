@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ns:MT_DeepPlain2XML xmlns:ns="urn:equalize:com">
+  <Delivery>
+    <Type>D</Type>
+    <DeliveryNo>Delivery1</DeliveryNo>
+    <Order>
+      <Type>O</Type>
+      <DeliveryNo>Order A, for Delivery1</DeliveryNo>
+      <OrderNo>Order1_A</OrderNo>
+      <Item>
+        <Type>I</Type>
+        <OrderNo>"Order1_A"</OrderNo>
+        <ItemNo>10</ItemNo>
+        <Quantity>50</Quantity>
+      </Item>
+      <Item>
+        <Type>I</Type>
+        <OrderNo>"Order1_A"</OrderNo>
+        <ItemNo>20</ItemNo>
+        <Quantity>70</Quantity>
+      </Item>
+    </Order>
+    <Order>
+      <Type>O</Type>
+      <DeliveryNo>Order B " for Delivery1</DeliveryNo>
+      <OrderNo>Order1_B</OrderNo>
+      <Item>
+        <Type>I</Type>
+        <OrderNo>Order1_B</OrderNo>
+        <ItemNo>10</ItemNo>
+        <Quantity>99</Quantity>
+      </Item>
+    </Order>
+  </Delivery>
+</ns:MT_DeepPlain2XML>

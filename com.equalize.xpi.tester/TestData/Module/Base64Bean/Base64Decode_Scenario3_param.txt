@@ -1,0 +1,4 @@
+converterClass	com.equalize.xpi.af.modules.base64.Base64DecodeConverter
+inputType	xml
+zippedContent	Y
+xpath	/MT_TransferSAEFile/SAEZipContent

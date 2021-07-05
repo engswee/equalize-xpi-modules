@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:MT_Deep xmlns:ns0="urn:equalize/DeepFCC">
+ <Delivery>
+  <Type>D</Type>
+  <DeliveryNo>Delivery2</DeliveryNo>
+  <Order>
+   <Type>O</Type>
+   <DeliveryNo>Delivery2</DeliveryNo>
+   <OrderNo>Order2_A</OrderNo>
+   <Item>
+    <Type>I</Type>
+    <OrderNo>Order2_A</OrderNo>
+    <ItemNo>10</ItemNo>
+    <Quantity>90</Quantity>
+   </Item>
+   <Item>
+    <Type>I</Type>
+    <OrderNo>Order2_A</OrderNo>
+    <ItemNo>20</ItemNo>
+    <Quantity>80</Quantity>
+   </Item>
+  </Order>
+ </Delivery>
+</ns0:MT_Deep>

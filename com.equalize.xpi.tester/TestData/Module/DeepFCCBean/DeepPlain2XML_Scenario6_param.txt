@@ -1,0 +1,10 @@
+converterClass	com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter
+documentName	Test
+documentNamespace	http://test.com
+recordsetStructure	SatzartWB
+keyFieldName	Satzart
+SatzartWB.fieldNames	Satzart,Field2,Field3,Field4,Field5,Field6,Field7,Field8,Field9,Field10,Field11,Field12,Field13,Field14,Field15,Field16,Field17
+SatzartWB.keyFieldValue	WB
+SatzartWB.parent	Root
+defaultFieldSeparator	'0x09'
+indentFactor	2

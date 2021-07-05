@@ -1,0 +1,225 @@
+   //************************************
+   // DeepFCCBean
+   //************************************ 
+
+   // (A) - DeepPlain2XML
+   //contextData.put("encoding", "UTF-8");   
+   //contextData.put("debug", "Y");
+
+   // Scenario 1 - delimited
+   inFile = new File("TestData/DeepFCCBean/DeepPlain2XML_Scenario1.txt");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter" ); 
+   contextData.put("documentName", "MT_DeepPlain2XML");
+   contextData.put("documentNamespace", "urn:equalize:com");
+   contextData.put("recordsetStructure", "Delivery,Order,Item");
+   contextData.put("keyFieldName", "Type");
+   contextData.put("Delivery.fieldNames", "Type,DeliveryNo");
+   contextData.put("Order.fieldNames", "Type,DeliveryNo,OrderNo");
+   contextData.put("Item.fieldNames", "Type,OrderNo,ItemNo,Quantity");
+   contextData.put("Delivery.keyFieldValue", "D");
+   contextData.put("Order.keyFieldValue", "O");
+   contextData.put("Item.keyFieldValue", "I");
+   contextData.put("Delivery.parent", "Root");
+   contextData.put("Order.parent", "Delivery");
+   contextData.put("Item.parent", "Order");   
+   contextData.put("Delivery.fieldSeparator", "'0x09'");
+   contextData.put("defaultFieldSeparator", ",");
+   contextData.put("Order.enclosureSignBegin", "\"");
+   contextData.put("Order.enclosureSignBeginEscape", "\"\"");
+   //contextData.put("Order.enclosureSignEnd", "\"");
+   //contextData.put("Order.enclosureSignEndEscape", "\"\"");
+   contextData.put("Item.enclosureConversion", "N");
+   contextData.put("Item.enclosureSignBegin", "\"");
+   contextData.put("rowOffset", "1");
+   contextData.put("indentFactor", "2");
+
+   // Scenario 2 - fixed length
+   inFile = new File("TestData/DeepFCCBean/DeepPlain2XML_Scenario2.txt");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter" ); 
+   contextData.put("documentName", "MT_DeepPlain2XML");
+   contextData.put("documentNamespace", "urn:equalize:com");
+   contextData.put("recordsetStructure", "Header,Delivery,Order,Item");
+   contextData.put("keyFieldName", "Type");
+   contextData.put("Header.fieldNames", "Type,FileName");
+   contextData.put("Delivery.fieldNames", "Type,DeliveryNo");
+   contextData.put("Order.fieldNames", "Type,DeliveryNo,OrderNo");
+   contextData.put("Item.fieldNames", "Type,OrderNo,ItemNo,Quantity");
+   contextData.put("Header.keyFieldValue", "H");
+   contextData.put("Delivery.keyFieldValue", "D");
+   contextData.put("Order.keyFieldValue", "O");
+   contextData.put("Item.keyFieldValue", "I");
+   contextData.put("Header.parent", "Root");
+   contextData.put("Delivery.parent", "Root");
+   contextData.put("Order.parent", "Delivery");
+   contextData.put("Item.parent", "Order");
+   contextData.put("Header.fieldFixedLengths", "5,20");
+   contextData.put("Delivery.fieldFixedLengths", "5,10");
+   contextData.put("Order.fieldFixedLengths", "5,10,10");
+   contextData.put("Item.fieldFixedLengths", "5,10,10,10");
+   contextData.put("trimContents", "N");
+   contextData.put("indentFactor", "2");
+
+   // Scenario 3
+   inFile = new File("TestData/DeepFCCBean/DeepPlain2XML_Scenario3.txt");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter" );  
+   contextData.put("documentName", "MT_DeepPlain2XML");
+   contextData.put("documentNamespace", "urn:equalize:com");
+   contextData.put("recordsetStructure", "Header,Delivery,Order,OrderText,Item,Footer");
+   contextData.put("keyFieldName", "Type");
+   contextData.put("Header.fieldNames", "Type,FileName");
+   contextData.put("Delivery.fieldNames", "Type,DeliveryNo");
+   contextData.put("Order.fieldNames", "Type,DeliveryNo,OrderNo");
+   contextData.put("OrderText.fieldNames", "Type,OrderNo,TextValue");
+   contextData.put("Item.fieldNames", "Type,OrderNo,ItemNo,Quantity");
+   contextData.put("Footer.fieldNames", "Type,DeliveryCount");
+   contextData.put("Header.keyFieldValue", "H");
+   contextData.put("Delivery.keyFieldValue", "D");
+   contextData.put("Order.keyFieldValue", "O");
+   contextData.put("OrderText.keyFieldValue", "T");
+   contextData.put("Item.keyFieldValue", "I");
+   contextData.put("Footer.keyFieldValue", "F");
+   contextData.put("Header.parent", "Root");
+   contextData.put("Delivery.parent", "Root");
+   contextData.put("Order.parent", "Delivery");
+   contextData.put("OrderText.parent", "Order");
+   contextData.put("Item.parent", "Order");
+   contextData.put("Footer.parent", "Root");
+   contextData.put("defaultFieldSeparator", ",");
+   contextData.put("indentFactor", "2");
+   contextData.put("messageLog", "pre");
+   contextData.put("logLocation", "plain");
+
+   // Scenario 4 - Hasbro fixed length
+   inFile = new File("TestData/DeepFCCBean/DeepPlain2XML_Scenario4.txt");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter" ); 
+   contextData.put("documentName", "MT_DeepPlain2XML");
+   contextData.put("documentNamespace", "urn:equalize:com");
+   contextData.put("recordsetStructure", "Header,Delivery,Order,Item");
+   contextData.put("keyFieldName", "Type");
+   contextData.put("Header.fieldNames", "Type,FileName");
+   contextData.put("Delivery.fieldNames", "Type,DeliveryNo");
+   contextData.put("Order.fieldNames", "Type,DeliveryNo");
+   contextData.put("Item.fieldNames", "Type,OrderNo");
+   contextData.put("Header.keyFieldValue", "CR");
+   contextData.put("Delivery.keyFieldValue", "DH");
+   contextData.put("Order.keyFieldValue", "DD");
+   contextData.put("Item.keyFieldValue", "TR");
+   contextData.put("Header.parent", "Root");
+   contextData.put("Delivery.parent", "Root");
+   contextData.put("Order.parent", "Delivery");
+   contextData.put("Item.parent", "Root");
+   contextData.put("Header.fieldFixedLengths", "2,15");
+   contextData.put("Delivery.fieldFixedLengths", "2,15");
+   contextData.put("Order.fieldFixedLengths", "2,15");
+   contextData.put("Item.fieldFixedLengths", "2,15");
+   contextData.put("trimContents", "N");
+   contextData.put("indentFactor", "2");
+
+   // Scenario 5a - Generic line type
+			   inFile = new File("TestData/DeepFCCBean/DeepPlain2XML_Scenario5a.txt");
+			   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter" ); 
+			   contextData.put("documentName", "MT_DeepPlain2XML");
+			   contextData.put("documentNamespace", "urn:equalize:com");
+			   contextData.put("recordsetStructure", "Line,Count");
+			   contextData.put("genericRecordType", "Line");
+			   contextData.put("keyFieldName", "Type");
+			   contextData.put("Line.fieldNames", "FirstName,LastName,PostCode,Date");
+			   contextData.put("Count.fieldNames", "Type,Count");
+			   contextData.put("Count.keyFieldValue", "COUNT");
+			   contextData.put("Line.parent", "Root");
+			   contextData.put("Count.parent", "Root");
+			   contextData.put("Line.fieldSeparator", ";");
+			   contextData.put("Count.fieldSeparator", ":");
+			   contextData.put("indentFactor", "2");
+
+   // Scenario 5b - Generic line type - Hasbro Expected Receipts
+   			   inFile = new File("TestData/DeepFCCBean/DeepPlain2XML_Scenario5b.txt");
+			   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter" ); 
+			   contextData.put("documentName", "MT_DeepPlain2XML");
+			   contextData.put("documentNamespace", "urn:equalize:com");
+			   contextData.put("recordsetStructure", "Header,Detail,Footer");
+			   contextData.put("genericRecordType", "Detail");
+			   contextData.put("keyFieldName", "Type");
+			   contextData.put("Header.fieldNames", "Type,Invoice");
+			   contextData.put("Detail.fieldNames", "Plant,Text");
+			   contextData.put("Footer.fieldNames", "Type,Count");
+			   contextData.put("Header.keyFieldValue", "CR");
+			   contextData.put("Footer.keyFieldValue", "TR");
+			   contextData.put("Header.parent", "Root");
+			   contextData.put("Detail.parent", "Root");
+			   contextData.put("Footer.parent", "Root");
+			   contextData.put("Header.fieldFixedLengths", "2,10");
+			   contextData.put("Detail.fieldFixedLengths", "4,100");
+			   contextData.put("Footer.fieldFixedLengths", "2,10");
+			   contextData.put("indentFactor", "2");
+
+   // Scenario 6 - Incomplete last field in CSV
+			inFile = new File("TestData/DeepFCCBean/DeepPlain2XML_Scenario6.txt");
+			contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter" ); 
+			contextData.put("documentName", "Test");
+			contextData.put("documentNamespace", "http://test.com");
+			contextData.put("recordsetStructure", "SatzartWB");
+			contextData.put("keyFieldName", "Satzart");
+			contextData.put("SatzartWB.fieldNames", "Satzart,Field2,Field3,Field4,Field5,Field6,Field7,Field8,Field9,Field10,Field11,Field12,Field13,Field14,Field15,Field16,Field17");
+			contextData.put("SatzartWB.keyFieldValue", "WB");
+			contextData.put("SatzartWB.parent", "Root");
+			contextData.put("defaultFieldSeparator", "'0x09'");
+			contextData.put("indentFactor", "2");
+
+	// Scenario 7 - additional and missing last fields
+			   inFile = new File("TestData/DeepFCCBean/DeepPlain2XML_Scenario2.txt");
+			   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter" ); 
+			   contextData.put("documentName", "MT_DeepPlain2XML");
+			   contextData.put("documentNamespace", "urn:equalize:com");
+			   contextData.put("recordsetStructure", "Header,Delivery,Order,Item");
+			   contextData.put("keyFieldName", "Type");
+			   contextData.put("Header.fieldNames", "Type,FileName");
+			   contextData.put("Delivery.fieldNames", "Type,DeliveryNo,Dummy");
+			   contextData.put("Order.fieldNames", "Type,DeliveryNo");
+			   contextData.put("Item.fieldNames", "Type,OrderNo,ItemNo,Quantity");
+			   contextData.put("Header.keyFieldValue", "H");
+			   contextData.put("Delivery.keyFieldValue", "D");
+			   contextData.put("Order.keyFieldValue", "O");
+			   contextData.put("Item.keyFieldValue", "I");
+			   contextData.put("Header.parent", "Root");
+			   contextData.put("Delivery.parent", "Root");
+			   contextData.put("Order.parent", "Delivery");
+			   contextData.put("Item.parent", "Order");
+			   contextData.put("Header.fieldFixedLengths", "5,20");
+			   contextData.put("Delivery.fieldFixedLengths", "5,10,10");
+			   contextData.put("Order.fieldFixedLengths", "5,10");
+			   contextData.put("Item.fieldFixedLengths", "5,10,10,10");
+			   contextData.put("trimContents", "N");
+			   contextData.put("indentFactor", "2");
+			   contextData.put("Delivery.missingLastFields", "add");
+			   //contextData.put("Order.additionalLastFields", "error");
+
+   // (B) - XML2DeepPlain
+   //contextData.put("encoding", "UTF-8");
+
+   // Scenario 1 - delimited
+   inFile = new File("TestData/DeepFCCBean/XML2DeepPlain_Scenario1.xml");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.XML2DeepPlainConverter" );
+   contextData.put("recordsetStructure", "Delivery,Order,Item");
+   contextData.put("Delivery.fieldSeparator", ",");
+   contextData.put("Delivery.endSeparator", "ZZZZ'nl'");
+   contextData.put("Item.fieldSeparator", "'0x09'");
+   contextData.put("Order.fieldSeparator", ",");
+
+   // Scenario 2 - fixed length
+   inFile = new File("TestData/DeepFCCBean/XML2DeepPlain_Scenario1.xml");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.XML2DeepPlainConverter" );
+   contextData.put("recordsetStructure", "Delivery,Order,Item");
+   contextData.put("Delivery.fieldFixedLengths", "5,10");
+   contextData.put("Order.fieldFixedLengths", "5,5,10");
+   contextData.put("Order.fixedLengthTooShortHandling", "Ignore");
+   contextData.put("Item.fieldFixedLengths", "5,5,10,10");
+   contextData.put("Item.fixedLengthTooShortHandling", "Cut");   
+
+   // Scenario 3
+   inFile = new File("TestData/DeepFCCBean/XML2DeepPlain_Scenario3.xml");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.deepfcc.XML2DeepPlainConverter" );
+   contextData.put("recordsetStructure", "Header,Delivery,Order,OrderText,Item,Footer");
+   contextData.put("defaultFieldSeparator", ",");
+   contextData.put("messageLog", "post");
+   contextData.put("logLocation", "plain");

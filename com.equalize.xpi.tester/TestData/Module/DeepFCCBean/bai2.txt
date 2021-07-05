@@ -1,0 +1,7 @@
+b2b content guide
+
+https://websmp201.sap-ag.de/~form/sapnet?_SHORTKEY=01100035870000757454&_SCENARIO=01100035870000000202&_OBJECT=011000358700000125762013E
+http://scn.sap.com/community/b2b-integration/blog/2014/10/15/sp4-released-b2b-add-on-and-secure-connectivity-add-on
+
+
+http://scn.sap.com/thread/3714413

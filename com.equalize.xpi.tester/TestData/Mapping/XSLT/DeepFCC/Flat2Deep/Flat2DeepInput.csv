@@ -1,0 +1,12 @@
+H,Shipment123.txt
+D,Delivery1
+O,Delivery1,Order1_A
+T,Order1_A,TextForOrder1_A
+I,Order1_A,10,50
+I,Order1_A,20,70
+O,Delivery1,Order1_B
+I,Order1_B,10,99
+D,Delivery2
+O,Delivery2,Order2_A
+I,Order2_A,10,90
+F,2

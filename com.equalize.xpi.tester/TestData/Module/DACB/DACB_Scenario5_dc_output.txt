@@ -1,0 +1,2 @@
+http://sap.com/xi/XI/SFTP/SFTP;Directory;/interface/inbound/Partner1/002/
+http://sap.com/xi/XI/SFTP/SFTP;FileName;Partner1_002_Invoice.xml

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ns:MT_JSON2XML xmlns:ns="urn:equalize:com">
+	<glossary>
+		<title>example glossary</title>
+	</glossary>
+	<glossary>
+		<title>2</title>
+	</glossary>
+</ns:MT_JSON2XML>

@@ -1,0 +1,35 @@
+
+   //************************************
+   // POIHSSFXSSFExcelBean
+   //************************************
+   /*   contextData.put("StartNamespace", "<ns0:MyExcel>");
+   contextData.put("EndNamespace", "</ns0:MyExcel>");
+   contextData.put("HeaderNode", "Row");
+   contextData.put("ChildNode", "Cell");*/
+
+   //************************************
+   // JExcelBean
+   //************************************
+   /*   contextData.put("msgType", "JExcel_Msg");
+   contextData.put("nameSpace", "urn:jexcel");*/
+
+   //************************************
+   // ChangeFileExtensionBean
+   //************************************
+   /*   contextData.put("namespace", "http://sap.com/xi/XI/System/File");
+   contextData.put("attribute", "FileName");
+   contextData.put("mode", "add");
+   contextData.put("extension", ".pgp");
+   contextData.put("newExtension", ".txt.pgp");*/
+
+   //************************************
+   // ReplaceTextContentBean
+   //************************************
+   /*   contextData.put("textToReplace", "123");
+   contextData.put("replacement", ".pgp");*/
+
+   //************************************
+   // SetCorrelationBean
+   //************************************
+   			inFile = new File("TestData/SetCorrelationBean.txt");
+			contextData.put("xpath", "/MT_SABridge_Req/MessageID");

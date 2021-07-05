@@ -1,0 +1,43 @@
+   //************************************
+   // DynamicAttributeChangeBean
+   //************************************  
+   // Scenario 1
+   addDynCfg(msg, "http://sap.com/xi/XI/System/File", "FileName", "Order_1234.txt");
+   contextData.put("mode", "add");
+   contextData.put("namespace", "http://sap.com/xi/XI/System/File");
+   contextData.put("attribute", "FileName");
+   contextData.put("prefix", "MY_");
+   contextData.put("suffix", ".zip");
+
+   // Scenario 2
+   addDynCfg(msg, "http://sap.com/xi/XI/System/File", "FileName", "Order_1234.txt");
+   contextData.put("mode", "change");
+   contextData.put("namespace", "http://sap.com/xi/XI/System/File");
+   contextData.put("attribute", "FileName");
+   contextData.put("outNamespace", "http://sap.com/xi/XI/SFTP/SFTP");
+   contextData.put("oldValue", ".txt");
+   contextData.put("newValue", ".xml");
+   //contextData.put("replaceAll", "Y");
+
+   // Scenario 3
+   addDynCfg(msg, "http://sap.com/xi/XI/System/File", "FileName", "Order_1234.txt.pgp");
+   contextData.put("mode", "delete");
+   contextData.put("suffix", ".pgp");
+   contextData.put("addTimestamp", "Y");
+   contextData.put("timestampFormat", "'_'yyyyMMdd");
+
+   // Scenario 4
+   addDynCfg(msg, "http://sap.com/xi/XI/System/File", "FileName", "Order_1234_Batch_10.xml");
+   contextData.put("mode", "regex");
+   contextData.put("regex", "Order_(\\d+)_Batch_(\\d+).xml");
+   contextData.put("replacement", "PO_$1_Group_$2.txt");
+
+   // Scenario 5
+   addDynCfg(msg, "http://sap.com/xi/XI/SFTP/SFTP", "FileName", "Partner1_002_Invoice.xml");
+   contextData.put("mode", "regex");
+   contextData.put("namespace", "http://sap.com/xi/XI/SFTP/SFTP");
+   contextData.put("attribute", "FileName");
+   contextData.put("outNamespace", "http://sap.com/xi/XI/SFTP/SFTP");
+   contextData.put("outAttribute", "Directory");
+   contextData.put("regex", "(Partner\\d+)_(\\d+)_Invoice.xml");
+   contextData.put("replacement", "/interface/inbound/$1/$2/");

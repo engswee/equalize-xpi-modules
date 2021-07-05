@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="ejbModule"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/SAP JVM 6 (61_REL i486 opt)">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.java"/>
 		</attributes>
@@ -19,11 +19,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="com.sap.ext.libs.xpi.classpathContainer/adapter"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/com.equalize.xpi.util"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/dom4j-1.6.1.jar"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/poi-3.9-20121203.jar"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/poi-ooxml-3.9-20121203.jar"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/poi-ooxml-schemas-3.9-20121203.jar"/>
-	<classpathentry kind="var" path="EXT_LIB/Apache_POI/xmlbeans-2.3.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PI_LIB"/>
+	<classpathentry kind="lib" path="C:/Users/lucas/Downloads/com.sap.xpi.ib.mapping.lib.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lucas/Downloads/com.sap.aii.af.ms.ifc_api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lucas/Downloads/poi-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lucas/Downloads/poi-ooxml-schemas-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="C:/Users/lucas/Downloads/poi-ooxml-3.9-20121203.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

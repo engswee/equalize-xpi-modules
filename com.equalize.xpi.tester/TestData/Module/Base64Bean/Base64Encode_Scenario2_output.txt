@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ns:MT_Base64 xmlns:ns="urn:dummy">
+  <b64string>VGVzdCBEYXRhIHRvIGJlIGVuY29kZWQgYnkgQmFzZTY0RW5jb2RlQ29udmVydGVyIGFuZCBlbWJlZGRlZCBpbnRvIGFuIFhNTCBlbGVtZW50DQoNCkxpbmUgMQ0KTGluZSAyDQpMaW5lIDM=</b64string>
+</ns:MT_Base64>

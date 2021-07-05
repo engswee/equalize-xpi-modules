@@ -1,0 +1,5 @@
+mode	add
+namespace	http://sap.com/xi/XI/System/File
+attribute	FileName
+prefix	MY_
+suffix	.zip

@@ -1,0 +1,5 @@
+converterClass	com.equalize.xpi.af.modules.json.XML2JSONConverter
+indentFactor	2
+skipRootNode	Y
+messageLog	post
+logLocation	json

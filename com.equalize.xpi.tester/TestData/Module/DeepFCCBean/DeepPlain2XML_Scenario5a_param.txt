@@ -1,0 +1,14 @@
+converterClass	com.equalize.xpi.af.modules.deepfcc.DeepPlain2XMLConverter
+documentName	MT_DeepPlain2XML
+documentNamespace	urn:equalize:com
+recordsetStructure	Line,Count
+genericRecordType	Line
+keyFieldName	Type
+Line.fieldNames	FirstName,LastName,PostCode,Date
+Count.fieldNames	Type,Count
+Count.keyFieldValue	COUNT
+Line.parent	Root
+Count.parent	Root
+Line.fieldSeparator	;
+Count.fieldSeparator	:
+indentFactor	2

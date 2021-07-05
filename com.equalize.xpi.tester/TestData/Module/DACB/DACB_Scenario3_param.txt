@@ -1,0 +1,4 @@
+mode	delete
+suffix	.pgp
+addTimestamp	Y
+timestampFormat	'_'yyyyMMdd

@@ -1,0 +1,4 @@
+converterClass	com.equalize.xpi.af.modules.excel.XML2ExcelTransformer
+excelFormat	xls
+sheetName	MySheet1
+addHeaderLine	fromXML

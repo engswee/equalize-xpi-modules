@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:MT_SABridge_Req xmlns:ns0="urn:demo/SABridge">
+	<MessageID>0c773d66e98f11e4a311000000513be6</MessageID>
+	<FileName>FileABC.txt</FileName>
+</ns0:MT_SABridge_Req>

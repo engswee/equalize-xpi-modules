@@ -1,0 +1,3 @@
+converterClass	com.equalize.xpi.af.modules.excel.XML2ExcelTransformer
+addHeaderLine	fromConfiguration
+fieldNames	Field1,Date,Field2,Quantity
