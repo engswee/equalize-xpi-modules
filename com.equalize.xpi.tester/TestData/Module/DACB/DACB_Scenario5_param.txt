@@ -1,0 +1,7 @@
+mode	regex
+namespace	http://sap.com/xi/XI/SFTP/SFTP
+attribute	FileName
+outNamespace	http://sap.com/xi/XI/SFTP/SFTP
+outAttribute	Directory
+regex	(Partner\d+)_(\d+)_Invoice.xml
+replacement	/interface/inbound/$1/$2/

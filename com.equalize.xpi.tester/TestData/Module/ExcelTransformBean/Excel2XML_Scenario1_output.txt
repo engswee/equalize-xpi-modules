@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ns:MT_Order xmlns:ns="urn:equalize:com">
+  <Record>
+    <Order>123456</Order>
+    <Date>7-Dec</Date>
+    <Material>ABC123&amp;</Material>
+    <Quantity>10</Quantity>
+  </Record>
+  <Record>
+    <Order>47890</Order>
+    <Date>3-Feb</Date>
+    <Material>XYZ456</Material>
+    <Quantity>15</Quantity>
+  </Record>
+</ns:MT_Order>

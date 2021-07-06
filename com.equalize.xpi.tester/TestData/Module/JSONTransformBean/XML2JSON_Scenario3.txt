@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ns:MT_JSON2XML xmlns:ns="urn:equalize:com">
+	<single>abc</single>
+	<GlossSeeAlso>GML</GlossSeeAlso>
+	<GlossSeeAlso>XML</GlossSeeAlso>
+	<oneparentonechild>
+		<title>example glossary 1</title>
+	</oneparentonechild>
+	<oneparentmanychild>
+		<manychild>example glossary 2</manychild>
+		<manychild>example glossary 3</manychild>
+	</oneparentmanychild>
+	<manyparentonechild>
+		<SortAs>SGML</SortAs>
+	</manyparentonechild>
+	<manyparentonechild>
+		<SortAs>XYZ</SortAs>
+	</manyparentonechild>
+	<manyparentmanychild>
+		<manychild2>example glossary A</manychild2>
+		<manychild2>example glossary B</manychild2>
+		<manychild2>example glossary C</manychild2>		
+	</manyparentmanychild>	
+	<manyparentmanychild>
+		<manychild2>example glossary D</manychild2>
+		<manychild2>example glossary E</manychild2>
+		<manychild2>example glossary F</manychild2>		
+	</manyparentmanychild>		
+</ns:MT_JSON2XML>

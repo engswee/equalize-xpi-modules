@@ -1,0 +1,2523 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ns:MT_DeepPlain2XML xmlns:ns="urn:equalize:com">
+  <Header>
+    <Type>CR</Type>
+    <Invoice>INV1043003</Invoice>
+  </Header>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              DIAMOND COMIC DISTRIB</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              DIAMOND COMIC DISTRIB</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              DIAMOND COMIC DISTRIB</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              DIAMOND COMIC DISTRIB</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AAFES - ACCOUNTS PAYABLE</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AAFES - ACCOUNTS PAYABLE</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AAFES - ACCOUNTS PAYABLE</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AAFES - ACCOUNTS PAYABLE</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AAFES - ACCOUNTS PAYABLE</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              MEIJER, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              MEIJER, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              MEIJER, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              MEIJER, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              MEIJER, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              BEST TOYS INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              BEST TOYS INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AMBASSADOR TOYS</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              KMART CORPORATION</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TAYMARK DIV OF TAYLOR CORP</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DIV</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PERSONAL &amp; FAMILY READINESS DI</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CALENDAR CLUB LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TOYS R US DELAWARE INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              THE KROGER COMPANY</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              FRED MEYER STORES, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              FRED MEYER STORES, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              FRED MEYER STORES, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              FRED MEYER STORES, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              FRED MEYER STORES, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              FRED MEYER STORES, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WALMART.COM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WALMART.COM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WALMART.COM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WALMART.COM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AAFES - ACCOUNTS PAYABLE</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              THE KROGER COMPANY</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AAFES - ACCOUNTS PAYABLE</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHOPKO STORES OPERATING CO LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHOPKO STORES OPERATING CO LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHOPKO STORES OPERATING CO LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHOPKO STORES OPERATING CO LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHOPKO STORES OPERATING CO LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHOPKO STORES OPERATING CO LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHOPKO STORES OPERATING CO LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHOPKO STORES OPERATING CO LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              MEIJER, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WAL-MART CORP. HEADQUARTERS</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              RITE AID CORP. #9999</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              BARSTONS INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              NEXCOM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              NEXCOM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WAL-MART CORP. HEADQUARTERS</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CVS CORP</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              RITE AID CORP. #9999</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              RITE AID CORP. #9999</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WALGREENS STORE</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              RITE AID CORP. #9999</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              PUZZLEMANIA INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHEPHER DIST &amp; SALES CORP</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHEPHER DIST &amp; SALES CORP</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              CVS CORP</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WALMART.COM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WALMART.COM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TARGET CENTRAL PROCESSING CTR.</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WAL-MART CORP. HEADQUARTERS</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHEPHER DIST &amp; SALES CORP</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHEPHER DIST &amp; SALES CORP</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              SHOPKO STORES OPERATING CO LLC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              WALMART.COM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              UNCLE'S INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              ENTERTAINMENT EARTH, INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AMBASSADOR TOYS</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              TOYS R US DELAWARE INC</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>RETURN              AMAZON.COM</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0450707891000100001</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451019970000100001</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451066853001100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NINGBO                  V.020E              HDMU2540592         HDMUHPWB0029661</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454903         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MOFU5823228         MOLU13008531210</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4527043         APLU053793643</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4677948         APLU053793644</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4677948         APLU053793644</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TCNU8115362         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451094266000200003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4527043         APLU053793643</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             HJCU9901738         HJSCHKG342252200</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             HJCU9901738         HJSCHKG342252200</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL ROTTERDAM               V.032E              TRLU6718163         APLU053786600</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4598920         APLU053793645</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             HJCU6120120         HJSCHKG342251100</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU1119100         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451095487000700003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HMMU9029263         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             HJCU9901738         HJSCHKG342252200</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL SHENZHEN               V.61E17             OOLU9045908         OOLU3076427680</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MOFU5823228         MOLU13008531210</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU1119100         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             HJCU9901738         HJSCHKG342252200</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         FSCU7005786         EGLV149300940334</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              MORU0609611         MOLU13007482596</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451096631000500004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL SHENZHEN               V.61E17             OOLU9045908         OOLU3076427680</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HMMU9029263         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NINGBO                  V.020E              HDMU2540592         HDMUHPWB0029661</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             NYKU7001538         NYKS2004191270</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HDMU6984379         HDMUHKWB8083300</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TCNU8115362         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451097851003200006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              BMOU9722475         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451097871000100009</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451097871000100008</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU1119100         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451097890000500011</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451097891000300013</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4677948         APLU053793644</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451097891001100008</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451097891001100007</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451097891001100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             HJCU6120120         HJSCHKG342251100</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098061000100009</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098061000100008</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098061000100007</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454903         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098062000100011</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098251000200005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098304000100015</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098338000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098338000200005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098421000100008</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098421000100007</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098431000200012</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098431000200011</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MOFU5823228         MOLU13008531210</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU0611687         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098593000100007</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098593000100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             HJCU9901738         HJSCHKG342252200</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         XINU8165646         EGLV149300940245</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         FSCU7083407         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HATSU COURAGE               V.0771-054E         TCLU1221004         EGLV149300866924</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU8037702         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HATSU COURAGE               V.0771-054E         EMCU9486380         EGLV149300866924</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU8042139         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU8047125         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU0611687         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HMMU9044078         HDMUHKWB8083310</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HDMU6965384         HDMUHKWB8083301</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098830000100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098830000300006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451098830002100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454903         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU1119100         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HDMU6984379         HDMUHKWB8083300</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL ROTTERDAM               V.032E              TRLU6718163         APLU053786600</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              TCNU7036422         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451099151000100014</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451099151000100015</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HDMU6984379         HDMUHKWB8083300</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             HJCU9901738         HJSCHKG342252200</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HDMU6984379         HDMUHKWB8083300</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451099430000100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451099430000300007</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451099436000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451099451000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451099728000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451099729000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             TCNU7076425         HJSCHKG342245400</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             TCLU5904668         HJSCHKG342245400</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             BMOU9784944         HJSCHKG342245400</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             HJCU1293668         HJSCHKG342245400</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100777000100011</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             OOLU9025239         OOLU3076433531</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                HDMU6969965         HDMUHKWB8083311</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HDMU4489925         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100867000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100958000200004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100958000400005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100958000400006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BE                72E18               OOLU8525179         OOLU3076445958</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             OOLU9048770         OOLU3076433530</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             NYKU5722920         NYKS2004191280</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              GLDU3460973         MOLU13008584817</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              FSCU4693999         MOLU13008531210</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             OOLU9048770         OOLU3076433530</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TCNU8115362         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4609901         APLU053793642</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             NYKU5722920         NYKS2004191280</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HMMU9026006         HDMUHKWB8083299</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              TCNU9972246         APLU053793645</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4598920         APLU053793645</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100958003300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TCNU8115362         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             OOLU9025239         OOLU3076433531</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             NYKU5722920         NYKS2004191280</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BE                72E18               OOLU8525179         OOLU3076445958</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100958004700004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100958004900004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100958005000005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451100958005300009</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HMMU9048005         HDMUHKWB8083302</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454903         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101055000100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101055000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HMMU9048005         HDMUHKWB8083302</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4677948         APLU053793644</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101242000100011</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101243000100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              BMOU9722475         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              BMOU9722475         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              FSCU4693999         MOLU13008531210</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101249000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         XINU8165646         EGLV149300940245</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101254000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101256000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             OOLU5376596         OOLU3076433532</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             OOLU9014682         OOLU3076433532</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL MIAMI                  V.04E16             OOLU9055980         OOLU3076433532</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101519000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL PROGRESS                V.072W              EGSU5010862         EGLV149301012287</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL PROGRESS                V.072W              EMCU5317510         EGLV149301012287</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL PROGRESS                V.072W              TEMU6065196         EGLV149301012287</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101520000200004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101674000500015</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101674000700010</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451101674000700009</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BEACH             V.72E18             OOLU7660111         OOLU3076445950</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BEACH             V.72E18             OOLU7290887         OOLU3076445950</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BEACH             V.72E18             OOLU7500828         OOLU3076445950</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BEACH             V.72E18             OOLU9026683         OOLU3076445950</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BEACH             V.72E18             OOLU9032958         OOLU3076445950</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL PROGRESS                V.072W              EISU8056238         EGLV149301012287</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL PROGRESS                V.072W              FSCU7023440         EGLV149301012287</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL PROGRESS                V.072W              EMCU8024834         EGLV149301012287</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HMMU9029263         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HMMU9044078         HDMUHKWB8083310</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451102139000700005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451102139000700006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU1119100         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451102396000300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TGHU6576201         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>XIN QING DAO                V.0137W             YMLU8333911         YMLUN300111356</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451102676000100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451102676000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451102694000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              GLDU3460973         MOLU13008584817</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HDMU6972681         HDMUHKWB8083309</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451102984000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         TCLU1268233         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451103058000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TCNU8115362         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451103451000100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU0611687         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451103773000300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451103781000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         IMTU9062606         EGLV149300940245</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         TCLU1268233         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451103788000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451103789000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         FSCU7083407         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU8042139         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EISU8049964         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU8047125         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU8037702         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451103949002400004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104031000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308000200004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BE                72E18               OOLU8525179         OOLU3076445958</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308001000004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308001200005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308001300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308001500005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308001600004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CONQUEST               V.0773-046E         FSCU7086221         EGLV149301012783</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BE                72E18               OOLU8525179         OOLU3076445958</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308002000004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308002300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308002900004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308003100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308003300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308003400006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308003400005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308003900009</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308003900010</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308004100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104308004800005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HMMU9026006         HDMUHKWB8083299</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104328000200001</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104328000200002</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104328000200003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104328000200004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104328000200005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104738000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104741000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104743000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104745000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104746000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104748000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104751000100009</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104751000200005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104752000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104753000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104755000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104757000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104758000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104759000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104766000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104767000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104768000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451104924000100011</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105283000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105423000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105423000300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454903         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105608000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105608000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU0611687         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105614000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HDMU4489925         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HDMU6965384         HDMUHKWB8083301</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HDMU4489925         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HDMU6965384         HDMUHKWB8083301</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4527043         APLU053793643</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105616000500004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105617000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105625000500004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              HDMU5496240         HDMUHKWB8083298</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105768000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105768000300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105768000500004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105773000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105800000100015</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451105800000100016</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              TCNU7036422         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU0611687         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106066000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106067000100016</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106067000100015</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106068000100034</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106068000100035</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106069000100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106070000100014</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106070000100013</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106071000100018</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106078000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106079000300006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BEACH             V.72E18             OOLU7660111         OOLU3076445950</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106082000100016</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106082000100015</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106082000100014</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106087000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              FSCU7020522         MOLU13007482549</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TEMU8012066         MOLU13007482549</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106090000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HMMU9029263         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106092000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106199000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106200000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4609901         APLU053793642</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HMMU9029263         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106214000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106215000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106217000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              FSCU4693999         MOLU13008531210</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              FSCU4693999         MOLU13008531210</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4527043         APLU053793643</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106414000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106415000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106416000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             BMOU9784944         HJSCHKG342245400</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MAGNIFICENCE            V.020E              MORU0611687         MOLU13008570027</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HANJIN GERMANY              V.0011E             BMOU9784944         HJSCHKG342245400</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BEACH             V.72E18             OOLU7660111         OOLU3076445950</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106423000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106616000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106616000300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TCNU8115362         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106642000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106645000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106646000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              TCLU5271750         APLU053793641</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106764000200003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EISU5677062         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         TCLU1268233         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU8042139         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU8037702         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EISU5677062         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         FSCU7083407         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EISU8049964         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU8047125         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              TCNU5084910         HDMUHKWB8083309</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>HATSU COURAGE               V.0771-054E         TCLU1221004         EGLV149300866924</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106959000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106960000100007</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106960000100006</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106961000300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106970000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106991000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EISU5677062         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106993000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106994000300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451106996000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4609901         APLU053793642</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU5312884         EGLV149300940245</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         IMTU9062606         EGLV149300940245</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EISU8049964         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HDMU6972681         HDMUHKWB8083309</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         EMCU5312884         EGLV149300940245</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107073000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107074000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107076000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107081000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107081000300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107082000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              TCNU5087101         HDMUHKWB8083309</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HDMU6972681         HDMUHKWB8083309</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              TCNU5087101         HDMUHKWB8083309</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              TCNU5084910         HDMUHKWB8083309</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107091000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107093000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         IMTU9062606         EGLV149300940245</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         TCLU1268233         EGLV149300960637</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         FSCU7005786         EGLV149300940334</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107205000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107245000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TCNU8115362         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107287000700003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107287000900003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107287001100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107287001300003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                HMMU9036302         HDMUHKWB8083311</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              GLDU3460973         MOLU13008584817</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107465000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107466000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107467000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         FSCU7005786         EGLV149300940334</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>OOCL LONG BE                72E18               OOLU8525179         OOLU3076445958</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107806000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107817000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MATRIX                  V.019E              TCNU8115362         MOLU13007482533</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>APL NORWAY                  V.032E              APHU4609901         APLU053793642</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451107984000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108014000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>EVER CHAMPION               V.0772-065E         FSCU7005786         EGLV149300940334</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108025000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108123000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                HMMU9036302         HDMUHKWB8083311</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                HDMU6969965         HDMUHKWB8083311</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108190000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108220000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              MORU0609611         MOLU13007482596</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108253000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108491000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108741000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108741000300003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                HMMU9036302         HDMUHKWB8083311</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108765000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108766000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108767000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108768000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108770000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108776000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108777000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HMMU9029263         HDMUHKWB8083308</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108781000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108782000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108783000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108784000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108786000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108790000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108790000300004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108790000300003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108796000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108797000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108798000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108799000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108800000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              TCNU5087101         HDMUHKWB8083309</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              TCNU5084910         HDMUHKWB8083309</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  V.015E              HMMU9044078         HDMUHKWB8083310</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108807000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108810000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108811000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108815000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108819000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454903         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108823000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108826000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108922000100005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108922000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451108923000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109118000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109118000200003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109118000300003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109118000400003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109118000500003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109118000600003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109323000100004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109323000200004</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109323000300005</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454903         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454971         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454890         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>MOL MARVEL                  015E                TCLU6454246         MOLU13008662571</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109553000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109553000200003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109553000300003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451109679000100002</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451110202000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451110646000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451110942000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451110942000200003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111057000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111076000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111092000100002</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111175000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111382000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111419000100009</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111419000200007</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111419000400008</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111419000500002</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111569000100003</Text>
+  </Detail>
+  <Detail>
+    <Plant>1043</Plant>
+    <Text>0451111573000300003</Text>
+  </Detail>
+  <Footer>
+    <Type>TR</Type>
+    <Count>1043000062</Count>
+  </Footer>
+</ns:MT_DeepPlain2XML>

@@ -1,0 +1,61 @@
+   //************************************
+   // ExcelTransformBean
+   //************************************
+   // (A) - SimpleExcel2XML
+   // Scenario 1 - XLSX, fromFile
+   inFile = new File("TestData/ExcelTransformBean/Excel2XML_Scenario1.xlsx");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.excel.Excel2XMLTransformer" );
+   contextData.put("sheetName", "Sheet1");
+   contextData.put("processFieldNames", "fromFile");
+   contextData.put("documentName", "MT_Order");
+   contextData.put("documentNamespace", "urn:equalize:com");
+   contextData.put("indentFactor", "2");
+   
+   // Scenario 2 - XLS, fromConfiguration
+   inFile = new File("TestData/ExcelTransformBean/Excel2XML_Scenario2.xls");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.excel.Excel2XMLTransformer" );
+   contextData.put("sheetIndex", "0");
+   contextData.put("processFieldNames", "fromConfiguration");
+   contextData.put("fieldNames", "Order,Date,Material,Quantity");
+   contextData.put("rowOffset", "2");
+   contextData.put("recordName", "Line");
+   contextData.put("documentName", "MT_CustomOrder");
+   contextData.put("documentNamespace", "urn:equalize:com");
+   contextData.put("formatting", "raw"); //excel
+   contextData.put("indentFactor", "2");
+  
+   // Scenario 3 - XLSX, notAvailable, default value, formula
+   inFile = new File("TestData/ExcelTransformBean/Excel2XML_Scenario3.xlsx");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.excel.Excel2XMLTransformer" );
+   contextData.put("sheetIndex", "0");
+   contextData.put("processFieldNames", "notAvailable");
+   contextData.put("columnCount", "5");
+   contextData.put("rowOffset", "1");
+   contextData.put("documentName", "MT_CustomOrder");
+   contextData.put("documentNamespace", "urn:equalize:com");
+   contextData.put("skipEmptyRows", "N");
+   contextData.put("evaluateFormulas", "N");
+   contextData.put("emptyCellOutput", "defaultValue");
+   contextData.put("emptyCellDefaultValue", "space"); //suppress
+   contextData.put("indentFactor", "2");
+
+   // (B) - SimpleXML2Excel
+   // Scenario 1 - XLSX default
+   inFile = new File("TestData/ExcelTransformBean/XML2Excel_Scenario1.txt");
+   outFile = new File("C:\\Users\\ksap086\\Desktop\\output.xlsx");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.excel.XML2ExcelTransformer" );   
+
+   // Scenario 2 - XLS, fromXML
+   inFile = new File("TestData/ExcelTransformBean/XML2Excel_Scenario2.txt");
+   outFile = new File("C:\\Users\\ksap086\\Desktop\\output.xls");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.excel.XML2ExcelTransformer" );
+   contextData.put("excelFormat", "xls");
+   contextData.put("sheetName", "MySheet1");
+   contextData.put("addHeaderLine", "fromXML");
+   
+   // Scenario 3 - XLSX, fromConfiguration
+   inFile = new File("TestData/ExcelTransformBean/XML2Excel_Scenario3.txt");
+   outFile = new File("C:\\Users\\ksap086\\Desktop\\output.xlsx");
+   contextData.put("converterClass", "com.equalize.xpi.af.modules.excel.XML2ExcelTransformer" );
+   contextData.put("addHeaderLine", "fromConfiguration");
+   contextData.put("fieldNames", "Field1,Date,Field2,Quantity");

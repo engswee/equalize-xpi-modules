@@ -1,0 +1,4 @@
+D,Delivery2ZZZZ
+O,Delivery2,Order2_A
+I	Order2_A	10	90
+I	Order2_A	20	80

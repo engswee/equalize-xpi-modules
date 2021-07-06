@@ -1,0 +1,2 @@
+converterClass	com.equalize.xpi.af.modules.base64.Base64DecodeConverter
+inputType	plain

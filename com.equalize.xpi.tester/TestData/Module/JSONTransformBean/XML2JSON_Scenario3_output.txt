@@ -1,0 +1,28 @@
+{
+  "single": ["abc"],
+  "GlossSeeAlso": [
+    "GML",
+    "XML"
+  ],
+  "oneparentonechild": {"title": ["example glossary 1"]},
+  "oneparentmanychild": [{"manychild": [
+    "example glossary 2",
+    "example glossary 3"
+  ]}],
+  "manyparentonechild": [
+    {"SortAs": ["SGML"]},
+    {"SortAs": ["XYZ"]}
+  ],
+  "manyparentmanychild": [
+    {"manychild2": [
+      "example glossary A",
+      "example glossary B",
+      "example glossary C"
+    ]},
+    {"manychild2": [
+      "example glossary D",
+      "example glossary E",
+      "example glossary F"
+    ]}
+  ]
+}

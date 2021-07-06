@@ -1,0 +1,6 @@
+converterClass	com.equalize.xpi.af.modules.deepfcc.XML2DeepPlainConverter
+recordsetStructure	Delivery,Order,Item
+Delivery.fieldSeparator	,
+Delivery.endSeparator	ZZZZ'nl'
+Item.fieldSeparator	'0x09'
+Order.fieldSeparator	,

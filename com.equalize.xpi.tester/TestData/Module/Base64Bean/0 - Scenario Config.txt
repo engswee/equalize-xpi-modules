@@ -1,0 +1,45 @@
+   //************************************
+   // Base64Bean
+   //************************************ 
+
+   // (A) - Base64Decode
+
+			// Scenario 1 - Plain zipped input
+			inFile = new File("TestData/Base64Bean/Base64Decode_Scenario1.txt");
+			contextData.put("converterClass", "com.equalize.xpi.af.modules.base64.Base64DecodeConverter" );
+			contextData.put("inputType", "plain");
+			contextData.put("zippedContent", "Y");
+			
+			// Scenario 2 - Plain JPG input
+			inFile = new File("TestData/Base64Bean/Base64Decode_Scenario2.txt");
+			outFile = new File("C:\\Users\\ksap086\\Desktop\\output.jpg");
+			contextData.put("converterClass", "com.equalize.xpi.af.modules.base64.Base64DecodeConverter" );
+			contextData.put("inputType", "plain");
+			
+			// Scenario 3 - XML zipped input
+			inFile = new File("TestData/Base64Bean/Base64Decode_Scenario3.xml");
+			contextData.put("converterClass", "com.equalize.xpi.af.modules.base64.Base64DecodeConverter" );
+			contextData.put("inputType", "xml");
+			contextData.put("zippedContent", "Y");
+			contextData.put("xpath", "/MT_TransferSAEFile/SAEZipContent");
+
+			// Scenario 4 - Plain input with Hebrew char
+			inFile = new File("TestData/Base64Bean/Base64Decode_Scenario4_WithHebrew.txt");
+			contextData.put("converterClass", "com.equalize.xpi.af.modules.base64.Base64DecodeConverter" );
+			contextData.put("inputType", "plain");
+
+   // (B) - Base64Encode
+
+   // Scenario 1 - Plain compressed output
+			inFile = new File("TestData/Base64Bean/Base64Encode_Scenario1.xml");
+			contextData.put("converterClass", "com.equalize.xpi.af.modules.base64.Base64EncodeConverter" );
+			contextData.put("outputType", "plain");
+			contextData.put("compress", "Y");
+
+   // Scenario 2 - XML output with embedded base64 content
+			inFile = new File("TestData/Base64Bean/Base64Encode_Scenario2.txt");
+			contextData.put("converterClass", "com.equalize.xpi.af.modules.base64.Base64EncodeConverter" );
+			contextData.put("outputType", "xml");
+			contextData.put("documentName", "MT_Base64");
+			contextData.put("documentNamespace", "urn:dummy");
+			contextData.put("base64FieldName", "b64string");

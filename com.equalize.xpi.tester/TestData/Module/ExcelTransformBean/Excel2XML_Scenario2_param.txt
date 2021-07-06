@@ -1,0 +1,10 @@
+converterClass	com.equalize.xpi.af.modules.excel.Excel2XMLTransformer
+sheetIndex	0
+processFieldNames	fromConfiguration
+fieldNames	Order,Date,Material,Quantity
+rowOffset	2
+recordName	Line
+documentName	MT_CustomOrder
+documentNamespace	urn:equalize:com
+formatting	raw
+indentFactor	2

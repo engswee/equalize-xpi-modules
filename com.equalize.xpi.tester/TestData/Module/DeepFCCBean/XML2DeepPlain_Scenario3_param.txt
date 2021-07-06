@@ -1,0 +1,5 @@
+converterClass	com.equalize.xpi.af.modules.deepfcc.XML2DeepPlainConverter
+recordsetStructure	Header,Delivery,Order,OrderText,Item,Footer
+defaultFieldSeparator	,
+messageLog	post
+logLocation	plain

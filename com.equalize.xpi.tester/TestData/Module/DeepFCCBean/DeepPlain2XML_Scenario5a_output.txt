@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ns:MT_DeepPlain2XML xmlns:ns="urn:equalize:com">
+  <Line>
+    <FirstName>Joe</FirstName>
+    <LastName>Smith</LastName>
+    <PostCode>8E1</PostCode>
+    <Date>2005-01-01</Date>
+  </Line>
+  <Line>
+    <FirstName>John</FirstName>
+    <LastName>Doe</LastName>
+    <PostCode>9N5</PostCode>
+    <Date>2004-12-30</Date>
+  </Line>
+  <Count>
+    <Type>COUNT</Type>
+    <Count>2</Count>
+  </Count>
+</ns:MT_DeepPlain2XML>

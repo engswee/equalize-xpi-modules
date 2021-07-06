@@ -1,0 +1,3 @@
+mode	regex
+regex	Order_(\d+)_Batch_(\d+).xml
+replacement	PO_$1_Group_$2.txt

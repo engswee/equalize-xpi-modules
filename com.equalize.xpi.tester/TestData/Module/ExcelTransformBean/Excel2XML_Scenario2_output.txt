@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ns:MT_CustomOrder xmlns:ns="urn:equalize:com">
+  <Line>
+    <Order>47890.0</Order>
+    <Date>41673.0</Date>
+    <Material>XYZ456</Material>
+    <Quantity>15.0</Quantity>
+  </Line>
+</ns:MT_CustomOrder>

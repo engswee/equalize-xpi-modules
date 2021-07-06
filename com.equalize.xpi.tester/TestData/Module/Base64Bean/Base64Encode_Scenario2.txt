@@ -1,0 +1,5 @@
+Test Data to be encoded by Base64EncodeConverter and embedded into an XML element
+
+Line 1
+Line 2
+Line 3

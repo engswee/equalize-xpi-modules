@@ -1,0 +1,12 @@
+converterClass	com.equalize.xpi.af.modules.excel.Excel2XMLTransformer
+sheetIndex	0
+processFieldNames	notAvailable
+columnCount	5
+rowOffset	1
+documentName	MT_CustomOrder
+documentNamespace	urn:equalize:com
+skipEmptyRows	N
+evaluateFormulas	N
+emptyCellOutput	defaultValue
+emptyCellDefaultValue	space
+indentFactor	2
