@@ -1,9 +1,11 @@
+NOTICE - This project is no longer under active development and is in read-only mode
+=========
+
 Equalize PI Custom Adapter Modules
 ==================
 [![GitHub release](https://img.shields.io/github/release/engswee/equalize-xpi-modules.svg)](https://github.com/engswee/equalize-xpi-modules/releases/latest)
 [![Github All Releases](https://img.shields.io/github/downloads/engswee/equalize-xpi-modules/total.svg)](https://www.somsubhra.com/github-release-stats/?username=engswee&repository=equalize-xpi-modules)
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://github.com/engswee/equalize-xpi-modules/blob/master/LICENSE)
-[![HitCount](http://hits.dwyl.io/engswee/equalize-xpi-modules.svg)](http://hits.dwyl.io/engswee/equalize-xpi-modules)
 
 This repository contains the source code for PI custom EJB adapter modules.
 All modules are written for EJB 3.0
